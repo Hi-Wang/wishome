@@ -1,0 +1,131 @@
+<div class="project_all Info">
+  <header class="clearfix">
+    <h5>个人资料</h5><span style="float: right;margin-right: 3rem" ng-click="back(this);"><button class="btn btn-primary">返回</button></span>
+    <div class="infoDiv">
+      <div class="imgBox">
+        <!--<p><img src="../images/projectList/wishome.png"/></p>-->
+        <p class="widthImg" style="margin-bottom: 6px;">
+          <img src="{{user.personalpicture}}"/>
+        </p>
+        <p class="changeImg"><a ng-click="changeImg(this);">修改头像</a></p>
+      </div>
+      <div class="rightBox">
+        <p>账户ID：<span ng-bind="user.username"></span></p>
+        <p>用户身份：<span ng-bind="Identity"></span></p>
+        <p>真实姓名：
+          <span ng-bind="user.nickname" ng-show="saveNicName" ng-init="saveNicName = true"></span>
+          <span ng-show="nameInput" ng-init="nameInput = false"><input id="nickname" ng-value="user.nickname" /></span>
+          <a class="changeName" ng-click="changeName(this);" ng-bind="changeNameBtn"></a>
+          <a style="color:#00c2de;cursor: pointer;margin-left: 1rem" ng-click="hideInput(this);" ng-show="hideBtn" ng-init="hideBtn = false">取消</a>
+        </p>
+      </div>
+      <div class="QQ_weChat">
+        <p class="top">第三方绑定</p>
+        <div class="QQ_weChat_list clearfix">
+          <div class="left">
+            <i class="iconfont icon-QQ" style="color:#00c2de;"></i>
+            <p style="color:#00c2de;cursor: pointer" ng-show="QQ" ng-click="UnQQClick();">取消绑定</p>
+            <p style="color:#00c2de;cursor: pointer" ng-show="!QQ" ng-click="QQClick();">点击绑定</p>
+          </div>
+          <div class="right">
+            <i class="iconfont icon-weixin" style="color:#09BB07"></i>
+            <p style="color:#00c2de;cursor: pointer" ng-show="WeChart" ng-click="unWeChartClick();">取消绑定</p>
+            <p style="color:#00c2de;cursor: pointer" ng-show="!WeChart" ng-click="weChartClick();">点击绑定</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <info-alert ng-show="alertModel" ng-init="alertModel = false" ></info-alert>
+  <un-bind-model ng-show="bindModel" ng-init="bindModel = false"></un-bind-model>
+  <section>
+    <div class="safetyDiv">
+      <p>您当前的账号安全程度</p>
+
+      <div class="progress-bar" ng-class="{progress: true, 'progress-striped': true}">
+        <div ng-class="['progress-bar', vm.style]" ng-style="{width: vm.value + '%'}">
+          <div ng-if="vm.showLabel">{{vm.value}}%</div>
+        </div>
+      </div>
+      <p>安全级别：<span ng-bind="vm.grade" ng-class="vm.class"></span></p>
+      <p style="margin-left: 2rem" ng-bind="vm.text"></p>
+
+    </div>
+    <div class="listDiv">
+      <ul>
+        <li>
+          <div class="left">手机绑定</div>
+          <div class="center" ng-show="list.phoneColor">您已绑定了手机&nbsp;<span ng-bind="newPhone"></span>[您的手机为安全手机，可以找回密码，但不能用于登录]</div>
+          <div class="center" ng-show="!list.phoneColor">您还未绑定手机号，为了您的使用，请立即去绑定</div>
+          <div class="right">
+            <span>
+              <span ng-class="{'icon ion-ios-information text-size-18 Ecolor':!list.phoneColor, 'icon ion-ios-checkmark text-size-18 Rcolor': list.phoneColor}" class="icon icon-yes-1 text-size-18 margin-right-1"></span>
+              <span  ng-class="{'Ecolor':!list.phoneColor,'Rcolor': list.phoneColor}" ng-bind="list.phoneText"></span>
+            </span>
+            <span>|</span>
+            <span ng-click="phoneBtnClick(this);"><a ng-bind="list.phoneTextBtn"></a></span>
+          </div>
+        </li>
+        <li address-change>
+          <div class="left">通讯地址</div>
+          <div class="center" ng-show="list.addressColor">您当前的通讯地址为&nbsp;<span ng-bind="user.address" style="margin: 0 1rem;">xiaowa****@outlook.com </span>[阿里云发送的各类系统、营销、服务通知将发送到您的备用邮箱。]</div>
+          <div class="center" ng-show="!list.addressColor">您还未填写通讯地址，请完善您的信息。</div>
+          <div class="right">
+            <span>
+              <span ng-class="{'icon ion-ios-information text-size-18 Ecolor':!list.addressColor, 'icon ion-ios-checkmark text-size-18 Rcolor':list.addressColor}" class="icon icon-yes-1 text-size-18 margin-right-1"></span>
+              <span  ng-class="{'Ecolor':!list.addressColor,'Rcolor':list.addressColor}" ng-bind="list.addressText "></span>
+            </span>
+            <span>|</span>
+            <span><a ng-bind="list.addressTextBtn" ng-click="onAddress(this);"></a></span><span style="margin-left: 1rem" ng-show="addressShow" ng-init="addressShow = false" ng-click="addressHid(this);"><a>取消</a></span>
+          </div>
+          <div id="addressBox">
+            <p><span class="left" style="font-weight: 100">请输入地址：</span><input name="addressInput" select-address p="p" c="c" a="a" d="d" ng-value="user.address" ng-model="addressName"  placeholder="请选择所在地" type="text" style="width:300px;height:28px;border-radius: 4px;border: 1px solid #ccc;padding-left: 10px;"/></p>
+          </div>
+        </li>
+        <!--邮箱-->
+        <li email-change>
+          <div class="left">备用邮箱</div>
+          <div class="center" ng-show="list.emailColor">您已绑定了邮箱&nbsp;<span ng-bind="user.email" style="margin: 0 0.4rem">xiaowa****@outlook.com </span>[阿里云发送的各类系统、营销、服务通知将发送到您的备用邮箱。]</div>
+          <div class="center" ng-show="!list.emailColor">您还未绑定邮箱，为了更好的体验我们的服务，请立即去绑定。</div>
+          <div class="right">
+            <span>
+              <span ng-class="{'icon ion-ios-information text-size-18 Ecolor':!list.emailColor, 'icon ion-ios-checkmark text-size-18 Rcolor':list.emailColor}" class="icon icon-yes-1 text-size-18 margin-right-1"></span>
+              <span  ng-class="{'Ecolor':!list.emailColor,'Rcolor':list.emailColor}" ng-bind="list.emailText"></span>
+            </span>
+            <span>|</span>
+            <span><a ng-bind="list.emailTextBtn" ng-click="onEmail(this);"></a></span><span style="margin-left: 1rem" ng-show="emailShow" ng-init="emailShow = false" ng-click="emailHid(this);"><a>取消</a></span>
+          </div>
+          <div id="emailBox">
+            <p><span class="left" style="font-weight: 100">请输入Email：</span><input type="email" ng-value="user.email" placeholder="请输入邮箱地址"/><span class="erroeText" ng-show="disEmail" ng-init="disEmail = false"><i class="icon ion-information-circled"></i><span ng-bind="emailError"></span></span></p>
+          </div>
+        </li>
+        <!--修改登录密码-->
+        <li>
+          <div class="left">登录密码</div>
+          <div class="center">安全性高的密码可以使帐号更安全。建议您定期更换密码，设置一个包含字母，符号或数字中至少两项且长度超过6位的密码。</div>
+          <div class="right">
+            <span class="icon ion-ios-help text-size-18"></span>
+            <span class="icon text-size-14">改密码</span>
+            <span>|</span>
+            <span ng-click="changePsd(this);"><a>修改</a></span>
+          </div>
+        </li>
+
+        <!--找回密码-->
+        <li>
+          <div class="left">找回密码</div>
+          <div class="center">如您忘记了密码，可以通过&nbsp;<span ng-bind="newPhone"></span>手机号找回密码</div>
+          <div class="right">
+            <span>
+              <span class="icon ion-ios-help text-size-18"></span>
+              <span class="icon text-size-14">找密码</span>
+            </span>
+            <span>|</span>
+            <span ng-click="changePsd(this);"><a>查找</a></span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+

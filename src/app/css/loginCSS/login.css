@@ -1,0 +1,58 @@
+*{margin: 0;padding: 0;}
+html{background: #313131;}
+body{width: 100vw;height: 100vh;min-height: 700px;min-width: 1348px;background: url(../../images/login/login-bg.png) no-repeat center center;background-size:100% 100%;font-size: 62.5%;box-sizing: border-box;padding-top: 7vh}
+.clearfix{*zoom:1;}
+.clearfix::after{content: '';display: block;clear: both;}
+ul li{list-style: none;}
+input{border:none;outline: none;}
+header{width: 100%;height: 7vh;background: rgba(0,0,0,.1);margin-top: -7vh;}
+header p{width: 50%;float: left;height: 100%;color: #ECBF86;text-align: center;line-height: 7vh;margin: 0;}
+header .logo{font-size: 2.6rem;font-family: Impact;}
+header .logo span{color: #A61527;}
+header .slogan{font-size: 1.4rem;letter-spacing: .4rem;}
+.content{width: 64rem;height: 26rem;/*background: rgba(255,255,255,.3);*/margin: 20vh auto;}
+.content .cont_left{width: 60%;height:100%;/*background: rgba(255,255,255,.5);*/float: left;border-top-left-radius:3rem;background-image: linear-gradient(rgba(255,255,255,1),rgba(255,255,255,0));}
+.content .cont_left h2{font-size: 1.8rem;text-align: center;line-height: 4rem;margin-top: 2rem;font-weight: lighter;color: #222;}
+.content .cont_left ul{width: 30rem;margin: 2rem auto .6rem;border-bottom: 1px solid #ECBF86;padding-bottom: 6rem;}
+.content .cont_left ul li{color: #fff;font-size: 1.2rem;float: left;width: 8rem;height: 3rem;background: url(../../images/login/left-bg.png) no-repeat left top;margin: 0 1rem;background-size: 100% 100%;text-align: center;padding-top: 5rem;}
+.content .cont_left p{text-align: center;color: #ddd;font-size: .8rem;}
+.content .cont_right{width: 40%;height: 100%;background: rgba(0,0,0,.6);float: left;border-bottom-right-radius:3rem;/*background-image: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,0));*/}
+.content .cont_right .nav{height: 3rem;position: relative;color: #fff;font-size: 1rem;border-bottom: 1px solid #444;}
+.content .cont_right .nav span{display: block;width: 50%;float: left;text-align: center;line-height: 3rem;cursor: pointer;}
+.content .cont_right .nav i{display: block;position: absolute;height: 1px;width: 9.2rem;background: #ccc;bottom: 0;left: 2rem;-webkit-transition: all 0.35s;-moz-transition: all 0.35s;-ms-transition: all 0.35s;transition: all 0.35s;}
+#logon_div{position: relative;margin: 2rem;}
+#logon_div .username,#logon_div .password,#logon_div .password_again{height:2.4rem;background: rgba(255,255,255,.7);width: 17rem;margin: 0 auto;margin-bottom: .6rem;}
+#logon_div .password #passByCode{display: none;}
+#logon_div .password #passByCode input{width: 48%;height: 2.4rem;border:none;float: left;}
+#logon_div .password #getCode{cursor: pointer;}
+#logon_div .password #getCode:active{background: #A6D112;}
+#logon_div .password #codeByPhone{padding-left: 4%;}
+#logon_div .username span,#logon_div .password #passByKey span,#logon_div .password_again span{width: 2.4rem;height: 2rem;display: inline-block;text-align: center;border-right: 1px solid #ccc;overflow: hidden;float: left;padding-top:.4rem;}
+#logon_div .username span i,#logon_div .password #passByKey span i,#logon_div .password_again span i{font-size: 1.6rem;color: #fff;}
+#logon_div .username input,#logon_div .password #passByKey input,#logon_div .password_again input{width: 13.5rem;border: none;height: 2.4rem;padding-left: 1rem;font-size: .8rem;}
+#logon_div .password_again{display: none;}
+#logon_div .anotherChoose{color: #fff;font-size: .8rem;width: 17rem;margin: 0 auto;}
+#logon_div .anotherChoose span{cursor: pointer;display: block;-webkit-transition: all 0.35s;-moz-transition: all 0.35s;-ms-transition: all 0.35s;transition: all 0.35s;}
+#logon_div .anotherChoose span:hover{color: #F92659;}
+#logon_div .anotherChoose #forget{float: left;}
+#logon_div .anotherChoose #logonByPhone{float: right;}
+#logon_div .anotherChoose #logonByUsername{float: right;display: none;}
+#logon_div #logon_click,#logon_div #login_click{width: 16rem;height: 2rem;border: none;margin: 1.4rem auto;display: block;background: #A6D112;cursor: pointer;border-radius: .2rem;}
+#logon_div #login_click{display: none;}
+#logon_div .logon_tencent{width: 8rem;margin: 2rem auto;text-align: center;color: #fff;font-size: 1rem;position: relative;}
+#logon_div .logon_tencent::before{content: '';display: block;width: 5rem;border-top: 1px solid #fff;position: absolute;top: .8rem;left: -5rem;}
+#logon_div .logon_tencent::after{content: '';display: block;width: 5rem;border-top: 1px solid #fff;position: absolute;top: .8rem;right: -5rem;}
+#logon_div .logon_tencent i{font-size: 2.4rem;margin:.4rem;background: #fff;border-radius: 100%;cursor: pointer;}
+/*#logon_div .logon_tencent i:hover{font-size: 2.6rem;}*/
+#logon_div .chooseGroup{color: #fff;font-size: .8rem;width: 17rem;margin: 2rem auto;display: none;}
+#logon_div .chooseGroup select{width: 9rem;height: 2rem;}
+.icon-QQ{color: #148FEE;}
+.icon-weixin{color: #09BB07;}
+
+#login_div{display: none;}
+.content .cont_right .code{ width:100%;position: relative;z-index: 1000;text-align: center;display: none;height:auto;}
+.content .cont_right .code .icon{ font-size: 20rem;color: #00c2de;position: absolute;top:0;right:0;}
+
+::-webkit-scrollbar {width: 0.1rem;height: 0.1rem;}
+::-webkit-scrollbar-track {background: #eee;border: thin solid lightgray;box-shadow: 2rem 0 2rem #f6f6f6 inset;-moz-box-shadow: 2rem 0 2rem #f6f6f6 inset;-webkit-box-shadow: 2rem 0 2rem #f6f6f6 inset;-o-box-shadow: 2rem 0 2rem #f6f6f6 inset;}
+::-webkit-scrollbar-thumb { background: #1E8BC3;}

@@ -1,0 +1,44 @@
+<div>
+  <div class="backgroundDiv" ng-click="modelHide();"></div>
+  <div class="modelTimeOut">
+    <div class="alertBox modal-content">
+      <div class="modal-header" style="color:#333;">
+        <h4 ng-bind="homeModelName"></h4>
+        <h4 ng-bind="hideId" style="display: none"></h4>
+      </div>
+      <div class="modal-body" style="padding:20px;color: #333;">
+        <div ng-show="alertTextP" ng-init="alertTextP = false">
+          <p>{{alertText}}</p>
+        </div>
+        <div ng-show="selectHome" ng-init="selectHome = false">
+          <select class="form-control" id="otherNodeName">
+            <option ng-repeat="data in addNodeName" ng-bind="data.name"></option>
+          </select>
+          <br/>
+          <div ng-show="otherName" ng-init="otherName = false">
+            <input class="form-control" type="text" placeholder="请输入节点名称" ng-value="optionName" ng-model="optionName"/>
+          </div>
+          <br/>
+          <input class="form-control" type="date" ng-model="selectName.time" ng-value="selectName.time|date:'yyyy-MM-dd'" min="{{minDate}}"/>
+        </div>
+        <div ng-show="factoryName" ng-init="factoryName = false">
+          <div>
+            <label class="control-label">请选择生产工厂：</label>
+            <select class="form-control" id="factroyName">
+              <option ng-repeat="data in gc" ng-bind="data.deptName"></option>
+            </select>
+          </div>
+          <br/>
+          <div>
+            <label class="control-label">请填写交货日期：</label>
+            <input class="form-control" type="date" ng-model="factoryDate" ng-value="factoryDate|date:'yyyy-MM-dd'" min="{{minDate}}"/>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" ng-show="footer" ng-init="footer = true">
+        <button class="btn btn-primary" ng-click="save(this);">确定</button>
+        <button class="btn btn-primary" ng-click="modelHide();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

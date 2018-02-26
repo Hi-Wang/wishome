@@ -1,0 +1,56 @@
+<div class="askPriceModel preSaleBigImgModel" id="bigImgModel">
+  <div class="fullDiv" ng-click="hideModel();"></div>
+  <div class="selectContent">
+    <div class="top clearfix">
+      <div class="iconDiv">
+        <i class="icon ion-aperture"></i><span>查看大图</span>
+      </div>
+      <i class="icon ion-close-circled delIcon" ng-click="hideModel();"></i>
+    </div>
+    <section class="clearfix col-md-12">
+      <div class="leftImg">
+        <div class="imgBox">
+          <img ng-src="{{bigImgUrl}}" align="center"/>
+        </div>
+        <!--<div class="nextDiv clearfix">-->
+          <!--<div class="preIcon">-->
+            <!--<i class="icon ion-chevron-left"></i>-->
+          <!--</div>-->
+          <!--<div class="nextIcon">-->
+            <!--<i class="icon ion-chevron-right"></i>-->
+          <!--</div>-->
+        <!--</div>-->
+      </div>
+      <div class="rightText">
+        <h4 ng-bind="box.detailsname">产品名称</h4>
+        <div class="detailsInfo">
+          <ul>
+            <li>产品编码：<span ng-bind="box.detailscode"></span></li>
+            <li>产品规格：<span ng-bind="box.detailsspecifications"></span></li>
+            <li>产品数量：<span ng-bind="box.detailsnumber"></span></li>
+            <li>所在区域：<span ng-bind="box.regionname"></span></li>
+            <li>产品备注：<span ng-bind="box.detailsmemo"></span></li>
+          </ul>
+        </div>
+        <div class="buttonBox">
+          <p ng-click="clickImg(this);">
+            <i class="icon ion-edit"></i>
+            编辑产品
+          </p>
+          <p ng-click="removeImgBox(this);" style="background: #ccc;margin-top: 1rem">
+            <i class="icon ion-trash-a" style="font-size: 1.6rem;"></i>
+            删除产品
+          </p>
+          <!--<button class="col-md-12">编辑产品</button>-->
+        </div>
+      </div>
+    </section>
+    <!--<div id="imgBoxShow">-->
+      <!--<img ng-src="{{bigImgUrl}}" />-->
+    <!--</div>-->
+    <!--&lt;!&ndash;按钮&ndash;&gt;-->
+    <!--<div class="col-md-12 modelButtonBox" style="text-align: center">-->
+      <!--<button type="button" class="btn btn-primary" ng-click="hideModel();">关闭</button>-->
+    <!--</div>-->
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<del-news id="delNewsModel" style="display: none"></del-news>
+<div class="newsRightListView" ng-controller="newsRightListViewCtrl as cCtrl">
+  <div class="header">
+    <p>{{headerNews}}</p>
+  </div>
+  <div class="content">
+    <div class="newsName">
+      <ul>
+        <li ng-repeat="name in newsName" ng-class="{'active':name.style,'inactive':!name.style}" ng-bind="name.name" ng-click="newsListTabStyly($index,name.name,this)"></li>
+      </ul>
+    </div>
+    <div class="tabDiv">
+      <table class="table " style="margin-bottom: 20px;margin-top: 10px;">
+        <thead>
+        <tr>
+          <td class="col-md-1"></td>
+          <td class="col-md-4">
+            标题内容
+          </td>
+          <td class="col-md-3">
+            提交时间
+          </td>
+          <td class="col-md-2">
+            提交人
+          </td>
+          <td class="col-md-2">
+
+          </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="data in msg" ng-mouseover="delIcon = true" ng-mouseleave="delIcon = false" style="height: 40px;">
+          <!--<td style="text-align: center">-->
+            <!--<input type="checkbox"/>-->
+          <!--</td>-->
+          <td style="text-align: right">
+            <span class="readTrue" ng-show="data.signRead"></span>
+          </td>
+          <td>
+            <a ng-class="{'blue':data.signRead,'readCcc':!data.signRead }" ng-bind="data.title" style="cursor: pointer;" ng-click="seeOneNews(data,this);"></a>
+          </td>
+          <td class="ccc" ng-bind="data.sendDate"></td>
+          <td class="ccc" ng-bind="data.senderName"></td>
+          <td>
+            <i class="icon ion-close" ng-click="delThisNews(data,this);" style="color:#00c2de;margin-right: 10px;cursor: pointer;font-size: 1.4rem;z-index: 1000;" ng-mouseover="delSpan = true" ng-mouseleave="delSpan = false" ng-show="delIcon" ng-init="delIcon = false"></i>
+            <span ng-show="delSpan" ng-init="delSpan = false" style="display: inline-block;margin-right: 10px;cursor: pointer;color:#fff;background: #353F48;padding:2px 4px;border-radius: 4px;font-size: 1.2rem;">删除</span>
+          </td>
+        </tr>
+        <tr ng-show="noNews">
+          <td style="text-align: center;height:120px;" colspan="5">
+            <i class="icon ion-information-circled" style="color:#00c2de;font-size: 2rem;"></i>
+            <span style="font-size: 1.4rem;margin-left: 10px;">您好，还没有消息哦！</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!--<div class="footer" style="position: absolute;bottom: 0;height:40px;width: 100%;background: red;z-index: 1000;">-->
+  <!--index-->
+<!--</div>-->

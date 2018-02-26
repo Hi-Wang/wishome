@@ -1,0 +1,60 @@
+<div class="project_all">
+  <div class="project_all">
+    <div class="nav navbar-nav content_projectList_nav">
+      <div class="navbar-left content_projectList_nav_left">
+        <input placeholder="请输入关键字" type="text" class="form-control" ng-model="keyWords" ng-keyup="myKeyup($event)" ng-change="updateList(pageCount)">
+
+        <span class="input-group-btn">
+            <button type="button" id="searchBtn" class="btn btn-default btn-search-color" ng-click="askSearch();" search-click>搜索</button>
+        </span>
+      </div>
+      <div class="content_projectList_nav_right">
+        <span class="input-group-btn">
+          <!-- /.modal -->
+        </span>
+      </div>
+    </div>
+    <div>
+      <table class="table table-hover  content_table_style">
+        <thead>
+        <tr>
+          <td>项目编码</td>
+          <td>项目名称</td>
+          <td>项目经理</td>
+          <td>产品数量</td>
+          <td>金额</td>
+          <td>立项日期</td>
+          <td>状态</td>
+          <td>详情</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="data in tdList | filter:keyWords | pageFilter:pageCount:pageIndex">
+          <td>{{data.prjtcode}}</td>
+          <td>{{data.prjtname}}</td>
+          <td>{{pm}}</td>
+          <td>{{data.prjtprodqty}}</td>
+          <td>{{data.prjtsum}}</td>
+          <td>{{data.prjtdate}}</td>
+          <td>{{data.prjtstate}}</td>
+          <td style="display: none">{{data.prjtcate}}</td>
+          <td style="display: none">{{data.prjthstp}}</td>
+          <td><span class="btn-edit-style"><a ng-click="goScheduleView(this);">查看</a></span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--温馨提示开始-->
+    <div class="promptBox">
+      <p>温馨提示：
+        <span ng-repeat="prompt in promptBox" style="color:#333;">
+          <span ng-bind="prompt.name" style="color:#333;"></span>
+          <span ng-bind="prompt.num" style="color:#333;"></span>
+        </span>
+      </p>
+    </div>
+    <!--温馨提示结束-->
+    <!--分页-->
+    <page class="pull-right" ng-show="page" ng-init="page = true"></page>
+  </div>
+</div>

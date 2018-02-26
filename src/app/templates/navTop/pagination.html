@@ -1,0 +1,22 @@
+<div aria-label="Page navigation" class="pageStyle">
+  <div class="pagination">
+    <a href="javascript:;" ng-click="pageTo(1);"><span>首页</span></a>
+    <a href="javascript:;" aria-label="Previous" ng-click="pageTo('previous')">
+      <span aria-hidden="true">&laquo;</span>
+    </a>
+    <a href="javascript:;" ng-repeat="item in list|listFilter:pageCount:pageIndex" ng-click="pageTo(item)" ng-class="{true:'on',false:'off'}[item === pageIndex]" >{{item}}</a>
+    <a href="javascript:;" aria-label="Next">
+      <span aria-hidden="true" ng-click="pageTo('next')">&raquo;</span>
+    </a>
+    <a href="javascript:;" ng-click="pageTo(list.length)"><span>尾页</span></a>
+  </div>
+  <div class="right_text">
+    <span>请选择最多显示</span>
+    <select ng-model="pageCount" ng-change="updateList(pageCount);">
+      <option ng-selected="true">5</option>
+      <option>10</option>
+      <option>20</option>
+    </select>
+    <span>条数据</span>
+  </div>
+</div>

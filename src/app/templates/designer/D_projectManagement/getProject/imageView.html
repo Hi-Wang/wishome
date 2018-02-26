@@ -1,0 +1,163 @@
+<div class="imageView clearfix" hide-bar>
+  <big-img id="seeBigImgModel" ng-show="seeBigImgModel" ng-init="seeBigImgModel = false"></big-img>
+  <div class="left" id="left">
+    <div class="prjtDetails">
+      <header class="clearfix">
+        <p><i class="icon ion-android-add-circle"></i>新增产品</p>
+        <div class="btnDiv">
+          <button  ng-click="comeBack();">返回</button>
+          <button ng-click="saveImg(this);">{{btnName}}</button>
+        </div>
+      </header>
+    </div>
+    <div class="content clearfix" style="background: #fff;">
+      <div class="contentLeft">
+        <p>新增产品信息</p>
+        <ul>
+          <li>
+            <div class="col-md-6">
+              <span><a style="color:#00c2de;margin-right: 4px;text-decoration: none">*</a>产品名称：</span>
+              <input type="text" placeholder="请输入产品名称" ng-model="input1" ng-value="imgInfo.detailsname" id="input1"/>
+            </div>
+            <div class="col-md-6">
+              <span style="padding-left: .9rem;">产品编码：</span>
+              <input style="border:none" ng-readonly="true" ng-value="detailscode" id="input2" ng-blur="inputBlur();" ng-keyup="myKeyup($event)"/>
+            </div>
+          </li>
+          <li>
+            <div class="col-md-6">
+              <span><a style="color:#00c2de;margin-right: 4px;text-decoration: none">*</a>产品规格：</span>
+              <input placeholder="请输入产品规格"   value="{{imgInfo.detailsspecifications}}" ng-model="imgInfo.detailsspecifications" id="input3"/>
+            </div>
+            <div class="col-md-6">
+              <span><a style="color:#00c2de;margin-right: 4px;text-decoration: none">*</a>产品数量：</span>
+              <input type="number" min="1" placeholder="1"  ng-model="input4" value="{{imgInfo.detailsnumber}}" id="input4"/>
+            </div>
+          </li>
+          <!--<li>-->
+            <!--<div class="col-md-6">-->
+              <!--<span><a style="color:#00c2de;margin-right: 4px;text-decoration: none">*</a>框架材质：</span>-->
+              <!--<select id="list" ng-model="imgInfo.detailsframematerial">-->
+                <!--<option ng-selected="true" ng-bind="select.t1" style="display: none">框架材质</option>-->
+                <!--<option ng-repeat="data1 in list track by $index">{{data1.detailsframematerial}}</option>-->
+              <!--</select>-->
+            <!--</div>-->
+            <!--<div class="col-md-6" ng-show="color1" ng-init="color1 = false">-->
+              <!--<span><a style="color:#00c2de;margin-right: 4px;text-decoration: none">*</a>框架颜色：</span>-->
+              <!--<select id="list2" ng-model="imgInfo.detailsframecolor">-->
+                <!--<option ng-repeat="data2 in frameColor track by $index">{{data2.detailsframecolor}}</option>-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<div class="col-md-6">-->
+              <!--<span><a style="color:#00c2de;margin-right: 4px;text-decoration: none">*</a>板材材质：</span>-->
+              <!--<select id="list4" ng-model="imgInfo.detailsplatematerial">-->
+                <!--<option ng-repeat="data3 in list4 track by $index">{{data3.detailsplatematerial}}</option>-->
+              <!--</select>-->
+            <!--</div>-->
+            <!--<div class="col-md-6" ng-show="color2" ng-init="color2 = false">-->
+              <!--<span><a style="color:#00c2de;margin-right: 4px;text-decoration: none">*</a>板材颜色：</span>-->
+              <!--<select id="list3"  ng-model="imgInfo.detailsplatecolor">-->
+                <!--<option ng-repeat="data4 in list3 track by $index">{{data4.detailsplatecolor}}</option>-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</li>-->
+          <li style="height:5.2rem;">
+            <div class="col-md-12">
+              <span style="padding-left: .9rem;vertical-align: top">产品备注：</span>
+              <textarea placeholder="项目描述（最多100字）" maxlength="100"  id="input5">{{imgInfo.detailsmemo}}</textarea>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="contentRight">
+        <p>项目基本信息</p>
+        <ul>
+          <li><span>项目名称：<span ng-bind="PrjtList.prjtname"></span></span></li>
+          <li><span>立项日期：<span ng-bind="PrjtList.prjtdate"></span></span></li>
+          <li><span>项目类型：<span ng-bind="PrjtList.prjtcate"></span></span></li>
+          <li><span>项目户型：<span ng-bind="PrjtList.prjthstp"></span></span></li>
+          <li><span>项目状态：<span ng-bind="PrjtList.prjtstate"></span></span></li>
+          <li><span>产品数量：<span ng-bind="PrjtList.prjtprodqty"></span></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <header>
+        <p>产品图片</p>
+      </header>
+      <div class="imgBox clearfix">
+        <div class="bigImg">
+          <img src="../images/projectList/wishome.png" id="noImg" style="display: none"/>
+          <a title="查看大图" style="cursor: pointer;">
+            <img id="imgBox" class="resize-image box-shadow" ng-model="detailsurl" ng-src="{{detailsurl}}"  ng-click="seeBigImgBig(detailsurl);"/>
+          </a>
+        </div>
+        <div class="imgList">
+          <!--<p>备选图片</p>-->
+          <ul>
+            <li class="col-md-3">
+              <div id="box1" style="border:1px dashed #00c2de;">
+                <i class="icon ion-ios-plus-outline"></i>
+                <input type="file" id="fileChange" load-file multiple style="opacity: 0;" ng-disabled="flieInput" ng-init="flieInput = false">
+                <p style="color:#00c2de">上传图片</p>
+              </div>
+            </li>
+            <li class="col-md-3 box2" ng-repeat="img in imgList"  ng-mouseenter="del = true" ng-mouseleave="del = false">
+              <div class="clearfix">
+                <span id="bigImg" class="toggle" ng-if="del">
+                  <a title="查看大图">
+                    <i class="icon ion-search big" ng-click="seeBigImg(img);"></i>
+                  </a>
+                  <a title="删除图片">
+                    <i class="icon ion-close-circled del" ng-click="delImgList(img,$index,this);"></i>
+                  </a>
+                </span>
+                <a id="editImg" class="toggle" title="编辑图片" ng-if="del" ng-click="editImgModelShow(img,$index,this);">编辑图片</a>
+                <a title="设为主图"><img ng-model="imgData" ng-src="{{img.base}}" ng-click="imgClick(img,$index);"/></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div style="opacity: 0;">
+      <label><input type="checkbox" ng-model="enableCrop" ng-init="enableCrop=true"/> Add ngImgCrop to Page</label>
+    </div>
+  </div>
+  <draw-image ng-show="editImgModel" ng-init="editImgModel = false"></draw-image>
+  <d-alert ng-show="errorAlert" ng-init="errorAlert = false"></d-alert>
+  <div class="right" id="right">
+    <div class="navLeft">
+      <ul>
+        <li>
+          <i class="icon ion-navicon-round" id="showIcon" style="display: block"></i>
+          <i class="icon ion-android-exit" id="hideIcon" style="display: none;position: relative;z-index: 100;cursor: pointer"></i>
+        </li>
+        <li ng-repeat="region in regoinName">
+          <a class="RoomName" ng-bind="region.regoinName" ng-click="setRoom(this,$index);"></a>
+        </li>
+      </ul>
+    </div>
+    <div class="imgRightList">
+      <ul>
+        <!--<li ng-repeat="li in each" ng-mouseenter="textShow(this);" ng-mouseleave="textHide(this)">-->
+        <li ng-repeat="li in list2"  ng-mouseenter="toggle = true" ng-mouseleave="toggle = false">
+          <div class="imgBox ">
+            <img ng-src="{{li.detailsurl}}"/>
+            <div class="textBox toggle" ng-if="toggle">
+              <p class="col-md-12">产品名称：<span ng-bind="li.detailsname"></span></p>
+              <p class="col-md-12">产品数量：<span ng-bind="li.detailsnumber"></span></p>
+              <p class="col-md-12">产品规格：<span ng-bind="li.detailsspecifications"></span></p>
+            </div>
+          </div>
+        </li>
+        <li ng-show="liShow" ng-init="liShow = true">
+          <p>该区域没有产品</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </div>
+

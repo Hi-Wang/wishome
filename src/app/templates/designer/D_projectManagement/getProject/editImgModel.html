@@ -1,0 +1,50 @@
+<div class="editImgModel">
+  <div class="fullDiv" ng-click="editImgModelHide();"></div>
+  <div class="editDiv">
+    <span ng-click="editImgModelHide();"><i class="icon ion-android-close"></i></span>
+    <div>
+    裁剪样式:
+    <label><input type="radio" ng-model="type" value="circle" /> 圆形</label>
+    <label><input type="radio" ng-model="type" value="square" /> 方形</label>
+    <!--<label><input type="radio" ng-model="type" value="rectangle" /> Rectangle</label>-->
+    </div>
+    <div ng-if="enableCrop" class="cropArea" ng-class="{'big':size=='big', 'medium':size=='medium', 'small':size=='small'}">
+      <img-crop image="imageDataURI"
+                result-image="$parent.resImageDataURI"
+                change-on-fly="changeOnFly"
+                area-type="{{type}}"
+                area-min-size="selMinSize"
+                result-image-format="{{resImgFormat}}"
+                result-image-quality="resImgQuality"
+                result-image-size="resImgSize"
+                on-change="onChange($dataURI)"
+                on-load-begin="onLoadBegin()"
+                on-load-done="onLoadDone()"
+                on-load-error="onLoadError()"
+      ></img-crop>
+      <!--aspect-ratio="aspectRatio"-->
+    </div>
+
+    <div style="text-align:center">
+      <!--<h3>Result</h3>-->
+      <div>
+        <img ng-src="{{resImageDataURI}}" />
+      </div>
+      <p>{{imgIndex}}</p>
+    </div>
+
+    <!--<div style="position: relative" id="appendChild">-->
+      <!--<div id="oldCanvasDiv" style="width:500px;height:500px;background: #fff;display: inline-block;position: relative">-->
+        <!--<canvas id="oldCanvas" width="500" height="500"></canvas>-->
+      <!--</div>-->
+      <!--<canvas id="newCanvas" width="500" height="500" style="border:1px solid red;"></canvas>-->
+    <!--</div>-->
+    <div class="button col-md-12">
+      <!--<button class="btn btn-primary" id="editSave">确认剪裁</button>-->
+      <button ng-click="onSaveChangeImg(resImageDataURI,this);">保存</button>
+      <!--<button class="btn btn-primary">清除</button>-->
+      <button ng-click="editImgCancel(this);">取消</button>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,35 @@
+<div class="infoModel">
+  <div class="backgroundDiv" ng-click="modelHide(this);"></div>
+  <div class="modelTimeOut">
+    <div class="alertBox modal-content">
+      <div class="modal-header" style="color:#333;">
+        <i class="icon ion-image" ng-show="alertImg"  style="font-size: 1.8rem;color:#353B41;"></i>
+        <h4 ng-bind="homeModelName" style="font-size: 1.4rem;font-weight: 600;margin-left: 10px;display: inline-block;color:#333;"></h4>
+        <h4 ng-bind="hideId" style="display: none"></h4>
+      </div>
+      <div class="modal-body" style="padding:0 20px 20px 20px;color: #333;">
+        <div ng-show="alertTextP" ng-init="alertTextP = false">
+          <p>{{alertText}}</p>
+        </div>
+        <div class="imgDiv col-md-12" ng-show="alertImg" ng-init="alertImg = true">
+          <div class="file">
+            <!--<img src="{{user.personalpicture}}" />-->
+            <div class="widthImg">
+              <input id="modelFile" type="file" multiple />
+              <img ng-src="{{ImgUrl}}" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div  ng-show="alertImg" ng-init="alertImg = true" style="padding-left: 20px;color:#333;">
+        <p>点击图片上传新头像</p>
+        <!--<p>试试拖拽上传也不错噢~</p>-->
+      </div>
+      <div class="modal-footer" ng-show="footer" ng-init="footer = false">
+        <button class="btn btn-primary" ng-click="save(this);" ng-disabled="setFlie" ng-init="setFlie = false" ng-bind="modelRightBtn"></button>
+        <!--<button class="btn btn-primary" ng-click="save" ng-disabled="setFlie" ng-init="setFlie = false" ng-bind="modelRightBtn"></button>-->
+        <button class="btn btn-primary" ng-click="modelHide();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

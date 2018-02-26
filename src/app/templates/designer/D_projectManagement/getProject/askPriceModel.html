@@ -1,0 +1,127 @@
+<div class="askPriceModel">
+  <div class="fullDiv" ng-click="removeAskModel();"></div>
+  <div class="selectContent">
+    <i class="icon ion-close-circled delIcon" ng-click="removeAskModel();"></i>
+    <div class="top">
+      <div class="iconDiv">
+        <i class="icon ion-aperture"></i><span>基本信息</span>
+      </div>
+      <div class="pDiv">
+        <p class="col-md-4"><span class="topText">项目编码：</span><span ng-bind="data.prjtcode"></span></p>
+        <p class="col-md-4"><span class="topText">立项日期：</span><span ng-bind="data.prjtdate"></span></p>
+        <p class="col-md-4"><span class="topText">户型：</span><span ng-bind="data.prjthstp"></span></p>
+        <p class="col-md-4"><span class="topText">项目类型：</span><span ng-bind="data.prjtcate"></span></p>
+        <p class="col-md-4"><span class="topText">产品数量：</span><span ng-bind="data.prjtprodqty"></span></p>
+        <p class="col-md-4"><span class="topText">状态：</span><span ng-bind="data.prjtstate"></span></p>
+      </div>
+    </div>
+    <div class="content1">
+
+      <!--面料需求-->
+      <div class="iconDiv">
+        <i class="icon ion-paintbucket"></i><span>面料要求：</span>
+      </div>
+      <div class="fabric col-md-12">
+        <div class="col-md-6">
+          <label ng-click="fabricClick(this);">
+            <i ng-class="{false:'icon ion-android-radio-button-off',true:'icon ion-android-radio-button-on'}[modelStyle.fabric1Selected]"></i>
+            <input type="radio" name="fabricRadios" id="optionsRadios1" value="报价不包含面料" checked>
+            <span ng-bind="modelStyle.fabric1"></span>
+          </label>
+        </div>
+        <div class="col-md-6">
+          <label ng-click="fabricClick(this);">
+            <i ng-class="{false:'icon ion-android-radio-button-off',true:'icon ion-android-radio-button-on'}[modelStyle.fabric2Selected]"></i>
+            <input type="radio" name="fabricRadios" id="optionsRadios2" value="报价包含面料">
+            <span ng-bind="modelStyle.fabric2"></span>
+          </label>
+        </div>
+      </div>
+      <div class="fabricBox" style="display: none" id="fabricBox">
+        <p class="col-md-6">布艺均价：<input type="number" ng-model="inquiryaveragecloth" min="0" value="0"  onkeyup="this.value=this.value.replace(/\D/g,'')"/>&nbsp;/米</p>
+        <p class="col-md-6">皮均价：<input type="number" ng-model="inquiryaverageleather" min="0" value="0"/>&nbsp;/尺</p>
+      </div>
+
+      <!--配件需求-->
+      <div class="iconDiv">
+        <i class="icon ion-usb"></i><span>配件要求：</span>
+      </div>
+      <div class="fabric col-md-12">
+        <div class="col-md-6">
+          <label ng-click="AccessoriesClick(this);">
+            <i ng-class="{false:'icon ion-android-radio-button-off',true:'icon ion-android-radio-button-on'}[modelStyle.Accessories1Selected]"></i>
+            <input type="radio" name="AccessoriesRadios" id="AccessoriesRadios1" value="国产品牌" checked>
+            <span ng-bind="modelStyle.Accessories1"></span>
+          </label>
+        </div>
+        <div class="col-md-6">
+          <label ng-click="AccessoriesClick(this);">
+            <i ng-class="{false:'icon ion-android-radio-button-off',true:'icon ion-android-radio-button-on'}[modelStyle.Accessories2Selected]"></i>
+            <input type="radio" name="AccessoriesRadios" id="AccessoriesRadios2" value="进口品牌" >
+            <span ng-bind="modelStyle.Accessories2"></span>
+          </label>
+        </div>
+        <div class="col-md-12 optionBrand">
+          选择品牌：
+          <select ng-show="modelStyle.DomesticBrand" id="DomesticBrand">
+            <option ng-repeat="data in DomesticBrandlist">{{data.domesticname}}</option>
+          </select>
+          <select ng-show="modelStyle.ImportBrand" id="ImportBrand">
+            <option ng-repeat="data in ImportBrandlist">{{data.importname}}</option>
+          </select>
+        </div>
+      </div>
+
+      <!--送货安装需求-->
+      <div class="iconDiv">
+        <i class="icon ion-android-bus"></i><span>送货安装要求：</span>
+      </div>
+      <div class="fabric col-md-12">
+        <div class="col-md-6">
+          <label ng-click="addressClick(this);">
+            <i ng-class="{false:'icon ion-android-radio-button-off',true:'icon ion-android-radio-button-on'}[modelStyle.address1Selected]"></i>
+            <input type="radio" name="addressRadios" id="addressRadios1" value="需要送货安装" checked>
+            <span ng-bind="modelStyle.address1"></span>
+          </label>
+        </div>
+        <div class="col-md-6">
+          <label ng-click="addressClick(this);">
+            <i ng-class="{false:'icon ion-android-radio-button-off',true:'icon ion-android-radio-button-on'}[modelStyle.address2Selected]"></i>
+            <input type="radio" name="addressRadios" id="addressRadios2" value="不需要送货安装" >
+            <span ng-bind="modelStyle.address2"></span>
+          </label>
+        </div>
+      </div>
+      <div class="fabricBox" style="display: block" id="addressBox">
+        <p>送货地址：<input select-address p="p" c="c" a="a" d="d" ng-model="xxx" placeholder="请选择所在地" type="text" style="width:300px;height:28px;border-radius: 4px;border: 1px solid #ccc;padding-left: 10px;"/></p>
+      </div>
+
+      <!--发票及其他需求-->
+      <div class="iconDiv">
+        <i class="icon ion-pricetags"></i><span>发票及其他要求：</span>
+      </div>
+      <div class="fabric col-md-12">
+        <div class="col-md-6">
+          <label ng-click="invoiceClick(this);">
+            <i ng-class="{false:'icon ion-android-radio-button-off',true:'icon ion-android-radio-button-on'}[modelStyle.invoice1Selected]"></i>
+            <input type="radio" name="invoiceRadios" id="invoiceRadios1" value="不需要发票" checked>
+            <span ng-bind="modelStyle.invoice1"></span>
+          </label>
+        </div>
+        <div class="col-md-6">
+          <label ng-click="invoiceClick(this);">
+            <i ng-class="{false:'icon ion-android-radio-button-off',true:'icon ion-android-radio-button-on'}[modelStyle.invoice2Selected]"></i>
+            <input type="radio" name="invoiceRadios" id="invoiceRadios2" value="需要发票" >
+            <span ng-bind="modelStyle.invoice2"></span>
+          </label>
+        </div>
+      </div>
+      <!--<div class="fabricBox" style="display: none" id="invoiceBox">-->
+        <!--<p>发票抬头：<input type="text" placeholder="请填写发票需求" style="width:300px;height:28px;border-radius: 4px;border: 1px solid #ccc;padding-left: 10px;"/></p>-->
+      <!--</div>-->
+      <!--按钮-->
+      <div class="col-md-6 goBtn" style="text-align: center;margin:1rem 0"><button type="button" class="btn btn-primary" ng-click="saveAskModel(this);">立即询价</button></div>
+      <div class="col-md-6 removeBtn" style="text-align: center;margin:1rem 0"><button type="button" class="btn" ng-click="removeAskModel();">取消</button></div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,123 @@
+<div style="color:#333;">
+  <div class="project_all dataView itemCategory" style="color:#333;">
+    <header class="clearfix">
+      <p style="position: absolute;width: 100%;height:100%;color:red;text-align: center;font-size: 1.4rem;font-weight: 600;display: none" id="error" ng-bind="errorText">成功</p>
+      <p style="position: absolute;width: 100%;height:100%;color:#00c2de;text-align: center;font-size: 1.4rem;font-weight: 600;display: none" id="success" ng-bind="successText">成功</p>
+      <div class="left">
+        <i class="icon ion-pie-graph"></i><p>数据管理--<span ng-bind="tdName"></span></p>
+      </div>
+    </header>
+    <section class="clearfix">
+      <!--构成类别-->
+      <div class="left col-md-4">
+        <p class="headerText">
+          <i class="icon ion-ios-color-filter"></i>
+          <span ng-bind="name1"></span>
+        </p>
+        <ul  ng-click="hide(name1)">
+          <li class="clearfix" ng-init="leftIconShow = true" ng-repeat="data in list1">
+            <span class="bindText" ng-bind="data.name">index</span>
+            <span class="clickSpan" ng-click="getContentView(data,$index);"></span>
+          <span class="changeSpan" ng-show="changeSpan" ng-init="changeSpan = false">
+            <input ng-class="{true:'changeNameInput trueStyle',false:'changeNameInput falseStyle'}[input.inputStyle]" ng-placeholder="input.input" ng-value="data.name" ng-keyup="changeKeyUp($event,this,$index);"/>
+            <span ng-click="hideChangeName(this,$index);">取消</span>
+            <span ng-click="saveChangeName(this,$index);">保存</span>
+          </span>
+            <span class="editIcon" ng-show="leftIconShow">
+            <i class="icon ion-edit" ng-mouseover="editShow = true" ng-mouseleave="editShow = false" ng-click="changeNameClick(this,$index)"></i>
+             <span ng-show="editShow" ng-init="editShow = false">修改</span>
+          </span>
+            <span class="delIcon" ng-show="leftIconShow">
+            <i class="icon ion-close-round" ng-mouseover="delShow = true" ng-mouseleave="delShow = false" ng-click="delDataName(data,name1);"></i>
+            <span ng-show="delShow" ng-init="delShow = false">删除</span>
+          </span>
+          </li>
+        </ul>
+        <div class="bottomDiv">
+          <div class="addNameInput" ng-show="!leftBtn">
+            <p></p>
+            <input ng-class="{true:'input1 col-md-12 trueStyle',false:'input1 col-md-12 falseStyle'}[input.inputStyle1]" ng-placeholder="input.input1" ng-focus="input.inputStyle1 = true" ng-keyup="inputKeyUp($event,this,name1)"/>
+            <p class="pBtn">
+              <span class="col-md-6" style="background: #00c2de;" ng-click="addFunction(this,name1);">保存</span>
+              <span class="col-md-6" style="background: #ccc;"  ng-click="hide(name1)">取消</span>
+            </p>
+          </div>
+          <div class="addBtn" ng-show="leftBtn" ng-init="leftBtn = true" ng-click="leftBtn = false">
+            <i class="icon ion-plus-circled"></i>
+            <span>新增构成类别</span>
+          </div>
+        </div>
+      </div>
+
+      <!--工序-->
+      <div class="content col-md-4">
+        <p class="headerText clearfix">
+          <i class="icon ion-android-color-palette"></i>
+          <span ng-bind="name2"></span>&nbsp;&nbsp;<span style="color:#ccc;font-size: 1rem;font-weight: 100;">* &nbsp;拖拽工序名称可以排列顺序</span>
+          <a style="float: right;font-size: 1.2rem;font-weight: 100;color:#bbb;margin-right: 10px;cursor: pointer;" ng-click="goGongXu();">编辑所有</a>
+        </p>
+        <ul ng-click="hide(name2)" ui-sortable="list" ng-model="list2">
+          <li class="clearfix" ng-init="contentIconShow = false" ng-mouseover="contentIconShow = true" ng-mouseleave="contentIconShow = false" ng-repeat="data2 in list2">
+            <span class="bindText" ng-bind="data2.name">index</span>
+            <span class="clickSpan" ng-click="getRightView(data2,$index)"></span>
+            <span class="delIcon" ng-show="contentIconShow">
+            <i class="icon ion-close-round" ng-mouseover="delShow = true" ng-mouseleave="delShow = false" ng-click="delDataName(data2,name2);"></i>
+            <span ng-show="delShow" ng-init="delShow = false">删除</span>
+          </span>
+          </li>
+        </ul>
+        <div class="bottomDiv">
+          <div class="addNameInput" ng-show="!contentBtn">
+            <select id="input2" ng-class="{true:'input2 col-md-12 trueStyle',false:'input2 col-md-12 falseStyle'}[input.inputStyle2]" ng-click="input.inputStyle2 = true">
+              <option ng-bind="input.input2"></option>
+              <option ng-repeat="select1 in select1" ng-bind="select1.name" style="color:#333;"></option>
+            </select>
+            <p class="pBtn">
+              <span class="col-md-6" style="background: #00c2de;" ng-click="addFunction(this,name2);">保存</span>
+              <span class="col-md-6" style="background: #ccc;"  ng-click="hide(name2)">取消</span>
+            </p>
+          </div>
+          <div class="addBtn" ng-show="contentBtn" ng-init="contentBtn = true" ng-click="getGongYiAndGongXu(name2);">
+            <i class="icon ion-plus-circled"></i>
+            <span>新增工序</span>
+          </div>
+        </div>
+      </div>
+
+      <!--工艺-->
+      <div class="right col-md-4">
+        <p class="headerText">
+          <i class="icon ion-ios-analytics"></i>
+          <span ng-bind="name3"></span>
+          <a style="float: right;font-size: 1.2rem;font-weight: 100;color:#bbb;margin-right: 10px;cursor: pointer;" ng-click="goGongYi();">编辑所有</a>
+        </p>
+        <ul ng-click="hide(name3)">
+          <li class="clearfix" ng-init="rightIconShow = false" ng-mouseover="rightIconShow = true" ng-mouseleave="rightIconShow = false" ng-repeat="data3 in list3">
+            <span class="bindText" ng-bind="data3.processName">index</span>
+            <span class="delIcon" ng-show="rightIconShow">
+            <i class="icon ion-close-round" ng-mouseover="delShow = true" ng-mouseleave="delShow = false" ng-click="delDataName(data3,name3);"></i>
+            <span ng-show="delShow" ng-init="delShow = false">删除</span>
+          </span>
+          </li>
+        </ul>
+        <div class="bottomDiv">
+          <div class="addNameInput" ng-show="!rightBtn">
+            <select id="input3" ng-class="{true:'input3 col-md-12 trueStyle',false:'input3 col-md-12 falseStyle'}[input.inputStyle3]" ng-click="input.inputStyle3 = true">
+              <option ng-bind="input.input3"></option>
+              <option ng-repeat="select2 in select2" ng-bind="select2.name"></option>
+            </select>
+            <p class="pBtn">
+              <span class="col-md-6" style="background: #00c2de;" ng-click="addFunction(this,name3);">保存</span>
+              <span class="col-md-6" style="background: #ccc;" ng-click="hide(name3)">取消</span>
+            </p>
+          </div>
+          <div class="addBtn" ng-show="rightBtn" ng-init="rightBtn = true" ng-click="getGongYiAndGongXu(name3);">
+            <i class="icon ion-plus-circled"></i>
+            <span>新增工艺</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div>
+  <div class="backgroundDiv" ng-click="cancel();"></div>
+  <div class="modelTimeOut">
+    <div class="alertBox modal-content">
+      <div class="modal-header" style="color:#333;">
+        <h4 ng-bind="homeModelName" style="font-size: 1.4rem;font-weight: 600;display: inline-block;"></h4>
+        <h4 ng-bind="hideId" style="display: none"></h4>
+      </div>
+      <div class="modal-body" style="padding:20px;color: #333;">
+        <div ng-show="alertTextP" ng-init="alertTextP = true">
+          <p>{{alertText}}</p>
+        </div>
+        <div ng-show="selectHome" ng-init="alertTextP = false">
+          <select class="form-control" id="selectHomeName">
+            <option ng-repeat="data in homeName" ng-bind="data.deptName"></option>
+          </select>
+        </div>
+        <div ng-show="addInput" ng-init="addInput = false" style="position: relative">
+          <input set-focus class="dataAddInput" placeholder="{{placeholder}}" id="newInputName" ng-keyup="keyUp($event,this)" />
+          <p class="errorDataText" ng-show="errorData" ng-init="errorData = false">
+            <i class="icon ion-information-circled"></i>
+            <span ng-bind="errorDataText"></span>
+          </p>
+        </div>
+        <div class="gongYiRadio" ng-show="gongYiRadio" ng-init="gongYiRadio = false">
+          <p>请选择工艺展示类型：</p>
+          <span class="col-md-6 span" ng-click="textRadio = true">
+            <i ng-class="{true:'icon ion-android-radio-button-on',false:'icon ion-android-radio-button-off'}[textRadio]" ng-init="textRadio = true"></i>
+            文本框
+          </span>
+          <span class="col-md-6 span" ng-click="textRadio = false">
+            <i ng-class="{true:'icon ion-android-radio-button-on',false:'icon ion-android-radio-button-off'}[!textRadio]"></i>
+            下拉框
+          </span>
+        </div>
+        <div class="gongYiRadio" ng-show="startEndTime" ng-init="startEndTime === false">
+          <span class="col-md-6 span">
+            开始提前期：<input type="number" id="start" style="width: 80px;border: 1px solid #ccc;border-radius: 4px;padding-left: 10px;height:24px;"/>&nbsp;/天
+          </span>
+          <span class="col-md-6 span">
+            结束提前期：<input type="number" id="end" style="width: 80px;border: 1px solid #ccc;border-radius: 4px;padding-left: 10px;height:24px;">&nbsp;/天
+          </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="bossDelHome(this);">确定</button>
+        <button class="btn btn-primary" ng-click="cancel();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

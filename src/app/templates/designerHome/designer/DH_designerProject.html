@@ -1,0 +1,70 @@
+<div class="boss b_seeManagerProject">
+  <header class="clearfix">
+    <div class=" headerLeft">
+      <img ng-src="{{list.personalpicture}}"/>
+    </div>
+    <div class=" headerRight clearfix">
+      <div class="backBtn" >
+        <button class="btn btn-primary" ng-click="back();">返回</button>
+      </div>
+      <div>
+        <table>
+          <tr style="margin-bottom: 10px;">
+            <td colspan="5">
+              <h2 ng-bind="list.nickname">121212</h2>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-md-2">
+              账号ID：<span ng-bind="list.username">111</span>
+            </td>
+            <td class="col-md-2">
+              联系方式：<span ng-bind="list.phonenumber">111</span>
+            </td>
+            <td class="col-md-2">
+              邮箱：<span ng-bind="list.email">111</span>
+            </td>
+            <td class="col-md-2">
+              所在地：<span ng-bind="list.address">111</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div>
+      <table class="table tableNav">
+        <tr>
+          <td class="styleTd" ng-repeat="data in tableNav" ng-bind="data.name" ng-click="getPrjtState(this,$index);"></td>
+        </tr>
+      </table>
+      <table class="table">
+        <tr>
+          <td>
+            <table class="table table-condensed table-hover">
+              <tr class="tableListNav" style="background: #fff;color:#333;font-size: 1.2rem;text-align: center;border:1px solid #ccc;">
+                <td style="border: 1px solid #ccc;">项目编码</td>
+                <td style="border: 1px solid #ccc;">项目名称</td>
+                <td style="border: 1px solid #ccc;">产品数量</td>
+                <td style="border: 1px solid #ccc;">金额</td>
+                <td style="border: 1px solid #ccc;">立项日期</td>
+                <td style="border: 1px solid #ccc;">状态</td>
+              </tr>
+              <tr ng-repeat="data in tdList" style="text-align: center;font-size: 1.2rem;color:#333;">
+                <td ng-bind="data.prjtcode"></td>
+                <td ng-bind="data.prjtname"></td>
+                <td ng-bind="data.prjtprodqty"></td>
+                <td ng-bind="data.prjtsum"></td>
+                <td ng-bind="data.prjtdate"></td>
+                <td ng-bind="data.prjtstate"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!--分页-->
+    <!--<page class="pull-right" ng-show="page" ng-init="page = true"></page>-->
+  </section>
+</div>

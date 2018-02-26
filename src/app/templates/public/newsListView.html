@@ -1,0 +1,16 @@
+<div class="newsListView clearfix" style="color: #333;" ng-controller="newsListViewCtrl as pCtrl">
+  <div class="newsNav">
+    <p class="header clearfix">
+      <span class="text">消息中心</span>
+      <a class="pre" ng-click="backHome();">回到首页</a>
+    </p>
+    <ul>
+      <li ng-repeat="nav in newsNav" class="clearfix" ng-class="{'active':nav.style,'inactive':!nav.style}" ng-click="newsNavTab($index,nav.name,this);">
+        <span style="float: left;" ng-bind="nav.name"></span>
+        <span class="numSpan" ng-show="nav.num">{{numSpan}}</span>
+      </li>
+    </ul>
+  </div>
+  <ui-view></ui-view>
+  <!--<div class="listView" ui-view="newsList"></div>-->
+</div>

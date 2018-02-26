@@ -1,0 +1,164 @@
+<div class="project_all Info infoPhone" style="color:red;">
+  <header class="clearfix">
+    <h5>手机号设置</h5><span style="float: right;margin-right: 3rem" ng-click="back(this);"></span>
+    <div class="rightUlDiv">
+      <ul style="float: right;margin-right: 2rem">
+        <li>您好，<span ng-bind="user.username"></span></li>
+        <li><span>|</span></li>
+        <li><a ng-click="back(this);">返回首页</a></li>
+        <li><span>|</span></li>
+        <li><a>退出</a></li>
+      </ul>
+    </div>
+  </header>
+  <section>
+    <div class="content">
+      <!--设置手机号-->
+      <div ng-show="settingPhoneBox" ng-init="settingPhoneBox = false">
+        <ol class="ui-step clearfix">
+          <li>
+            <div class="ui-step-line">-</div>
+            <div class="ui-step-icon">
+              <span ng-class="{'iconSpan':!style.index1,'active':style.index1}"><span>1</span></span>
+              <span class="ui-step-text">设置手机号</span>
+            </div>
+          </li>
+          <li>
+            <div class="ui-step-line">-</div>
+            <div class="ui-step-icon">
+              <span ng-class="{'iconSpan':!style.index2,'active':style.index2}"><span>2</span></span>
+              <span class="ui-step-text">验证身份</span>
+            </div>
+          </li>
+          <li class="ui-step-end">
+            <div class="ui-step-icon">
+              <span ng-class="{'iconSpan':!style.index3,'active':style.index3}"><span><i class="icon ion-checkmark-round"></i></span></span>
+              <span class="ui-step-text">完成</span>
+            </div>
+          </li>
+        </ol>
+        <!--设置手机号-->
+        <div class="maincenter-box"  ng-show="phoneNumberBox" ng-init="phoneNumberBox = true">
+          <div class="titleTop">
+            <p>请设置手机号：</p>
+          </div>
+          <div class="phone_box">
+            <div style="position: relative;text-align: center">
+              <input type="number" name="phoneNumber" placeholder="请输入手机号"/>
+              <p class="errorText" ng-show="errorPhone" ng-init="errorPhone = false"><i class="icon ion-information-circled" style="margin-right: 1rem;"></i><span ng-bind="errorPhoneText">请输入正确的手机号</span></p>
+            </div>
+            <button ng-click="phoneNext(this);">下一步</button>
+          </div>
+        </div>
+        <!--填写验证码-->
+        <div class="maincenter-box" ng-show="codeBox" ng-init="codeBox = false">
+          <div class="titleTop">
+            <p>为确认是您本人操作，请输入手机号<span style="color:red;margin: 0 0.4rem;" ng-bind="newPhone"></span>验证码：</p>
+          </div>
+          <div class="code_box">
+            <div style="position: relative;text-align: center">
+              <input type="number" name="codeNumber" placeholder="请输入验证码"/><span ng-class="{'setCode':style.codeBtn,'disSetCode':!style.codeBtn}" ng-bind="paracont" ng-click="againSetCode(this);"></span>
+              <p class="errorText" ng-show="errorCode" ng-init="errorCode = false"><i class="icon ion-information-circled" style="margin-right: 1rem;"></i><span ng-bind="errorText">请输入正确的手机号</span></p>
+            </div>
+            <button ng-click="setCode(this);">下一步</button>
+          </div>
+        </div>
+        <!--成功-->
+        <div class="maincenter-box" ng-show="successBox" ng-init="successBox = false">
+          <div class="titleTop">
+            <p>手机号设置成功！</p>
+          </div>
+          <div class="success_box">
+            <div style="position: relative;text-align: center">
+              <i class="icon ion-android-happy"></i>
+              <p>手机号设置成功！<span style="color:#00c2de" ng-bind="jumpNumber">3</span>秒后自动跳转，点击此处<span style="color:#00c2de;cursor: pointer" ng-click="stateJump(this);">手动跳转</span></p>
+              <!--<input type="number" name="codeNumber" placeholder="请输入验证码"/><span ng-class="{'setCode':style.codeBtn,'disSetCode':!style.codeBtn}" ng-bind="paracont" ng-click="againSetCode(this);"></span>-->
+              <!--<p class="errorText" ng-show="errorCode" ng-init="errorCode = false"><i class="icon ion-information-circled" style="margin-right: 1rem;"></i><span ng-bind="errorText">请输入正确的手机号</span></p>-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--修改手机号-->
+      <div ng-show="changePhoneBox" ng-init="changePhoneBox = false">
+        <ol class="ui-step clearfix">
+          <li>
+            <div class="ui-step-line">-</div>
+            <div class="ui-step-icon">
+              <span ng-class="{'iconSpan':!style.index1,'active':style.index1}"><span>1</span></span>
+              <span class="ui-step-text">验证手机号</span>
+            </div>
+          </li>
+          <li>
+            <div class="ui-step-line">-</div>
+            <div class="ui-step-icon">
+              <span ng-class="{'iconSpan':!style.index2,'active':style.index2}"><span>2</span></span>
+              <span class="ui-step-text">设置新手机号</span>
+            </div>
+          </li>
+          <li class="ui-step-end">
+            <div class="ui-step-icon">
+              <span ng-class="{'iconSpan':!style.index3,'active':style.index3}"><span><i class="icon ion-checkmark-round"></i></span></span>
+              <span class="ui-step-text">完成</span>
+            </div>
+          </li>
+        </ol>
+        <!--验证手机号-->
+        <div class="maincenter-box"  ng-show="oldPhoneBox" ng-init="oldPhoneBox = true">
+          <div class="titleTop">
+            <p>手机验证码&nbsp;&nbsp; 账户<span ng-bind="user.username" style="color:#00c2de;margin: 0 0.4rem"></span> 为确认是你本人操作，请完成以下验证</p>
+          </div>
+          <div class="oldPhone_box">
+            <div style="position: relative;text-align: left">
+              <p><span style="width: 100px;display: inline-block">手机号码：</span><span ng-bind="newPhone" style="color:#00c2de;margin: 0 0.4rem"></span></p>
+              <p><span style="width: 100px;display: inline-block">验证码：</span><input type="number" name="oldCode" placeholder="6位数字"/><span ng-class="{'setCode':style.codeBtn,'disSetCode':!style.codeBtn}" ng-bind="paracont" ng-click="againSetCode(this);"></span></p>
+              <span class="errorText" ng-show="errorCode" ng-init="errorCode = false"><i class="icon ion-information-circled" style="margin-right: 1rem;"></i><span ng-bind="errorText">1111111</span></span>
+            </div>
+            <button ng-click="setCode(this);">下一步</button>
+          </div>
+        </div>
+        <!--设置新手机号-->
+        <div class="maincenter-box" ng-show="newPhoneBox" ng-init="newPhoneBox = false">
+          <div class="titleTop">
+            <p>手机号<span ng-bind="textPhone" style="color:#00c2de;margin: 0 0.6rem;"></span>验证成功，请输入新的手机号手机号，并验证：</p>
+          </div>
+          <div class="newPhone_box">
+            <div style="position: relative;text-align: left">
+              <p><span style="width: 100px;display: inline-block">新手机号码：</span><input type="number" name="newPhoneNumber" placeholder="请输入新的手机号"></p>
+              <span class="errorText" ng-show="errorPhone" ng-init="errorPhone = false"><i class="icon ion-information-circled" style="margin-right: 1rem;"></i><span ng-bind="errorPhoneText"></span></span>
+              <p><span style="width: 100px;display: inline-block">验证码：</span><input type="number" name="newCode" placeholder="6位数字"/><span ng-class="{'setCode':style.codeBtn,'disSetCode':!style.codeBtn}" ng-bind="paracont" ng-click="phoneNext(this);"></span></p>
+              <span class="errorText" ng-show="errorCode" ng-init="errorCode = false"><i class="icon ion-information-circled" style="margin-right: 1rem;"></i><span ng-bind="errorText"></span></span>
+            </div>
+            <button ng-click="setNewCode(this);">下一步</button>
+          </div>
+        </div>
+        <!--成功-->
+        <div class="maincenter-box" ng-show="successBox" ng-init="successBox = false">
+          <div class="titleTop">
+            <p>手机号设置成功！</p>
+          </div>
+          <div class="success_box">
+            <div style="position: relative;text-align: center">
+              <i class="icon ion-android-happy"></i>
+              <p>手机号设置成功！<span style="color:#00c2de" ng-bind="jumpNumber">3</span>秒后自动跳转，点击此处<span style="color:#00c2de;cursor: pointer" ng-click="stateJump(this);">手动跳转</span></p>
+              <!--<input type="number" name="codeNumber" placeholder="请输入验证码"/><span ng-class="{'setCode':style.codeBtn,'disSetCode':!style.codeBtn}" ng-bind="paracont" ng-click="againSetCode(this);"></span>-->
+              <!--<p class="errorText" ng-show="errorCode" ng-init="errorCode = false"><i class="icon ion-information-circled" style="margin-right: 1rem;"></i><span ng-bind="errorText">请输入正确的手机号</span></p>-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-tips">
+        <div class="bottom-tips-title">
+          没有收到短信吗？
+        </div>
+        <ul class="ui-list ui-list-nosquare">
+          <li class="ui-list-item"><span class="ui-list-item-text">1、网络通讯异常可能会造成短信丢失，请重新获取或稍后再试。</span></li>
+          <li class="ui-list-item"><span class="ui-list-item-text">2、请核实手机是否已欠费停机，或者屏蔽了系统短信。</span></li>
+          <li class="ui-list-item"><span class="ui-list-item-text">3、如果手机已丢失或停用， 请选择其他验证方式 。</span></li>
+          <li class="ui-list-item"><span class="ui-list-item-text">4、您也可以尝试将SIM卡移动到另一部手机，然后重试。</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>

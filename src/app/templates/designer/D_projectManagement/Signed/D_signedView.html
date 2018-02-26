@@ -1,0 +1,204 @@
+
+<div class="project_all askPriceEnd">
+  <big-img id="seeBigImgModel" ng-show="seeBigImgModel" ng-init="seeBigImgModel = false"></big-img>
+  <!--<excel-model ng-show="excelModelShow" ng-init="excelModelShow = false"></excel-model>-->
+  <excel-model id="excelModelShow" style="display: none"></excel-model>
+  <div class="content" id="askPriceEndPrint">
+    <header>
+      <div class="clearfix">
+        <div class="leftFloat">
+          <ul>
+            <li>
+              <i class="icon ion-happy"></i>
+              <span ng-bind="name"></span>
+              <span ng-bind="PrjtList.prjtname"></span>
+            </li>
+            <li><button type="button" class="btn btn-primary" ng-click="showExcelModel(this);">导出EXCEL</button></li>
+            <!--<li><button type="button" class="btn btn-primary" ng-click="pointer();">打印</button></li>-->
+          </ul>
+        </div>
+        <div class="rightFloat">
+          <div>
+            <button type="button" class="btn btn-primary" ng-click="signedBack();">返回</button>
+          </div>
+        </div>
+      </div>
+      <div class="backgroundStyle">
+        <table class="content_table_style table1">
+          <tr>
+            <td class="col-md-2" style="padding-left: 10px;">项目编码：<span ng-bind="PrjtList.prjtcode">111</span></td>
+            <td class="col-md-2">立项日期：<span ng-bind="PrjtList.prjtdate">111</span></td>
+            <td class="col-md-2">项目类型：<span ng-bind="PrjtList.prjtcate">111</span></td>
+            <td class="col-md-2">户型：<span ng-bind="PrjtList.prjthstp">11</span></td>
+            <td class="col-md-2">状态：<span ng-bind="PrjtList.prjtstate">111</span></td>
+            <td class="col-md-2">产品数量：<span ng-bind="PrjtList.prjtprodqty">111</span></td>
+          </tr>
+          <tr>
+            <td class="col-md-2" style="padding-left: 10px;" ng-init="cloth = true">面料与配件需求：<span ng-bind="InquiryTableList.inquiryfabricaccessories"></span></td>
+            <td class="col-md-2" ng-show="cloth">布艺均价：<span ng-bind="InquiryTableList.inquiryaveragecloth"></span></td>
+            <td class="col-md-2" ng-show="cloth">皮均价：<span ng-bind="InquiryTableList.inquiryaverageleather"></span></td>
+            <td class="col-md-2" colspan="3">配件品牌：<span ng-bind="InquiryTableList.inquiryaccessoriesbrand"></span></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 10px;" ng-init="invoice = true">是否需要发票：<span ng-bind="InquiryTableList.inquiryinvoice"></span></td>
+            <!--<td ng-show="invoice" colspan="2">发票抬头：<span ng-bind="InquiryTableList.inquiryother"></span></td>-->
+            <td ng-init="address = true">是否送货安装：<span ng-bind="InquiryTableList.inquirydeliveryinstallation"></span></td>
+            <td colspan="4" ng-show="address">详细地址：<span ng-bind="InquiryTableList.inquirydetailedaddress"></span></td>
+          </tr>
+        </table>
+      </div>
+    </header>
+    <section>
+      <table class="table table-hover  content_table_style money">
+        <tr>
+          <td style="background: #ccc;text-align: center" colspan="6">通用报价信息</td>
+        </tr>
+        <tr>
+          <td class="col-md-2" style="padding-left: 10px;">涂装类型：<span ng-bind="OfferTableList.coatingtype"></span></td>
+          <td class="col-md-2">
+            <span class="col-md-4 spanHeight">涂装品牌：</span>
+            <span ng-bind="OfferTableList.coatingmaterialbrand"></span>
+          </td>
+          <td class="col-md-2">
+            <span class="col-md-4 spanHeight">胶水品牌：</span>
+            <span ng-bind="OfferTableList.gluebrand"></span>
+          </td>
+          <td class="col-md-2">设计费用：<span ng-bind="OfferTableList.designcost"></span></td>
+          <td class="col-md-2">运输费用：<span ng-bind="OfferTableList.transportationcost"></span></td>
+          <td class="col-md-2">安装费用：<span ng-bind="OfferTableList.installationcost"></span></td>
+        </tr>
+        <tr>
+          <td class="col-md-2" style="padding-left: 10px;" colspan="2">
+            <span class="col-md-4">其他费用：</span>
+            <span class="col-md-5">&yen;&nbsp;<span ng-bind="OfferTableList.otherexpenses"></span></span>
+            <span class="col-md-3"><span ng-bind="OfferTableList.otherexpensesname"></span></span>
+          </td>
+          <td class="col-md-2" colspan="2">
+            <span class="col-md-3">税金：</span>
+            <span class="col-md-5">&yen;&nbsp;<span ng-bind="OfferTableList.tax"></span></span>
+            <span class="col-md-4"><span ng-bind="OfferTableList.taxName"></span></span>
+          </td>
+          <td class="col-md-2">产品合计：<span ng-bind="OfferTableList.totalproduct"></span></td>
+          <td class="col-md-2">项目总计：<span ng-bind="OfferTableList.total"></span></td>
+          <!--<td class="col-md-2"></td>-->
+          <!--<td class="col-md-2"></td>-->
+        </tr>
+      </table>
+      <!--table-->
+      <div class="managerTable">
+        <table class="table table-hover  content_table_style table-bordered">
+          <thead>
+          <tr>
+            <td>区域</td>
+            <td>样式参考</td>
+            <td>产品名称</td>
+            <td>详细信息</td>
+            <td>用料详情</td>
+            <td>产品单价</td>
+            <td>数量</td>
+            <td>金额</td>
+            <td ng-show="shouHou" ng-init="shouHou = false">操作</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="data in PrjtDetailsList">
+            <td class="col-md-1" style="vertical-align: middle">{{data.regionname}}</td>
+            <td class="col-md-2">
+              <a title="查看大图" style="cursor: pointer">
+                <img ng-src="{{data.detailsurl}}" style="width: 140px;height:140px;vertical-align: middle" ng-click="seeBigImg(data.detailsurl);"/>
+              </a>
+            </td>
+            <td class="col-md-1">{{data.detailsname}}</td>
+            <!--详细信息-->
+            <td class="col-md-2 tdBorder">
+              <table class="table table-hover table-bordered table-responsive tdTable">
+                <tr>
+                  <td class="col-md-4">产品编码</td>
+                  <td class="col-md-8">{{data.detailscode}}</td>
+                </tr>
+                <tr>
+                  <td class="col-md-4">规格</td>
+                  <td class="col-md-8">{{data.detailsspecifications}}</td>
+                </tr>
+                <tr>
+                  <td class="col-md-4">材质</td>
+                  <td class="col-md-8">{{data.detailsframematerial + &nbsp; + data.detailsplatematerial}}</td>
+                </tr>
+                <tr>
+                  <td class="col-md-4">备注</td>
+                  <td class="col-md-8">{{data.detailsmemo}}</td>
+                </tr>
+              </table>
+            </td>
+            <!--用料详情-->
+            <td class="col-md-2 tdBorder">
+              <table class="table table-bordered table-responsive table-hover tdTable">
+                <tr>
+                  <td class="col-md-6">
+                    <span class="col-md-6 padding">皮艺饰面:(尺)</span>
+                    <span class="col-md-5" ng-bind="data.leatherFinish"></span>
+                  </td>
+                  <td class="col-md-6">
+                    <span class="col-md-6 padding">其他金额:</span>
+                    <span class="col-md-5" ng-bind="data.otherAmount"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-md-6">
+                    <span class="col-md-6 padding">布艺饰面:(米)</span>
+                    <span class="col-md-5" ng-bind="data.fabricFinish"></span>
+                  </td>
+                  <td rowspan="2" class="col-md-6">
+                    <textarea style="width:100%;height: 100%;word-wrap:break-word;resize: none;padding: 10px;" ng-bind="data.amountMemo" readonly="readonly"></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="col-md-6 padding">框架金额:</span>
+                    <span class="col-md-5" ng-bind="data.frameAmount"></span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <!--用料价格-->
+            <td class="col-md-1 tdBorder">
+              <table class="table table-bordered table-responsive table-hover tdTable">
+                <tr>
+                  <td ng-bind="data.productUnitPrice"></td>
+                </tr>
+              </table>
+            </td>
+            <td class="col-md-1" ng-bind="data.detailsnumber"></td>
+            <td class="col-md-1">&yen;&nbsp;<span ng-bind="data.money"></span></td>
+            <td class="col-md-1" ng-show="shouHou" style="color:#00c2de;cursor: pointer;">
+              售后
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--项目评价-->
+      <my-evaluation ng-show="Evaluation"></my-evaluation>
+     <!--项目评价结束-->
+
+      <!--提示-->
+      <table class="table  content_table_style money" ng-show="!Evaluation">
+        <tr>
+          <td style="background: #ccc;text-align: center" colspan="6">事项说明</td>
+        </tr>
+        <tr>
+          <td class="col-md-2" style="padding-left: 10px;">
+            <p>1、常规生产周期为60天（以合同约定为准）。</p>
+            <p>2、预付款50%，款到开始制作图纸，图纸经设计师确认后生产，余款送货前付清（以合同约定为准）。</p>
+            <p>3、任何产品数量、款式、材质、尺寸的变化均可能导致价格的变化详情请与项目经理洽谈。</p>
+            <p>4、以上规格为参考值，最终以现场测量和放样比例为准。</p>
+            <p>5、本报价有效期30天。</p>
+          </td>
+        </tr>
+      </table>
+
+    </section>
+  </div>
+</div>
+
+

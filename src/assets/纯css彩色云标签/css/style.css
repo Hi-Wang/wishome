@@ -1,0 +1,22 @@
+﻿/*****************************************************************************************
+*   made by 代码君(http://daimajun.com)
+*   文件名：style.css
+*   文件作用：纯css彩色云标签
+*   bWFkZSBieSB6ZHkzNjUubmV0KFFROjEyNTM2NTYzMzAp
+*   最近更改时间: 2015-07-20
+*****************************************************************************************/
+body{background:#CCC;}
+/*网页右侧彩色云标签*/
+.cloud{width:310px; margin:150px auto; padding:20px; color:#666; font-size:14px; text-align:justify; background:#FFF; border:1px solid #EAEAEA; overflow:hidden; clear:both;}
+.cloud a{display:block; float:left; height:24px; margin:10px 10px 0 0; padding:3px 11px; color:#FFF; line-height:24px; text-decoration:none; background:#999; border-radius:8px; -moz-transition:all 0.5s; -webkit-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s;}
+.cloud a:nth-child(8n-7){background:#8A9B0F;}
+.cloud a:nth-child(8n-6){background:#EB6841;}
+.cloud a:nth-child(8n-5){background:#3FB8AF;}
+.cloud a:nth-child(8n-4){background:#FE4365;}
+.cloud a:nth-child(8n-3){background:#FC9D9A;}
+.cloud a:nth-child(8n-2){background:#EDC951;}
+.cloud a:nth-child(8n-1){background:#C8C8A9;}
+.cloud a:nth-child(8n){background:#83AF9B;}
+.cloud a:first-of-type{background:#036564;}
+.cloud a:last-of-type{background:#3299BB;}
+.cloud a:hover{color:#FFF; text-shadow:#000 1px 1px 1px; border-radius:0;}

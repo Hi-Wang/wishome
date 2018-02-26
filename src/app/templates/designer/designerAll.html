@@ -1,0 +1,160 @@
+<div class="all">
+  <add-hide-designer-home ng-show="addHide" ng-init="addHide = false"></add-hide-designer-home>
+  <div class="all_topBox">
+    <ul>
+      <!--box1_start-->
+      <li class="col-md-4">
+        <div class="box1 clearfix">
+          <div class="leftImg">
+            <div>
+              <img ng-src="{{designer.personalpicture}}"/>
+            </div>
+          </div>
+          <div class="rightBox">
+            <div>
+              <h4 ng-bind="designer.nickname">欧文</h4>
+              <span class="successVip" ng-show="successVip">已认证设计师</span>
+              <span class="errorVip" ng-show="errorVip">未认证设计师</span>
+              <p>账号ID：<span ng-bind="designer.username"></span></p>
+              <p>联系方式：<span ng-bind="designer.phoneNumber"></span></p>
+              <p>邮箱：<span ng-bind="designer.email"></span></p>
+              <p>联系地址：<span ng-bind="designer.address"></span></p>
+              <p style="color:#00c2de;cursor: pointer" ng-click="changeInfo(this);">查看更多</p>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!--box2_start-->
+      <li class="col-md-4" ng-show="successVip">
+        <div class="box2" style="display: block" ng-show="designerAndManager" ng-init="designerAndManager = true">
+          <div class="col-md-6 left" ng-click="showDesignerHome(this);">
+            <div class="col-md-12">
+              <p><img ng-src="{{queryDesignerHouse.personalpicture}}"/></p>
+              <h4 ng-bind="designerHome"></h4>
+            </div>
+          </div>
+          <div class="col-md-6 right" ng-click="showManager(this);">
+            <div class="col-md-12">
+              <p><img ng-src="{{manager.personalpicture}}" /></p>
+              <h4>项目经理：</h4><span ng-bind="manager.nickname"></span>
+            </div>
+          </div>
+        </div>
+        <!--showDesignerHome-->
+        <div class="box2 showDesignerHome" ng-show="seeDesignerHome" ng-init="seeDesignerHome = false" style="background: #647A8F;">
+          <i id="designerHomeDel" ng-click="designerHomeDel(this);" class="icon ion-close-circled"></i>
+          <div class="col-md-6 left" style="display: block">
+            <div class="col-md-12">
+              <p><img ng-src="{{queryDesignerHouse.personalpicture}}"/></p>
+              <h4 ng-bind="designerHome"></h4>
+            </div>
+          </div>
+          <div class="col-md-6 right">
+            <p>账号ID：<span ng-bind="queryDesignerHouse.username"></span></p>
+            <p>负责人：<span ng-bind="queryDesignerHouse.nickname"></span></p>
+            <p>联系方式：<span ng-bind="queryDesignerHouse.phoneNumber"></span></p>
+            <p>邮箱：<span ng-bind="queryDesignerHouse.email"></span></p>
+            <p>联系地址：<span ng-bind="queryDesignerHouse.address"></span></p>
+          </div>
+        </div>
+        <!--showManager-->
+        <div class="box2 showManager" ng-show="seeManager" ng-init="seeManager = false" style="background: #647A8F;">
+          <i id="managerDel" ng-click="managerDel(this);" class="icon ion-close-circled"></i>
+          <div class="col-md-6 left">
+            <div class="col-md-12 left">
+              <p>账号ID：<span ng-bind="manager.username"></span></p>
+              <p>负责人：<span ng-bind="manager.nickname"></span></p>
+              <p>联系方式：<span ng-bind="manager.phoneNumber"></span></p>
+              <p>邮箱：<span ng-bind="manager.email"></span></p>
+              <p>联系地址：<span ng-bind="manager.address"></span></p>
+            </div>
+          </div>
+          <div class="col-md-6 right">
+            <div class="col-md-12">
+              <p><img ng-src="{{manager.personalpicture}}" /></p>
+              <h4>项目经理：</h4><span ng-bind="manager.nickname">宋伟</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="col-md-4" ng-show="errorVip">
+        <div class="box2 notCertified">
+          <p class="header">
+            <i class="icon ion-android-home"></i>选择设计师之家，成为认证设计师：
+          </p>
+          <select id="selectValue" ng-class="{true:'col-md-12 trueStyle',false:'col-md-12 falseStyle'}[selectStyle]" ng-click="selectStyle = true">
+            <option>请选择设计师之家</option>
+            <option ng-repeat="dh in dh" ng-bind="dh.deptName"></option>
+          </select>
+          <p class="errorText" ng-show="errorText" ng-init="errorText = false">
+             您还未完成【真实姓名】、【联系方式】认证。
+            <a ng-click="changeInfo(this);">前去认证<i class="icon ion-android-arrow-forward" style="margin-left: 10px;"></i></a>
+          </p>
+          <p class="button">
+            <span ng-click="addDesingerHome(this,designer)">立即加入</span>
+          </p>
+        </div>
+      </li>
+
+      <li class="col-md-4" ng-show="errorVipSuccess" ng-init="errorVipSuccess = false">
+        <div class="box2 notCertified">
+          <p style="width: 100%;height:40px;text-align: center;margin-top: 20px;">
+            <i class="icon ion-android-home" style="font-size: 4rem;"></i>
+            <span style="margin-top: 20px;display: block;">您的认证设计师申请已发送，请耐心等待。</span>
+          </p>
+        </div>
+      </li>
+
+      <!--box3start-->
+      <li class="col-md-4">
+        <div class="box3">
+          <div class="col-md-8">
+            <div style="background: red;position: absolute;z-index: 10000;width: 100%;height: 16rem;opacity: 0;"></div>
+            <iframe src="//www.seniverse.com/weather/weather.aspx?uid=UC0216443B&cid=CHSH000000&l=zh-CHS&p=SMART&a=1&u=C&s=5&m=2&x=1&d=0&fc=&bgc=&bc=&ti=0&in=1&li=" frameborder="0" scrolling="no" width="200" height="300" allowTransparency="true"></iframe>
+          </div>
+          <div class="col-md-4" style="background: #F2C284;height:100%;" show-time>
+            <h3 ng-bind="Now"></h3>
+            <p ng-bind="date" style="margin-top: 1rem"></p>
+            <p ng-bind="showDay"></p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <section>
+    <div class="section_left">
+      <div class="section_left_top col-md-12">
+        <ul>
+          <li><span class="span1"><span class="span2"></span></span></li>
+          <li><span class="span1"><span class="span2"></span></span></li>
+          <li><span class="span1"><span class="span2"></span></span></li>
+        </ul>
+        <h4>资料室</h4>
+      </div>
+      <div class="section_left_bottom col-md-12">
+        <div class="h4">
+          <h4>系统公告</h4><span>更多</span>
+        </div>
+        <div class="list">
+          <ul>
+            <li><p>系统公告（一）</p></li>
+            <li><p>系统公告（二）</p></li>
+            <li><p>系统公告（三）</p></li>
+            <li><p>系统公告（四）</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section_right">
+      <div class="header clearfix">
+        <span></span>
+        <i class="icon ion-android-notifications"></i>
+        <h4>通知中心</h4>
+      </div>
+      <div class="section_div">
+        <home-tabs  gr-id="tab1" gr-data="data1" ></home-tabs>
+      </div>
+    </div>
+  </section>
+</div>

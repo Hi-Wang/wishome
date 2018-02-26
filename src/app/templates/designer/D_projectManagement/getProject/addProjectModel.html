@@ -1,0 +1,56 @@
+
+<div class="content_add_model">
+  <div class="backgroundDiv" ng-click="divHide();"></div>
+  <div class="modelTimeOut">
+    <div class="alertBox">
+      <div class="add_header clearfix">
+        <p><i class="icon ion-android-clipboard" style="margin-right: 10px;color:#00c2de;font-size: 1.6rem;"></i>新建项目</p>
+        <span ng-click="divHide();">&times;</span>
+      </div>
+      <div class="add_content">
+        <ul>
+          <li>
+            <span class="label">项目编码：</span><span ng-bind="prjtcode"></span>
+          </li>
+          <li>
+            <span class="label"><span style="color:#00c2de">*&nbsp;</span>项目名称：</span>
+            <input type="text" autofocus  id="listnameValue" placeholder="请输入项目名称" ng-model="prjtname">
+          </li>
+          <li>
+            <span class="label">主材：</span>
+            <select ng-model="listpcValue" ng-options="x.principalname for x in listpc"></select>
+          </li>
+          <li>
+            <span class="label">板材：</span>
+            <select ng-model="listbValue" ng-options="x.boardname for x in listb"></select>
+          </li>
+          <li>
+            <span class="label"><span style="color:#00c2de">*&nbsp;</span>项目类别：</span>
+            <select id="listpcgValue" ng-model="listpcgValue" ng-options="x.prjtcatename for x in listpcg">
+              <!--<option ng-repeat="data in listpcg">{{data.prjtcatename}}</option>-->
+              <!--<option>自定义</option>-->
+            </select>
+          </li>
+          <li>
+            <span class="label"><span style="color:#00c2de">*&nbsp;</span>户型：</span>
+            <select id="prjthstp" ng-model="prjthstp"  ng-options="x.hastCateName for x in hastCateName">
+              <!--<option ng-repeat="data in hastCateName">{{data.hastCateName}}</option>-->
+              <!--<option>自定义</option>-->
+            </select>
+          </li>
+          <li>
+            <span class="label">项目描述：</span>
+            <textarea placeholder="项目描述文字" ng-model="prjtmemo"></textarea>
+          </li>
+          <li style="padding:0 0 4px 0;">
+            <p class="col-md-12" style=" color:red;position: absolute;z-index: 10000;text-align: center" ng-show="modelError" ng-init="modelError = false" ng-bind="modelErrorText"></p>
+          </li>
+        </ul>
+        <div class="add_footer">
+          <p class="col-md-6" style="text-align: right"><span class="left" ng-click="divHide();">取消</span></p>
+          <p class="col-md-6" style="text-align: left"><span class="right" ng-click="saveList(this);">完成</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

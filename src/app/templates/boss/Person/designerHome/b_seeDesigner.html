@@ -1,0 +1,80 @@
+<div class="boss b_seeManagerProject bProjectManager b_seeDesigner">
+  <boss-alert-designer-home-model ng-show="alertDesignerHome" ng-init="alertDesignerHome = false"></boss-alert-designer-home-model>
+  <!--<change-designer-home ng-show="changeDesignerHomeModel" ng-init="changeDesignerHomeModel = false"></change-designer-home>-->
+  <header class="clearfix">
+    <div class=" headerLeft">
+      <!--<img src="../images/projectList/wishome.png"/>-->
+      <img ng-src="{{designerHome.personalpicture}}"/>
+    </div>
+    <div class=" headerRight clearfix">
+      <div class="backBtn" >
+        <button class="btn btn-primary" ng-click="back();">返回</button>
+      </div>
+      <div>
+        <table>
+          <tr style="margin-bottom: 10px;">
+            <td colspan="5">
+              <h2 ng-bind="dept.deptName"></h2>&nbsp;&nbsp;
+              <!--<span style="color: #00c2de;cursor: pointer" ng-click="changeDesignerHome(this);">修改</span>-->
+            </td>
+          </tr>
+          <tr>
+            <td class="col-md-2">
+              账号ID：<span ng-bind="designerHome.username"></span>
+            </td>
+            <td class="col-md-2">
+              联系方式：<span ng-bind="designerHome.phoneNumber"></span>
+            </td>
+            <td class="col-md-2">
+              邮箱：<span ng-bind="designerHome.email"></span>
+            </td>
+            <!--<td class="col-md-2">-->
+              <!--所在地：<span ng-bind="designerHome.address"></span>-->
+            <!--</td>-->
+          </tr>
+          <tr style="padding-top: 10px;display: inline-block">
+            <td colspan="4">
+              所在地：<span ng-bind="designerHome.address"></span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="managerDiv clearfix">
+      <ul class="row clearfix ulBox">
+        <li class="clearfix active" ng-repeat="data in designerList">
+          <div class="b_managerLeftBox">
+            <div>
+              <!--<img src="../images/projectList/addImg.fw.png"/>-->
+              <img ng-src="{{data.personalpicture}}"/>
+              <p ng-bind="data.nickname"></p>
+            </div>
+          </div>
+          <div class="b_managerRightBox" ng-show="d_homeRightBox" ng-init="d_homeRightBox = true">
+            <span class="delBtn" ng-click="delDesigner(this);">
+              <i class="icon ion-ios-close-outline" style="font-size: 3rem;color:#00c2de"></i>
+            </span>
+            <div class="b_managerIdBox">
+              <p>ID：<span ng-bind="data.username"></span></p>
+              <p>电话：<span ng-bind="data.phoneNumber"></span></p>
+              <p>姓名：<span ng-bind="data.nickname"></span></p>
+              <p>邮箱：<span ng-bind="data.email"></span></p>
+            </div>
+            <div class="b_managerListBox">
+              <span class="col-md-6" ng-click="b_seeDesignerPrjtList(this);">
+                <i class="icon ion-ios-paper-outline liIcon"></i><br/>
+                <span>项目</span>
+              </span>
+              <span class="col-md-6" style="border-left: 1px solid #ccc;" ng-click="changeDesignerHomeName(this);">
+                <i class="icon ion-ios-people-outline liIcon"></i><br/>
+                <span>变更设计师之家</span>
+              </span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>

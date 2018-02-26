@@ -1,0 +1,27 @@
+<div class="preSaleRoomModel">
+  <div class="backgroundDiv" ng-click="divHide();"></div>
+  <div class="modelTimeOut">
+    <div class="alertBox modal-content">
+      <div class="modal-header" ng-show="header" ng-init="header = true">
+        <i  class="icon iconfont icon-QQ" ng-show="QQIcon" ng-init="QQIcon = false"></i>
+        <i class="icon iconfont icon-weixin" ng-show="weChartIcon" ng-init="weChartIcon = false"></i>
+        <span style="font-size: 1.4rem;color:#333;font-weight: 600" ng-bind="headerText"></span>
+      </div>
+      <div class="modal-body" style="padding:10px 20px 20px 20px;color: #333;">
+        <p ng-show="alertTextP" ng-init="alertTextP = false">{{alertText}}</p>
+        <div class="code" id="code" style="position: relative;z-index: 200000;text-align: center;" ng-show="alertCode" ng-init="alertCode = false">
+          <!--<i class="icon ion-close-circled"></i>-->
+          <div id="login_container" class="codeShow"></div>
+          <!--<button>返回登录</button>-->
+        </div>
+        <!--<span style="display: none">{{delDetailsId}}</span>-->
+      </div>
+      <div class="modal-footer" ng-show="footer" ng-init="footer = true">
+        <button ng-click="cancelAsk();" style="background:#ccc;">取消</button>
+        <button ng-click="determine(this);">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

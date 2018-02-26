@@ -1,0 +1,73 @@
+<div class="Tab" id="{{grId}}" style="color:red;">
+  <!--<div class="tabNav clearfix">-->
+    <a ng-repeat="attr in grData" ng-class="{first:$first}">{{attr.val}}</a>
+    <span class="more">更多</span>
+  <!--</div>-->
+  <div ng-repeat="attr in grData" ng-style="{display:$first?'block':'none'}">
+    <p>温馨提示：设计师之家申请成功提醒<span>3</span>个，设计师之家变更提醒<span>2</span>个，项目经理变更提醒<span>1</span>个，项目报价完成提醒<span>1</span>个，项目交付提醒<span>1</span>个。</p>
+    <table class="table table-hover content_table_style" style="width: 90%;display: table;float: left;border-right: none">
+      <thead>
+      <tr>
+        <td class="col-md-3">标题</td>
+        <td class="col-md-3">发送用户</td>
+        <td class="col-md-2">发送时间</td>
+        <td class="col-md-2">处理时限</td>
+        <td class="col-md-2">操作</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>111</td>
+        <td>111</td>
+        <td>11</td>
+        <td>11</td>
+        <td><span style="color:#00c2de;cursor: pointer">处理</span></td>
+      </tr>
+      <tr>
+        <td>111</td>
+        <td>111</td>
+        <td>11</td>
+        <td>11</td>
+        <td><span style="color:#00c2de;cursor: pointer">处理</span></td>
+      </tr>
+      <tr>
+        <td>111</td>
+        <td>111</td>
+        <td>11</td>
+        <td>11</td>
+        <td><span style="color:#00c2de;cursor: pointer">处理</span></td>
+      </tr>
+      <tr>
+        <td>111</td>
+        <td>111</td>
+        <td>11</td>
+        <td>11</td>
+        <td><span style="color:#00c2de;cursor: pointer">处理</span></td>
+      </tr>
+      <tr>
+        <td>111</td>
+        <td>111</td>
+        <td>11</td>
+        <td>11</td>
+        <td><span style="color:#00c2de;cursor: pointer">处理</span></td>
+      </tr>
+      <tr>
+        <td>111</td>
+        <td>111</td>
+        <td>11</td>
+        <td>11</td>
+        <td><span style="color:#00c2de;cursor: pointer">处理</span></td>
+      </tr>
+      <tr>
+        <td>111</td>
+        <td>111</td>
+        <td>11</td>
+        <td>11</td>
+        <td><span style="color:#00c2de;cursor: pointer">处理</span></td>
+      </tr>
+
+      </tbody>
+    </table>
+    <!--<p>{{attr.title}}</p>-->
+  </div>
+</div>

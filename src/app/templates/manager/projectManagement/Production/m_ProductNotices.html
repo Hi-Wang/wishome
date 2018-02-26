@@ -1,0 +1,145 @@
+<div class="mProductNotices">
+  <manager-alert ng-show="managerModel" ng-init="managerModel = false"></manager-alert>
+  <big-img id="seeBigImgModel" ng-show="seeBigImgModel" ng-init="seeBigImgModel = false"></big-img>
+  <rich-text-model ng-show="richText" ng-init="richText === false"></rich-text-model>
+  <header class="clearfix">
+    <div class="leftFloat">
+      <i class="icon ion-edit"></i>
+      <span>项目名称：</span><span ng-bind="pr.prjtname"></span>
+    </div>
+    <div class="rightFloat">
+      <!--<button ng-click="richTextShow(this);">制作生产通知单</button>-->
+      <button ng-click="nodeSave(this);">保存并返回</button>
+      <button ng-click="back(this);">返回</button>
+    </div>
+  </header>
+  <section>
+    <div class="clearfix">
+      <div class="leftFloat">
+        <div class="text">
+          <p>产品图片</p>
+        </div>
+        <div class="leftBigImg">
+          <!--<img ng-src="../images/projectList/wishome.png">-->
+          <a title="查看大图" style="cursor: pointer">
+            <img ng-src="{{prd.detailsurl}}" ng-click="seeBigImgBig(prd.detailsurl);">
+          </a>
+        </div>
+        <div class="imgListBox">
+          <ul>
+            <li style="margin:0 0.3rem;">
+              <div class="addImg" style="border:1px dashed #00c2de;">
+                <i class="icon ion-ios-plus-outline"></i>
+                <input id="file" type="file" load-file multiple style="opacity: 0;" ng-disabled="flieInput" ng-init="flieInput = false">
+                <p style="color:#00c2de">上传图片</p>
+              </div>
+            </li>
+            <li class="box2" ng-repeat="img in imgList track by $index"  ng-mouseenter="del = true" ng-mouseleave="del = false" ng-init="del = false">
+              <div class="clearfix">
+                <span id="bigImg" class="toggle" ng-if="del">
+                  <a title="查看大图">
+                    <i class="icon ion-search big" ng-click="seeBigImg(img.base);"></i>
+                  </a>
+                  <a title="删除图片">
+                    <i class="icon ion-close-circled del" ng-click="delImgList(imgList,$index);"></i>
+                  </a>
+                </span>
+                <div class="addImg">
+                  <img ng-src="{{img.base}}"/>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="rightFloat">
+        <div>
+          <div class="text">
+            <p>项目基本信息</p>
+          </div>
+          <table class="table table-hover table1" style="border: none;">
+            <tr style="border: none;">
+              <td class="col-md-3"><span>项目编码：</span><span ng-bind="pr.prjtcode"></span></td>
+              <td class="col-md-3"><span>项目名称：</span><span ng-bind="pr.prjtname"></span></td>
+              <td class="col-md-3"><span>产品数量：</span><span ng-bind="pr.prjtprodqty"></span></td>
+              <td class="col-md-3"><span>立项日期：</span><span ng-bind="pr.prjtdate"></span></td>
+            </tr>
+            <tr>
+              <td class="col-md-3"><span>项目状态：</span><span ng-bind="pr.prjthstp"></span></td>
+              <td class="col-md-3"><span>项目金额：</span><span ng-bind="pr.prjtsum"></span></td>
+              <td class="col-md-3"  colspan="2"><span>地址：</span><span ng-bind="it.inquirydetailedaddress"></span></td>
+            </tr>
+          </table>
+        </div>
+        <div style="margin-top: 1rem;">
+          <div class="text">
+            <p>产品信息</p>
+          </div>
+          <table class="table table-hover table1" style="border: none;">
+            <tr style="border: none;">
+              <td class="col-md-3"><span>项目编码：</span><span ng-bind="pr.prjtcode"></span></td>
+              <td class="col-md-3"><span>产品编码：</span><span ng-bind="prd.detailscode"></span></td>
+              <td class="col-md-3"><span>规格：</span><span ng-bind="prd.detailsspecifications"></span></td>
+              <td class="col-md-3"><span>区域：</span><span ng-bind="prd.regionname"></span></td>
+            </tr>
+            <tr>
+              <td class="col-md-3"><span>产品名称：</span><span ng-bind="prd.detailsname"></span></td>
+              <td class="col-md-3"><span>涂装类型：</span><span ng-bind="ot.coatingtype"></span></td>
+              <td class="col-md-3"><span>材质：</span><span ng-bind="prd.detailsframematerial + '&nbsp;' + prd.detailsplatematerial"></span></td>
+              <td class="col-md-3"><span>备注：</span><span ng-bind="prd.detailsmemo"></span></td>
+            </tr>
+          </table>
+        </div>
+        <div style="margin-top: 1rem;">
+          <div class="text">
+            <p>构成类别</p>
+          </div>
+          <div style="padding-left: 140px;margin: 0;height:30px;">
+              <span class="col-md-4" style="font-size: 1.4rem;display: inline-block;width: 140px;margin-left: -140px;color:#333;">请选择构成类别名称：</span>
+              <select class="col-md-8" id="selectListName" select-change ng-model="consName" ng-options="x.name for x in list" ng-selected = "1" style="display: inline-block;color:#333;padding:4px;border-radius: 4px;border:1px solid #ccc;width: 100%;">
+                <!--<option ng-repeat="item in list" ng-bind="item.name"></option>-->
+              </select>
+          </div>
+          <div>
+            <ul class="ul">
+              <li class="li col-md-6" ng-repeat="gongYi in gongYi">
+                <span ng-bind="gongYi.processName">111</span>
+                <input ng-show="gongYi.ifText" ng-model="gongYi.value" />
+                <select ng-show="!gongYi.ifText" ng-model="gongYi.value" ng-options="x for x in gongYi.pro">
+                  <!--<option ng-bind="select"></option>-->
+                </select>
+              </li>
+              <li class="li col-md-12">
+                <span>制作要求</span>
+                <input style="height: 3rem;width: 96%;" type="text" class="text" ng-model="prd.productionrequirements" value="{{prd.productionrequirements}}"/>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="text">
+        <p class="col-md-8">工序：</p>
+        <p class="col-md-4">选择新增工序（点击添加）：</p>
+      </div>
+      <div class="jieDian">
+        <div class="col-md-8 jieDianLeft">
+          <ul class="clearfix">
+            <li ng-repeat="span in nodeTime track by $index" ng-class="span.animateClass">
+              <span ng-bind="span.name"></span>
+              <i class="icon ion-close-round" ng-click="delNode(this);"></i>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4 jieDianRight">
+          <p id="iconSpan" style="display: none"><i ng-class="iconClass"></i>&nbsp;&nbsp;<span ng-bind="iconText" ng-class="iconTextClass"></span></p>
+          <div class="cloud clearfix">
+            <a ng-repeat="a in addNodeList" ng-bind="a.name" ng-click="addToList(a);"></a>
+          </div>
+          节点
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

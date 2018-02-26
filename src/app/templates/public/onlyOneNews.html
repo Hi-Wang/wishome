@@ -1,0 +1,35 @@
+<agree-refuse id="agree" style="display: none"></agree-refuse>
+<div class="newsRightListView onlyOneNews">
+  <div class="header">
+    <p>{{onlyOneName}}</p>
+  </div>
+  <div class="content">
+    <div class="newsBox">
+      <div class="newsHeader">
+        <p class="newsTitle" ng-bind="data.title"></p>
+        <p class="newsTime" ng-bind="data.sendDate"></p>
+      </div>
+      <div class="newsContent">
+        <p class="userName">尊敬的 &nbsp;<a ng-bind="userName" style="color:#00c2de;cursor: pointer;" ng-click="goInfo(this);"></a>&nbsp;：</p>
+        <div class="body">
+          <p ng-bind="data.body"></p>
+        </div>
+        <div class="body" ng-show="operating" style="text-indent: 4rem">
+          <span>操作：</span>
+          <span class="buttonSpan" ng-click="agreeNews(data);" style="text-indent: 0">同意</span>
+          <span class="buttonSpan" ng-click="refuseNews(data);" style="text-indent: 0">拒绝</span>
+        </div>
+        <div class="body" ng-show="noOperating">
+          <span style="color:#ccc;text-indent: 4rem;display: inline-block;">该跳认证信息已过期</span>
+        </div>
+        <div class="footer">
+          <span>发送人：</span>&nbsp;
+          <span class="imgSpan">
+            <img ng-src="{{data.senderPicture}}"/>
+          </span>
+          <span class="sendName" ng-bind="data.senderName">index</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

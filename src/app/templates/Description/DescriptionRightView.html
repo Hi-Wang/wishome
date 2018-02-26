@@ -1,0 +1,16 @@
+<del-news id="delNewsModel" style="display: none"></del-news>
+<div class="newsRightListView" ng-controller="DescriptionRightViewCtrl as cCtrl">
+  <div class="header">
+    <p>{{headerNews}}</p>
+  </div>
+  <div class="content">
+    <div class="newsName problemName">
+      <ol>
+        <li ng-repeat="name in newsName">
+          <a ng-bind="name.problemName" ng-click="seeOneNews(this,$index);"></a>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,17 @@
+<div class="askPriceModel bigImgModel" id="bigImgModel">
+  <div class="fullDiv" ng-click="hideModel();"></div>
+  <div class="selectContent">
+    <i class="icon ion-close-circled delIcon" ng-click="hideModel();"></i>
+    <div class="top">
+      <div class="iconDiv">
+        <i class="icon ion-aperture"></i><span>查看大图</span>
+      </div>
+    </div>
+    <div id="imgBoxShow">
+      <img ng-src="{{bigImgUrl}}" />
+    </div>
+      <!--按钮-->
+      <div class="col-md-12 modelButtonBox" style="text-align: center">
+        <button type="button" class="btn btn-primary" ng-click="hideModel();">关闭</button>
+      </div>
+  </div>

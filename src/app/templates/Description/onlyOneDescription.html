@@ -1,0 +1,22 @@
+<div class="newsRightListView onlyOneNews onlyOneDescription">
+  <div class="header">
+    <p>{{onlyOneName}}</p>
+  </div>
+  <div class="content">
+    <ul>
+      <li ng-repeat="data in DescriptionList">
+        <p ng-bind="data.liName">dfd</p>
+        <div class="imgBox">
+          <img ng-src="{{data.img}}"/>
+        </div>
+      </li>
+      <li>
+        <p>如图所示项目为实例项目，非实际项目。</p>
+      </li>
+    </ul>
+    <!--<div>-->
+      <!--<p>1、点击页面报价</p>-->
+      <!--<img src="../images/Description/M/M_quote_Description_01.png"/>-->
+    <!--</div>-->
+  </div>
+</div>

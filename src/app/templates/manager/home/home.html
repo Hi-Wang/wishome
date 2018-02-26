@@ -1,0 +1,101 @@
+<div class="all managerHome">
+  <div class="all_topBox">
+    <ul>
+      <!--box1_start-->
+      <li class="col-md-4">
+        <div class="box1 clearfix">
+          <div class="leftImg">
+            <div>
+              <img ng-src="{{user.personalpicture}}"/>
+            </div>
+          </div>
+          <div class="rightBox">
+            <div>
+              <h4 ng-bind="user.nickname"></h4><span class="vip" style="background: #F09D32">项目经理</span>
+              <p>账号ID：<span ng-bind="user.username"></span></p>
+              <p>联系方式：<span ng-bind="user.phoneNumber"></span></p>
+              <p>邮箱：<span ng-bind="user.email"></span></p>
+              <p>联系地址：<span ng-bind="user.address"></span></p>
+              <p style="color:#00c2de;cursor: pointer" ng-click="changInfo(this);">查看更多</p>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!--box2_start-->
+      <li class="col-md-4">
+        <div class="box2" style="display: block">
+          <div class="col-md-4 left">
+            <div class="col-md-12">
+              <i class="icon ion-ios-people-outline"></i>
+              <h4>设计师之家</h4>
+            </div>
+          </div>
+          <div class="col-md-8 right">
+            <div class="col-md-12">
+              <ul>
+                <li ng-repeat="item in deptList" style="list-style: none" ng-mouseover="liSpan = true" ng-mouseleave="liSpan = false">
+                  <p class="col-md-12">
+                    <span class="col-md-6" ng-bind="item.deptName" style="text-align: left;padding-left: 20px;"></span>
+                    <span class="col-md-6 buttom" ng-click="goDesignerHome(this);" ng-show="liSpan" ng-init="liSpan = f">查看详情</span>
+                  </p>
+                </li>
+              </ul>
+              <!--<span class="col-md-4" ng-repeat="item in deptList" ng-bind="item.deptName" ng-click="goDesignerHome(this);"></span>-->
+            </div>
+          </div>
+        </div>
+      </li>
+      <!--box3start-->
+      <li class="col-md-4">
+        <div class="box3">
+          <div class="col-md-8">
+            <div style="background: red;position: absolute;z-index: 10000;width: 100%;height: 16rem;opacity: 0;"></div>
+            <iframe src="//www.seniverse.com/weather/weather.aspx?uid=UC0216443B&cid=CHSH000000&l=zh-CHS&p=SMART&a=1&u=C&s=5&m=2&x=1&d=0&fc=&bgc=&bc=&ti=0&in=1&li=" frameborder="0" scrolling="no" width="200" height="300" allowTransparency="true"></iframe>
+          </div>
+          <div class="col-md-4" style="background: #F2C284;height:100%;" show-time>
+            <h3 ng-bind="Now"></h3>
+            <p ng-bind="date" style="margin-top: 1rem"></p>
+            <p ng-bind="showDay"></p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <section>
+    <div class="section_left">
+      <div class="section_left_top col-md-12">
+        <ul>
+          <li><span class="span1"><span class="span2"></span></span></li>
+          <li><span class="span1"><span class="span2"></span></span></li>
+          <li><span class="span1"><span class="span2"></span></span></li>
+        </ul>
+        <h4>资料室</h4>
+      </div>
+      <div class="section_left_bottom col-md-12">
+        <div class="h4">
+          <h4>系统公告</h4><span>更多</span>
+        </div>
+        <div class="list">
+          <ul>
+            <li><p>系统公告（一）</p></li>
+            <li><p>系统公告（二）</p></li>
+            <li><p>系统公告（三）</p></li>
+            <li><p>系统公告（四）</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section_right">
+      <div class="header clearfix">
+        <span></span>
+        <i class="icon ion-android-notifications"></i>
+        <h4>通知中心</h4>
+      </div>
+      <div class="section_div">
+        <home-tabs  gr-id="tab1" gr-data="data1" ></home-tabs>
+      </div>
+    </div>
+  </section>
+
+</div>

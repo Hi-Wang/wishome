@@ -1,0 +1,37 @@
+<div>
+  <div class="backgroundDiv" ng-click="divHide();"></div>
+  <div class="modelTimeOut">
+    <div class="alertBox modal-content">
+      <div class="modal-header" ng-show="header" ng-init="header = false">
+        <p style="font-size: 1.6rem;color: #00c2de;font-weight: 600"><i class="icon ion-information-circled" style="margin-right: 1rem"></i>提示</p>
+      </div>
+      <div class="modal-header" ng-show="ask" ng-init="ask = false">
+        <p style="font-size: 1.6rem;color: #00c2de;font-weight: 600"><i class="icon ion-happy-outline" style="margin-right: 1rem"></i><span>{{text}}</span></p>
+      </div>
+      <div class="modal-header" ng-show="delNewsHeader">
+        <p style="font-size: 1.6rem;color: #00c2de;font-weight: 600"><i class="icon ion-information-circled" style="margin-right: 1rem"></i><span>{{delNewsText}}</span></p>
+      </div>
+      <div class="modal-body" style="padding:10px 20px 20px 20px;color: #333;">
+        <p ng-show="prjtP" ng-init="prjtP = false">{{prjtText}}</p>
+        <p ng-show="alertTextP" ng-init="alertTextP = true">{{alertText}}</p>
+        <span style="display: none" ng-bind="designerId"></span>
+        <div ng-show="textP" ng-init="textP = false">
+          <p>请您先阅读一下事项说明，在您确认之后，我们会通知项目经理与您预约时间签订合同，请耐心等待我们的项目经理与您取得联系。</p>
+          <br/>
+          <p>事项说明：</p>
+          <p>1、常规生产周期为60天（以合同约定为准）。</p>
+          <p>2、预付款50%，款到开始制作图纸，图纸经设计师确认后生产，余款送货前付清（以合同约定为准）。</p>
+          <p>3、任何产品数量、款式、材质、尺寸的变化均可能导致价格的变化详情请与项目经理洽谈。</p>
+          <p>4、以上规格为参考值，最终以现场测量和放样比例为准。</p>
+          <p>5、本报价有效期30天。</p>
+        </div>
+      </div>
+      <div class="modal-footer" ng-show="footer" ng-init="footer = true">
+        <button class="btn btn-primary" ng-click="againAsk(this);">确定</button>
+        <button class="btn btn-primary" ng-click="cancelAsk();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,27 @@
+<div class="menu">
+  <div class="sidebar-fold">
+    <span class=" icon ion-navicon" ></span>
+  </div>
+  <ul>
+    <li class="outLi" ng-repeat="item in items" style="position: relative;">
+      <p class="outLiText" ng-click="isShowLi(this,$index);">
+        <i class="icon ion-arrow-right-b trueIcon" style="display: none"></i>
+        <i class="icon ion-arrow-down-b falseIcon" style="display: inline-block"></i>
+        <!--<i class="icon ion-record"></i>-->
+        <span ng-bind="item.name"></span>
+      </p>
+      <ul class="hideUL" style="display: block;">
+        <li class="inLi" ng-repeat="data in item.chindren">
+          <a ui-sref='{{data.url}}' class="UrlA" ng-click="changeStyle(this,$index,item,items);">
+            <i ng-class="data.image" style="font-size: 1.6rem;margin-right: 10px;"></i>
+            <span ng-bind="data.name"></span>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div class="Description" ng-click="Description();">
+    <p style="padding: 0;margin: 0;">帮助中心</p>
+  </div>
+</div>
+

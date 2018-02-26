@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head user>
+    <meta charset="UTF-8">
+    <title>赫家-定制家具供应链系统</title>
+    <meta charset="utf-8" />
+  <link rel="shortcut icon" href="../../../favicon.ico"/>
+  <!--检索-->
+  <meta name="description" content="定制家具,赫家 定制, 定制，家具, 定制系统, 系统, 家居设计, 设计" />
+
+  <!--手机APP-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--IE兼容模式-->
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <!--CSS-->
+  <link href="../library_css/iconCSS/css/ionicons.min.css" rel="stylesheet"/>
+  <link href="../library_css/animate.css" rel="stylesheet"/>
+  <link href="../library_css/bootstrapCSS/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" type="text/css" href="../library_css/iconfonts/iconfont.css">
+  <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_566546_l8ahos7j2ffde7b9.css"/>
+  <!--<link rel="shortcut icon" type="image/x-icon" href="https://production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />-->
+  <link rel="mask-icon" type="" href="https://production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+  <link href="../library_css/ng-img-crop.css" rel="stylesheet"/>
+  <link href="../css/top_nav.css" rel="stylesheet"/>
+  <link href="../css/Evaluation.css" rel="stylesheet"/>
+  <link href="../css/content_project_list.css" rel="stylesheet"/>
+
+</head>
+<style>
+  @-webkit-keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+  @-moz-keyframes spin{0%{-moz-transform:rotate(0)}100%{-moz-transform:rotate(360deg)}}
+  @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+  .spinner{position:fixed;top:0;left:0;width:100%;height:100%;z-index:100003;background: #fff;overflow:hidden}
+  .spinner div:first-child{display:block;position:relative;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;box-shadow:0 3px 3px 0 rgba(255,56,106,1);transform:translate3d(0,0,0);animation:spin 2s linear infinite}  .spinner div:first-child:after,.spinner div:first-child:before{content:'';position:absolute;border-radius:50%}  .spinner div:first-child:before{top:5px;left:5px;right:5px;bottom:5px;box-shadow:0 3px 3px 0 rgb(255, 228, 32);-webkit-animation:spin 3s linear infinite;animation:spin 3s linear infinite}  .spinner div:first-child:after{top:15px;left:15px;right:15px;bottom:15px;box-shadow:0 3px 3px 0 rgba(61, 175, 255,1);animation:spin 1.5s linear infinite}
+
+  body {
+    margin: 0;
+  }
+
+
+</style>
+<script>
+  // window.onload = function(){
+
+//  window.onbeforeunload = function() {
+//    $.cookie("username",null,{path:"/"});
+//    $.cookie("psd",null,{path:"/"});
+//    console.log($.cookie('username'));
+//    console.log($.cookie('psd'));
+//  }
+</script>
+
+
+
+<body data-ng-app="myApp" translate="no">
+<ui-view ng-controller="myCtrl"></ui-view>
+
+<div id="nb-global-spinner" class="spinner" style="display: none">
+  <div class="blob blob-0"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+  <div class="blob blob-5"></div>
+</div>
+
+<loading-model ng-show="loaddingModelShow" ng-init="loaddingModelShow = false"></loading-model>
+
+<!--script-->
+<script src="../library_js/jQuery/jquery-3.2.1.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
+<!--<script src="../library_js/angular/angular.min.js"></script>-->
+<script src="https://cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
+<script src="https://cdn.bootcss.com/angular-cookie/4.0.0/angular-cookie.js"></script>
+<script src="https://cdn.bootcss.com/echarts/3.7.1/echarts.js"></script>
+<script src="https://cdn.bootcss.com/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+<script src="https://cdn.bootcss.com/oclazyload/1.1.0/ocLazyLoad.js"></script>
+<script src="https://cdn.bootcss.com/angular-local-storage/0.7.1/angular-local-storage.js"></script>
+<script src="../library_js/angular/sortable.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://cdn.bootcss.com/angular.js/1.4.7/angular-animate.js"></script>
+
+<script src="../library_js/angular/ui-bootstrap-tpls-0.11.0.js"></script>
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8" data-callback="true"></script>
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101416019" data-redirecturi="http://scmc.villion.cn" charset="utf-8"></script>
+<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+<!--<script src="../js/manager/managerAlert.js"></script>-->
+<script src="../js/designerProject/D_projectManagement/getProject/selectAddress2.js"></script>
+<script src="../js/home.js"></script>
+<script src="../js/tree_module.js"></script>
+<!--<script src="../library_js/ng-img-crop.js"></script>-->
+<script src="../js/topCtrl.js"></script>
+<script src="../js/typesettingCtrl.js"></script>
+<script src="../js/public/newsCtrl.js"></script>
+<script src="../js/public/loading.js"></script>
+<script src="../js/public/newsRightListViewCtrl.js"></script>
+<script>
+
+
+
+      var context = "";
+  window.onload=function(){
+    $("#nb-global-spinner").css('display','block');
+
+    setTimeout(function () {
+      $("#nb-global-spinner").css('display','none');
+    }, 1200);
+
+    var reg = new RegExp("(^|&)" + "code"+ "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg); //获取url中"?"符后的字符串并正则匹配
+    var storage = window.localStorage;
+    if (r !== null){
+      var userId = storage.getItem("id");
+      context = r[2];
+      reg = null;
+      ajax(context,userId);
+      console.log(context);
+    } else if(r = null){}
+  // };
+
+  function ajax(code,userId){
+    console.log(code);
+    $.ajax({
+      type: "get",
+      url: "http://scmc.villion.cn:4433/wishome-web/rest/weixinBinding",
+      data:{"code":code,'id':userId},
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data){
+        console.log(data);
+        window.location.href = 'http://scmc.villion.cn/src/app/templates/home.html#/typesetting/changeinfo';
+        if(data.state === 400){
+          alert("此微信已绑定用户")
+        }else if(data.state === 200){
+           alert("微信绑定成功!");
+           window.location.href = absurl
+        }
+      },
+      error: function () {
+      }
+    })
+  }
+  };
+</script>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

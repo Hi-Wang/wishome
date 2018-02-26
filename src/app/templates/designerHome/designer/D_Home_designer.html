@@ -1,0 +1,77 @@
+<div class="project_all bProjectManager bossBackground D_Home_designer">
+  <del-designer class="delDesignerModel" style="display: none"></del-designer>
+  <header>
+    <div class="clearfix">
+      <p class="successText" style="position: absolute;z-index: 1000;width:100%;text-align: center; color:#00c2de;display: none"> 删除成功！</p>
+      <div class="leftFloat">
+        <ul>
+          <li> <input placeholder="请输入关键字" type="text" class="form-control keyWords" ng-model="keyWords"></li>
+          <li><button type="button" class="btn btn-default btn-search-color" ng-click="Inquire(this);">搜索</button></li>
+        </ul>
+      </div>
+      <div class="rightFloat">
+        <div>
+          <!--<button type="button" class="btn-search-color" ng-click="showAddManagerModel();">添加</button>-->
+        </div>
+      </div>
+    </div>
+  </header>
+  <section style="margin-top: 0;">
+    <div>
+      <ul class="clearfix">
+        <li class="col-md-3" ng-repeat="data in data" ng-mouseover="fullDivInfo_show($index);" ng-mouseleave="fullDivInfo_hide($index);">
+          <div class="desingerDiv">
+            <i class="icon "></i>
+            <div class="imgBox">
+              <img ng-src="{{data.personalpicture}}"/>
+            </div>
+            <div style="width:100%;position: absolute;bottom: 20px;text-align: center">
+              <h5 ng-bind="data.username" style="text-align: center"></h5>
+            </div>
+            <div class="fullDivInfo" style="display: none">
+              <p class="top">设计师信息</p>
+              <div class="designerInfo">
+                <p><span class="span">姓名：</span><span ng-bind="data.nickname"></span></p>
+                <p><span class="span">联系电话：</span><span ng-bind="data.phoneNumber"></span></p>
+                <p><span class="span">邮箱：</span><span ng-bind="data.email"></span></p>
+                <p><span class="span">地址：</span><span ng-bind="data.address"></span></p>
+                <p style="width: 100%;text-align: center;">
+                  <button style="margin-right: 10px;" ng-click="delDesignerBtn(this);">删除TA</button>
+                  <button style="background: #00c2de;" ng-click="seeDesignerPrjt(this);">查看项目</button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!--<div class="managerDiv clearfix">-->
+      <!--<ul class="row clearfix ulBox">-->
+        <!--<li class="clearfix active" ng-repeat="data in data">-->
+          <!--<div class="b_managerLeftBox">-->
+            <!--<div>-->
+              <!--<img ng-src="{{data.personalpicture}}" style="cursor: pointer;"/>-->
+            <!--</div>-->
+            <!--<p ng-bind="data.username"></p>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;<div class="b_managerRightBox" ng-show="managerRightBox" ng-init="managerRightBox = true">&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="b_managerIdBox">&ndash;&gt;-->
+              <!--&lt;!&ndash;<p>ID：<span ng-bind="data.username"></span></p>&ndash;&gt;-->
+              <!--&lt;!&ndash;<p>电话：<span ng-bind="data.phoneNumber"></span></p>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="b_managerListBox">&ndash;&gt;-->
+              <!--&lt;!&ndash;<span class="col-md-6" ng-click="homeRightBoxShow(this);">&ndash;&gt;-->
+                <!--&lt;!&ndash;<i class="icon ion-ios-home-outline"></i><br/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<span>设计师之家</span>&ndash;&gt;-->
+              <!--&lt;!&ndash;</span>&ndash;&gt;-->
+              <!--&lt;!&ndash;<span class="col-md-6" style="border-left: 1px solid #ccc;" ng-click="bossSeeProject(this);">&ndash;&gt;-->
+                <!--&lt;!&ndash;<i class="icon ion-ios-paper-outline"></i><br/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<span>项目</span>&ndash;&gt;-->
+              <!--&lt;!&ndash;</span>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</div>-->
+  </section>
+</div>

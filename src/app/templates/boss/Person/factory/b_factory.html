@@ -1,0 +1,38 @@
+<div class="project_all bProjectManager b_designerHome b_factory bossBackground">
+  <boss-alert-model ng-show="bossAlert" ng-init="bossAlert = false"></boss-alert-model>
+  <boss-add-alert-model ng-show="alertAddFactoryModel" ng-init="alertAddFactoryModel = false"></boss-add-alert-model>
+  <header>
+    <div class="clearfix">
+      <div class="leftFloat">
+        <ul>
+          <li> <input placeholder="请输入关键字" type="text" class="form-control keyWords" ng-model="keyWords" ng-keyup="myKeyup($event)"></li>
+          <li><button type="button" class="btn btn-default btn-search-color" ng-click="askSearch();" boss-search-click>搜索</button></li>
+        </ul>
+      </div>
+      <div class="rightFloat">
+        <div>
+          <button type="button" class="btn btn-default btn-search-color" ng-click="addFactory(this);">添加</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="managerDiv clearfix">
+      <ul class="row clearfix ulBox">
+        <li class="clearfix active" ng-repeat="data in factoryList">
+           <span class="delBtn" ng-click="delFactory(this);">
+              <i class="icon ion-ios-close-outline" style="font-size: 3rem;color:#00c2de;cursor: pointer;"></i>
+            </span>
+          <div class="b_factoryTopBox">
+            <div>
+              <!--<img src="../images/projectList/bibibi.jpg"/>-->
+              <img ng-src="{{data.url}}" ng-click="goFactoryPrjtList(this);"/>
+              <h4 ng-bind="data.deptName">121212</h4>
+              <p style="color: #00c2de;font-size: 1.4rem;cursor: pointer" ng-click="goFactoryPrjtList(this);">查看详情</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>

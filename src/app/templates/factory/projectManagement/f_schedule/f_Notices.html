@@ -1,0 +1,120 @@
+<div class="project_all mProductNotices f_Notices">
+  <header>
+    <div class="leftFloat">
+      <p style="padding-top: 0.4rem;"><i class="icon ion-clipboard"></i><span>项目名称：</span><span ng-bind="pr.prjtname"></span></p>
+    </div>
+    <div class="rightFloat">
+      <button type="button" class="btn btn-primary" ng-click="deliver(this);" ng-show="deliverBtn" ng-init="deliverBtn = show">交付</button>
+      <button type="button" class="btn btn-primary" ng-click="backToSingle(this)">返单</button>
+      <button type="button" class="btn btn-primary" ng-click="back(this);">返回</button>
+    </div>
+  </header>
+
+  <factroy-model ng-show="factroyModel" ng-init="factroyModel = false"></factroy-model>
+  <big-img id="seeBigImgModel" ng-show="seeBigImgModel" ng-init="seeBigImgModel = false"></big-img>
+  <section>
+    <div class="clearfix">
+      <div class="leftFloat">
+        <div class="text">
+          <p>产品图片</p>
+        </div>
+        <div class="leftBigImg">
+          <!--<img ng-src="../images/projectList/wishome.png">-->
+          <a title="查看大图" style="cursor: pointer">
+            <img ng-src="{{prd.detailsurl}}" ng-click="seeBigImgBig(prd.detailsurl);">
+          </a>
+        </div>
+        <div class="imgListBox">
+          <ul>
+            <li class="box2" ng-repeat="img in imgList track by $index"  ng-mouseenter="del = true" ng-mouseleave="del = false" ng-init="del = false">
+              <div class="clearfix">
+                <span id="bigImg" class="toggle" ng-if="del">
+                  <a title="查看大图">
+                    <i class="icon ion-search big" ng-click="seeBigImg(img);"></i>
+                  </a>
+                </span>
+                <div class="addImg">
+                  <img ng-src="{{img}}"/>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="rightFloat">
+        <div style="margin-top: 1rem;">
+          <div class="text">
+            <p>产品信息</p>
+          </div>
+          <table class="table table-hover table1" style="border: none;">
+            <tr style="border: none;">
+              <td class="col-md-3"><span>项目编码：</span><span ng-bind="pr.prjtcode"></span></td>
+              <td class="col-md-3"><span>产品编码：</span><span ng-bind="prd.detailscode"></span></td>
+              <td class="col-md-3"><span>规格：</span><span ng-bind="prd.detailsspecifications"></span></td>
+              <td class="col-md-3"><span>区域：</span><span ng-bind="prd.regionname"></span></td>
+            </tr>
+            <tr>
+              <td class="col-md-3"><span>产品名称：</span><span ng-bind="prd.detailsname"></span></td>
+              <td class="col-md-3"><span>涂装类型：</span><span ng-bind="ot.coatingtype"></span></td>
+              <td class="col-md-3"><span>材质：</span><span ng-bind="prd.detailsframematerial + '&nbsp;' + prd.detailsplatematerial"></span></td>
+              <td class="col-md-3"><span>备注：</span><span ng-bind="prd.detailsmemo"></span></td>
+            </tr>
+          </table>
+        </div>
+        <div style="margin-top: 1rem;">
+          <div class="text">
+            <p>构成类别</p>
+          </div>
+          <span style="color:#333;padding-left: 10px;">
+              <!--<span class="nameClass">构成类别:</span>-->
+              <span ng-bind="prd.consName"></span>
+          </span>
+        </div>
+        <div style="margin-top: 1rem;">
+          <div class="text">
+            <p>工艺</p>
+          </div>
+          <div class="col-md-12" style="color:#333;">
+            <span class="col-md-6" ng-repeat="gongYi in gongYi" style="display: inline-block;padding:4px 20px;">
+              <span ng-bind="gongYi.name" style="display: inline-block;"></span> ：
+              <span ng-bind="gongYi.value"></span>
+            </span>
+            <span class="col-md-12" style="display: inline-block;padding-left: 100px;">
+              <span style="display: inline-block;width: 80px;margin-left: -80px;">制作要求：</span>
+              <input style="width:96%;height: 3rem;overflow-x: hidden;overflow-y: auto;background: #F5F5F5;border:none;" ng-disabled="true" type="text" class="text" ng-model="prd.productionrequirements" value="{{prd.productionrequirements}}"/>
+            </span>
+          </div>
+          <table class="table table-hover table2">
+          </table>
+        </div>
+        <div>
+          <div class="text">
+            <p>工序</p>
+          </div>
+          <span class="selectSpan col-md-4" ng-repeat="span in node" style="color:#333;padding:4px 10px;">
+            <span class="spanText" style="margin-left: 0;" ng-bind="span.name"></span> ：
+            <span ng-bind="span.time|date:'yyyy-MM-dd'"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="text">
+        <p>进度流程及起止时间</p>
+      </div>
+      <table class="table content_table_style table3">
+        <tr>
+          <td>
+             <span class="time col-md-3" ng-repeat="td in node">
+               <span class="spanText" ng-bind="td.name"></span>
+               <button ng-class="{disabled:disabledStart,unDisabled:unDisabledStart}" id="startBtn" ng-click="btnStartClick(this);" ng-disabled="td.startBtn" btn-style>开始</button>
+               <button ng-class="{disabled:disabledFinsh,unDisabled:unDisabledFinsh }" id="finshBtn" ng-click="btnFinshClick(this);" ng-disabled="td.finshBtn" btn-style>结束</button>
+             </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+</div>

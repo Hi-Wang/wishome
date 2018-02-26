@@ -1,0 +1,22 @@
+body{
+  background: #fff;
+  color: #D5D6E2;
+  font-weight: 500;
+  font-size: 1.05em;
+  font-family: "Microsoft YaHei","瀹嬩綋","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif, FreeSans, Arimo;
+}
+a{color: #fff;outline: none;text-decoration: none;}
+a:hover,a:focus{color:#74777b;text-decoration: none;}
+
+.content{
+  width: 100%;
+
+
+}
+.starability-container{
+  width: 350px;
+  margin:0 auto;
+  padding: 2em 0;
+  border-bottom: 1px solid #D5D6E2;
+}
+.center{text-align: center;}

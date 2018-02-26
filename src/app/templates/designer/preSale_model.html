@@ -1,0 +1,25 @@
+<div class="preSaleRoomModel">
+  <div class="backgroundDiv" ng-click="divHide();"></div>
+  <div class="modelTimeOut">
+    <div class="alertBox modal-content">
+      <div class="modal-header" ng-show="header" ng-init="header = false">
+        <i class="icon ion-information-circled" ng-show="circled" ng-init="circled = false"></i>
+        <i class="icon ion-plus-circled" ng-show="addRoomI" ng-init="addRoomI = false"></i>
+        <i class="icon ion-trash-a" ng-show="delRoomI" ng-init="delRoomI = false"></i>
+        <span style="font-size: 1.4rem;color:#333;font-weight: 600" ng-bind="headerText"></span>
+      </div>
+      <div class="modal-body" style="padding:10px 20px 20px 20px;color: #333;">
+        <input id="roomNewName" class="col-md-12" placeholder="请输入区域名称" ng-show="addRoomInput" ng-init="addRoomInput = true" ng-keyup="keyUp($event,this)"/>
+        <p class="error" ng-show="error" ng-init="error = false"><i class="icon ion-information-circled" style="font-size:1.4rem;color: #FE7C54;"></i><span ng-bind="errorText">jia</span></p>
+        <p ng-show="alertTextP" ng-init="alertTextP = false">{{alertText}}</p>
+        <span style="display: none">{{delDetailsId}}</span>
+      </div>
+      <div class="modal-footer" ng-show="footer" ng-init="footer = true">
+        <button ng-click="cancelAsk(this);" style="background:#ccc;">取消</button>
+        <button ng-click="determine(this);">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,77 @@
+<div class="project_all projectInto">
+  <div class="nav navbar-nav content_projectList_nav">
+    <div class="navbar-left content_projectList_nav_left">
+      <input placeholder="请输入关键字" type="text" class="form-control keyWords" ng-model="keyWords" ng-keyup="myKeyup($event);">
+      <span style="display: inline">
+          <select id="projectStatus" style="width: 140px;border-radius:4px;height:34px;padding-left: 10px;color:#333;">
+            <option ng-selected="true" style="color:#ccc;">所有项目状态</option>
+            <option>报价</option>
+            <option>下单</option>
+            <option>进度</option>
+            <option>交付</option>
+          </select>
+        </span>
+      <span class="input-group-btn">
+            <button type="button" class="btn btn-default btn-search-color" ng-click="searchClick(this);">搜索</button>
+        </span>
+    </div>
+  </div>
+  <!--table start-->
+  <div class="clearfix">
+    <table class="table table-hover  content_table_style" style="width: 90%;display: table;float: left;border-right: none">
+      <thead>
+      <tr>
+        <td>项目编码</td>
+        <td>项目名称</td>
+        <td>设计师</td>
+        <td>设计师之家</td>
+        <td>产品数量</td>
+        <td>金额</td>
+        <td>立项日期</td>
+        <td>状态</td>
+        <!--<td>操作</td>-->
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="data in tdList| pageFilter:pageCount:pageIndex">
+        <td ng-bind="data.prjtcode"></td>
+        <td ng-bind="data.prjtname"></td>
+        <td ng-bind="data.user.nickname"></td>
+        <td ng-bind="data.dept.deptName"></td>
+        <td ng-bind="data.prjtprodqty"></td>
+        <td ng-bind="data.prjtsum"></td>
+        <td ng-bind="data.prjtdate"></td>
+        <td ng-model="name" ng-bind="data.prjtstate"></td>
+        <!--<td>-->
+          <!--<span class="btn-edit-style"><a ng-click="editThis(this)">编辑</a></span>-->
+        <!--</td>-->
+      </tr>
+      </tbody>
+    </table>
+    <table class="table table-hover  content_table_style" style="width: 10%;display: table;float: right;border-left: none">
+      <thead>
+      <tr>
+        <td>详情</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="items in edit| pageFilter:pageCount:pageIndex">
+        <td><span class="btn-edit-style"><a ng-click="editThis(this);" ng-bind="items.editProject"></a></span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <!--table start-->
+  <!--温馨提示开始-->
+  <div class="promptBox">
+    <p>温馨提示：
+      <span ng-repeat="prompt in promptBox" style="color:#333;">
+          <span ng-bind="prompt.name" style="color:#333;"></span>
+          <span ng-bind="prompt.num" style="color:#333;"></span>
+        </span>
+    </p>
+  </div>
+  <!--温馨提示结束-->
+  <!--分页-->
+  <page class="pull-right" ng-show="page" ng-init="page = true"></page>
+</div>

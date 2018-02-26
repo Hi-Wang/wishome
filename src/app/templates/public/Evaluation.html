@@ -1,0 +1,155 @@
+<div class="Evaluation">
+  <p class="headerP" ng-show="trueShow">
+    项目评价
+  </p>
+  <p class="headerP" ng-show="!trueShow">
+    项目已评价
+  </p>
+  <section ng-show="trueShow">
+    <div class="col-md-8">
+      <div class="starability-container start1">
+        <form class="clearfix">
+          <fieldset class="starability-slot">
+            <p>客服态度(总分20)<span style="color:#f90;margin-right: 8px;">*</span>:</p>
+            <input type="radio" id="rate5-1" name="rating" value="20" />
+            <label for="rate5-1" title="20"></label>
+
+            <input type="radio" id="rate4-1" name="rating" value="15" />
+            <label for="rate4-1" title="15"></label>
+
+            <input type="radio" id="rate3-1" name="rating" value="10" />
+            <label for="rate3-1" title="10"></label>
+
+            <input type="radio" id="rate2-1" name="rating" value="5" />
+            <label for="rate2-1" title="5"></label>
+
+            <input type="radio" id="rate1-1" name="rating" value="0" />
+            <label for="rate1-1" title="0"></label>
+
+          </fieldset>
+          <span class="span" ng-bind="start1Text"></span>
+        </form>
+      </div>
+
+      <div class="starability-container start2">
+        <form class="clearfix">
+          <fieldset class="starability-slot clearfix">
+            <p>技术能力(总分20)<span style="color:#f90;margin-right: 8px;">*</span>:</p>
+            <input type="radio" id="rate5-2" name="rating" value="20" />
+            <label for="rate5-2" title="20"></label>
+
+            <input type="radio" id="rate4-2" name="rating" value="15" />
+            <label for="rate4-2" title="15"></label>
+
+            <input type="radio" id="rate3-2" name="rating" value="10" />
+            <label for="rate3-2" title="10"></label>
+
+            <input type="radio" id="rate2-2" name="rating" value="5" />
+            <label for="rate2-2" title="5"></label>
+
+            <input type="radio" id="rate1-2" name="rating" value="0" />
+            <label for="rate1-2" title="0"></label>
+          </fieldset>
+          <span class="span" ng-bind="start2Text"></span>
+        </form>
+      </div>
+
+      <div class="starability-container start3">
+        <form class="clearfix">
+          <fieldset class="starability-slot clearfix">
+            <p>准时交货(总分20)<span style="color:#f90;margin-right: 8px;">*</span>:</p>
+            <input type="radio" id="rate5-3" name="rating" value="20" />
+            <label for="rate5-3" title="20"></label>
+
+            <input type="radio" id="rate4-3" name="rating" value="15" />
+            <label for="rate4-3" title="15"></label>
+
+            <input type="radio" id="rate3-3" name="rating" value="10" />
+            <label for="rate3-3" title="10"></label>
+
+            <input type="radio" id="rate2-3" name="rating" value="5" />
+            <label for="rate2-3" title="5"></label>
+
+            <input type="radio" id="rate1-3" name="rating" value="0" />
+            <label for="rate1-3" title="0"></label>
+          </fieldset>
+          <span class="span" ng-bind="start3Text"></span>
+        </form>
+      </div>
+
+      <div class="starability-container start4">
+        <form class="clearfix">
+          <fieldset class="starability-slot clearfix">
+            <p>产品质量(总分20)<span style="color:#f90;margin-right: 8px;">*</span>:</p>
+            <input type="radio" id="rate5-4" name="rating" value="20" />
+            <label for="rate5-4" title="20"></label>
+
+            <input type="radio" id="rate4-4" name="rating" value="15" />
+            <label for="rate4-4" title="15"></label>
+
+            <input type="radio" id="rate3-4" name="rating" value="10" />
+            <label for="rate3-4" title="10"></label>
+
+            <input type="radio" id="rate2-4" name="rating" value="5" />
+            <label for="rate2-4" title="5"></label>
+
+            <input type="radio" id="rate1-4" name="rating" value="0" />
+            <label for="rate1-4" title="0"></label>
+          </fieldset>
+          <span class="span" ng-bind="start4Text"></span>
+        </form>
+      </div>
+
+      <div class="starability-container start5">
+        <form class="clearfix">
+          <fieldset class="starability-slot clearfix">
+            <p>送货安装(总分20)<span style="color:#f90;margin-right: 8px;">*</span>:</p>
+            <input type="radio" id="rate5-5" name="rating" value="20" />
+            <label for="rate5-5" title="20"></label>
+
+            <input type="radio" id="rate4-5" name="rating" value="15" />
+            <label for="rate4-5" title="15"></label>
+
+            <input type="radio" id="rate3-5" name="rating" value="10" />
+            <label for="rate3-5" title="10"></label>
+
+            <input type="radio" id="rate2-5" name="rating" value="5" />
+            <label for="rate2-5" title="5"></label>
+
+            <input type="radio" id="rate1-5" name="rating" value="0" />
+            <label for="rate1-5" title="0"></label>
+          </fieldset>
+          <span class="span" ng-bind="start5Text"></span>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-4 allStart">
+      <p>总评分：<span>{{items|startNumFilter}}</span></p>
+    </div>
+    <textarea class="textarea" placeholder="可添加备注..."></textarea>
+  </section>
+
+  <section ng-show="!trueShow">
+    <div class="col-md-8">
+      <ul>
+        <li ng-repeat="start in startStyle">
+          <span class="name" ng-bind="start.name"></span>
+          <img ng-src="{{start.img}}"/>
+          <span class="startText" ng-bind="start.text"></span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4 allStart">
+      <p>总评分：<span ng-bind="startAllNum">100</span></p>
+    </div>
+    <p class="col-md-12 Memo">
+      评价详情：
+      <textarea class="textarea" ng-bind="textarea" placeholder="您未填写评价详情..." readonly></textarea>
+    </p>
+  </section>
+
+  <footer ng-show="trueShow">
+    <p id="errorStartNum">* 为必选项，请选择</p>
+    <span ng-click="setStartNum(this);">提交评价</span>
+  </footer>
+</div>

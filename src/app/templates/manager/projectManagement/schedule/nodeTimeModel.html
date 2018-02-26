@@ -1,0 +1,26 @@
+
+<div class="excelModel">
+  <div class="fullDiv" ng-click="hide(this);"></div>
+  <div class="nodesContent">
+    <p class="nodeHeaderName">工序及结束时间：</p>
+    <p class="D_time">
+      <span style="display: none;" ng-bind="D_id"></span>
+      <span>产品预计完成时间：</span>&nbsp;&nbsp;
+      <input type="date" ng-value="successTime|date:'yyyy-MM-dd'" ng-model="successTime"/>
+    </p>
+    <div class="content1">
+
+      <ul>
+        <li class="col-md-6" ng-repeat="time in nodesTime">
+          <span ng-bind="time.name">name</span>
+          <input type="date" ng-value="time.time|date:'yyyy-MM-dd'" ng-model="time.time">
+        </li>
+      </ul>
+    </div>
+
+    <div class="content2">
+      <div class="col-md-6 goBtn"><a ng-href="{{excelSrc}}"><button type="button" class="btn btn-primary" ng-click="saveNodeTime(this);">保存</button></a></div>
+      <div class="col-md-6 removeBtn"><button type="button" class="btn" ng-click="hide(this);">取消</button></div>
+    </div>
+  </div>
+</div>

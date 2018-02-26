@@ -1,0 +1,77 @@
+<div class="project_all mProductionView">
+  <header>
+    <div class="leftFloat">
+      <p>
+        <i class="icon ion-stats-bars"></i>
+        <span>进度项目名称：</span>
+        <span ng-bind="prjtName.prjtname"></span>
+      </p>
+    </div>
+    <div class="rightFloat">
+      <button type="button" class="btn btn-primary" ng-click="back();">返回</button>
+    </div>
+  </header>
+  <big-img id="seeBigImgModel" ng-show="seeBigImgModel" ng-init="seeBigImgModel = false"></big-img>
+  <manager-alert ng-show="managerModel" ng-init="managerModel = false"></manager-alert>
+  <section>
+    <table class="table table-hover  content_table_style table-bordered">
+      <thead>
+      <tr>
+        <td colspan="7">项目产品清单</td>
+      </tr>
+      <tr>
+        <td ng-repeat="td in tableTd" ng-bind="td.name"></td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="data in tableList">
+        <td class="col-md-2">
+          <a title="查看大图" style="cursor: pointer">
+            <img ng-src="{{data.detailsurl}}"  ng-click="seeBigImg(data.detailsurl);"/>
+          </a>
+        </td>
+        <td class="col-md-2" style="border-left: none;border-right:none;padding:0;">
+          <table class="table table-hover table-bordered tdTable table-responsive">
+            <tr>
+              <td class="col-md-5">产品名称</td>
+              <td class="col-md-7"><span ng-bind="data.detailsname"></span></td>
+            </tr>
+            <tr>
+              <td class="col-md-5">产品编码</td>
+              <td class="col-md-7"><span ng-bind="data.detailscode"></span></td>
+            </tr>
+            <tr>
+              <td class="col-md-5">区域</td>
+              <td class="col-md-7"><span ng-bind="data.regionname"></span></td>
+            </tr>
+            <tr>
+              <td class="col-md-5">数量</td>
+              <td class="col-md-7"><span ng-bind="data.detailsnumber"></span></td>
+            </tr>
+          </table>
+        </td>
+        <td class="col-md-2" ng-bind="data.consName"></td>
+        <td class="col-md-2" style="border-left: none;border-right:none;padding:0;">
+          <table class="table table-hover table-bordered tdTable table-responsive">
+            <tr>
+              <td class="col-md-4">颜色</td>
+              <td class="col-md-8"><span ng-bind="data.colour"></span></td>
+            </tr>
+            <tr>
+              <td class="col-md-4">亮度/封闭度</td>
+              <td class="col-md-8"><span ng-bind="data.sealingdegree"></span></td>
+            </tr>
+          </table>
+        </td>
+        <td class="col-md-2" ng-bind="data.productionrequirements"></td>
+        <td class="col-md-1"><button type="button" class="btn btn-primary" ng-click="go_F_NoticesCtrl(this);">编辑</button></td>
+      </tr>
+      <tr>
+        <td collapse="6" ng-show="tdShow" ng-init="tdShow = false">暂无产品</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>
+

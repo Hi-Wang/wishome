@@ -1,0 +1,117 @@
+<div class="project_all contentCtrl preSale">
+  <pre-sale-model id="seeBigImgModel" ng-show="seeBigImgModel" ng-init="seeBigImgModel = false"></pre-sale-model>
+  <about-room ng-show="alertRoom" ng-init="alertRoom = false"></about-room>
+  <pre-sale-room-model ng-show="roomEditModel" ng-init="roomEditModel = false"></pre-sale-room-model>
+  <change-project-model ng-show="changeProject" ng-init="changeProject = false"></change-project-model>
+  <header class="clearfix" ng-click="footerShow = false">
+    <div class="left">
+      <p>
+        <i class="icon ion-ios-folder"></i>
+        项目名称：
+        <span ng-bind="PrjtList.prjtname"></span>
+        <span style="color: #0099CC;font-weight: 100;cursor: pointer;font-size: 1.2rem;" ng-click="changeProjectModelShow(this);">项目修改</span>
+      </p>
+    </div>
+    <div class="right">
+      <button ng-click="returnProjectList();">返回</button>
+    </div>
+  </header>
+  <section class="clearfix" ng-click="footerShow = false">
+    <div class="left">
+      <p style="position: absolute;z-index: 100;text-align: center;width: 100%;color: #00c2de;background: none;display: none" id="successTextP">删除成功！</p>
+      <p>
+        区域列表
+        <span ng-show="roomEdit" ng-init="roomEdit = true">
+          <a title="区域编辑" ng-click="roomEditClick(this);">
+            <i class="icon ion-navicon-round"></i>
+          </a>
+        </span>
+      </p>
+      <div class="list">
+        <ul>
+          <li class="roomNameLi" ng-repeat="data in region track by $index" ng-click="getRoom(this,$index);">{{data.regoinName}}</li>
+          <p ng-show="addRoomName" ng-init="addRoomName = false" style="text-align: center" ng-click="addNewRoom();">
+            <i class="icon ion-android-add-circle"></i>新增区域
+          </p>
+        </ul>
+      </div>
+    </div>
+    <div class="right">
+      <div class="col-md-12 top clearfix">
+        <div class="leftText">
+          区域产品列表
+        </div>
+        <div class="rightButtom">
+          <p ng-click="addNewProject(this);" ng-show="addDetails" ng-init="addDetails = true">新增产品</p>
+        </div>
+      </div>
+      <div class="detailsList">
+        <div style="text-align: center;color:#D9DEE4;padding-top: 1rem;" ng-show="noDetailsText" ng-init="noDetailsText = false;">
+          <p>您的项目还未添加区域，请先在右侧添加区域。</p>
+        </div>
+        <div style="text-align: center;color:#D9DEE4;padding-top: 1rem;" ng-show="Room_noDetailsText" ng-init="Room_noDetailsText = true;">
+          <p>该区域未添加任何产品。</p>
+        </div>
+        <ul ui-sortable="sortableOptions" ng-model="list2">
+          <li class="col-md-3"  ng-repeat="box in list2 track by $index">
+            <div>
+              <img ng-src="{{box.detailsurl}}"/>
+              <div class="backgroundSpan clearfix">
+                <a title="查看详情"><span class="seeBigModel" ng-click="seeBigImg(this,box.detailsurl);"></span></a>
+                <div class="editDetails" ng-mouseover="editShow = true" ng-mouseleave="editShow = false" ng-click="clickImg(this);">
+                  <i class="icon ion-edit"></i>
+                  <p class="editText" ng-show="editShow" ng-init="editShow = false">编辑</p>
+                </div>
+
+                <div class="delDetails" ng-mouseover="delShow = true" ng-mouseleave="delShow = false" ng-click="removeImgBox(this);">
+                  <i class="icon ion-trash-b"></i>
+                  <p class="editText" ng-show="delShow" ng-init="delShow = false">删除</p>
+                </div>
+
+                <div class="moveDetails" ng-mouseover="moveShow = true" ng-mouseleave="moveShow = false" ng-click="alert3()">
+                  <i class="icon ion-arrow-move"></i>
+                  <p class="moveText" ng-show="moveShow" ng-init="moveShow = false">可移动产品顺序</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="moreStyle" ng-if="footerShow" ng-init="footerShow = false">
+      <div class="top">
+        <p style="color:#42485B;border-color: #42485B;font-weight: 600;" >项目基本信息</p>
+      </div>
+      <div class="moreSection">
+        <p class="col-md-3">项目编码：<span ng-bind="PrjtList.prjtcode"></span></p>
+        <p class="col-md-3">立项日期：<span ng-bind="PrjtList.prjtdate"></span></p>
+        <p class="col-md-3">项目类型：<span ng-bind="PrjtList.prjtcate"></span></p>
+        <p class="col-md-3">户型：<span ng-bind="PrjtList.prjthstp"></span></p>
+        <p class="col-md-3">项目状态：<span ng-bind="PrjtList.prjtstate"></span></p>
+        <p class="col-md-3">产品数量：<span ng-bind="PrjtList.prjtprodqty"></span></p>
+        <p class="col-md-3">项目金额：<span ng-bind="PrjtList.prjtsum"></span></p>
+      </div>
+    </div>
+    <div class="clearfix">
+      <div class="col-md-10 left clearfix" ng-click="footerShow =! footerShow">
+        <div style="float: left">
+          <p>
+            <span ng-bind="PrjtList.prjtname" style="font-size: 1.6rem;font-weight: 600;margin-right: 1rem"></span>
+            <span style="font-size: 1.2rem;">/共<span ng-bind="PrjtList.prjtprodqty" style="margin: 0 0.6rem;color:#00c2de;"></span>件产品</span>
+          </p>
+        </div>
+        <div style="float: right">
+          <span>项目详情</span><i ng-class="{false:'icon ion-chevron-up',true:'icon ion-chevron-down'}[footerShow]" ng-init="footerShow = false"></i>
+        </div>
+      </div>
+      <div class="col-md-2 right" ng-click="goOutPutList(this);">
+        <p>立即询价</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+

@@ -1,0 +1,25 @@
+<div class="newS">
+  <ul>
+    <li class="newLi" ng-repeat="list in newList" ng-mouseover="delNew = true" ng-mouseleave="delNew = false" style="display: none">
+      <span class="icon" ng-show="delNew" ng-init="delNew = false" ng-click="hideNewLi(list,$index);">忽略</span>
+      <!--<i class="icon ion-close-round"></i>-->
+      <div class="content">
+        <div class="imgDiv">
+          <img ng-src="{{list.senderPicture}}"/>
+          <p style="width: 60px;background: none;color:#fff;position: absolute;bottom:-4px;left:10px;z-index: 1000;display: inline-block;text-align: center" ng-bind="list.senderName"></p>
+        </div>
+
+        <div class="textDiv">
+          <p class="header" ng-bind="list.title"></p>
+          <p class="text" ng-bind="list.body"></p>
+          <p class="timeDiv">
+            <span class="time col-md-8" ng-bind="list.sendDate"></span>
+            <span class="more col-md-4" ng-click="goOnlyOneView(this)">查看详情</span>
+          </p>
+        </div>
+      </div>
+      <!--<p class="header" ng-bind="list.newHeader">消息标题</p>-->
+
+    </li>
+  </ul>
+</div>

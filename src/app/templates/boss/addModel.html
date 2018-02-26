@@ -1,0 +1,66 @@
+<div class="bossAddManagerModel">
+  <div class="backgroundDiv" ng-click="hide(this)"></div>
+  <div class="modelTimeOut">
+    <div class="alertBox modal-content">
+      <div class="modal-header">
+        <p ng-bind="modelName"></p>
+        <!--<p>新增项目经理</p>-->
+      </div>
+      <!--<form novalidate="novalidate" ng-submit="submit(fm)" name="fm">-->
+        <div class="modal-body">
+          <!--<div class="imgBox">-->
+            <!--<input id="modelFile" type="file" load-file multiple>-->
+            <!--<i class="icon ion-upload" ng-show="upDataIcon" ng-init="upDataIcon = true"></i>-->
+            <!--<img ng-src="{{ImgUrl}}"/>-->
+          <!--</div>-->
+          <div class="inputBox">
+            <ul>
+              <li>
+                <span>用户名</span>
+                <input id="name" ng-required = "true" placeholder="6到16位（字母，数字，下划线，减号）"/>
+                <i class="icon ion-checkmark-circled" style="color:#09BB07" ng-show="nameIconT" ng-init="nameIconT = false"></i>
+                <i class="icon ion-information-circled" ng-show="nameIconF" ng-init="nameIconF = false"></i>
+              </li>
+              <!--<li ng-show="inputDesignerHomeName" ng-init="inputDesignerHomeName = false">-->
+                <!--<label>名称</label><input ng-model="deptName" ng-required = "true" placeholder="{{Input.username}}" show-error/>-->
+              <!--</li>-->
+              <li>
+                <span>密码</span>
+                <input id="psd" type="password" ng-required = "true" placeholder="请输入6-12位密码" ng-minlength="6" ng-maxlength="12"/>
+                <i class="icon ion-checkmark-circled" style="color:#09BB07" ng-show="psdIconT" ng-init="psdIconT = false"></i>
+                <i class="icon ion-information-circled" ng-show="psdIconF" ng-init="psdIconF = false"></i>
+              </li>
+              <li>
+                <span>确认密码</span>
+                <input id="surePsd" type="password" ng-required = "true" placeholder="请确认密码" ng-maxlength="12" ng-minlength="6"/>
+                <i class="icon ion-checkmark-circled" style="color:#09BB07" ng-show="psdIconT" ng-init="psdIconT = false"></i>
+                <i class="icon ion-information-circled" ng-show="psdIconF" ng-init="psdIconF = false"></i>
+              </li>
+              <li ng-show="error" ng-init="error = false">
+                <i class="icon ion-information-circled"></i>
+                <p ng-bind="errorText">提示：</p>
+              </li>
+              <!--<li>-->
+                <!--<label>姓名</label><input ng-model="managerName" ng-required = "true" placeholder="{{Input.nickname}}" show-error/>-->
+              <!--</li>-->
+              <!--<li>-->
+                <!--<label>联系方式</label><input ng-model="managerPhone" type="tel" ng-required = "true" placeholder="{{Input.phoneNumber}}" show-error="number"/>-->
+              <!--</li>-->
+              <!--<li>-->
+                <!--<label>邮箱</label><input ng-model="managerEmail" placeholder="{{Input.email}}" show-error />-->
+              <!--</li>-->
+              <!--<li>-->
+                <!--<label>地址</label><input ng-model="managerAddress" placeholder="{{Input.address}}" show-error />-->
+              <!--</li>-->
+            </ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button style="background: #ccc;" ng-click="hide(this)">取消</button>
+          <button ng-click="saveAddModel(this);">确定</button>
+          <!--<input type="submit" value="确定" class="btn btn-primary" ng-click="saveAddManager(this);">-->
+        </div>
+      <!--</form>-->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="excelModel">
+  <div class="fullDiv" ng-click="removeExcelModel(this);"></div>
+  <div class="excelContent">
+    <div class="content1" id="content1">
+      <div class="col-md-6 excelDiv">
+        <label><input value="a" ng-model="exportExcel" type="radio" name="excel" style="margin-right: 10px;" ng-checked="true"/>版本1</label>
+        <div class="imgDiv" style="width: 360px;height:400px;background: #f5f5f5;margin-left: 4px;display: table-cell;text-align: center;padding:8px; ">
+          <img src="../images/projectList/excel1.jpg" style="width: auto;height: auto;max-width: 100%;max-height: 100%;"/>
+        </div>
+      </div>
+      <div class="col-md-6 excelDiv"><label>
+        <input value="b" ng-model="exportExcel" type="radio" name="excel" style="margin-right: 10px;"/>版本2</label>
+        <div class="imgDiv" style="">
+          <img src="../images/projectList/excel2.jpg" style="width: auto;height: auto;max-width: 100%;max-height: 100%;"/>
+        </div>
+      </div>
+    </div>
+    <div class="content2">
+      <div class="col-md-6 goBtn"><a ng-href="{{excelSrc}}"><button type="button" class="btn btn-primary" ng-click="getExcel(this);">导出Excel</button></a></div>
+      <div class="col-md-6 removeBtn"><button type="button" class="btn" ng-click="hide(this);">取消</button></div>
+    </div>
+  </div>
+</div>

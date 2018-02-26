@@ -1,0 +1,38 @@
+<div class="richText">
+  <div class="fullDiv" ng-click="editImgModelHide();"></div>
+  <div class="editDiv">
+    <div class="select">
+      <!--<span>-->
+        <!--<i class="icon ion-edit"></i>-->
+      <!--</span>-->
+      <ul class="clearfix">
+        <li ng-show="liIconStyle1" ng-init="liIconStyle1 = false">
+          <i class="iconfont icon-ai37" ng-click="drawArrows(this);" ng-mouseover="p1 = true" ng-mouseleave="p1 = false" ng-init="p1 = false"></i>
+          <p ng-show="p1">绘制箭头</p>
+        </li>
+        <li ng-show="!liIconStyle1">
+          <i class="iconfont icon-ai37 active" ng-click="noDrawArrows(this);" ng-mouseover="p1 = true" ng-mouseleave="p1 = false"></i>
+          <p ng-show="p1">取消绘制</p>
+        </li>
+
+        <li ng-show="liIconStyle2" ng-init="liIconStyle2 = false">
+          <i class="iconfont icon-wenzi" ng-click="drawText(this);" ng-mouseover="p2 = true" ng-mouseleave="p2 = false"></i>
+          <p ng-show="p2">添加文字</p>
+        </li>
+        <li ng-show="!liIconStyle2">
+          <i class="iconfont icon-wenzi active" ng-click="noDrawText(this);" ng-mouseover="p2 = true" ng-mouseleave="p2 = false" ng-init="p2 = false"></i>
+          <p ng-show="p2">取消添加</p>
+        </li>
+        <!--<li><i ng-class="{true: '',false:''}[liIconStyle2]"></i></li>-->
+      </ul>
+    </div>
+    <canvas width="600" height="400" id="myCanvas" class="drawArrow"></canvas>
+
+    <div class="button col-md-12">
+      <!--<button class="btn btn-primary" id="editSave">确认剪裁</button>-->
+      <button ng-click="onSaveChangeImg(resImageDataURI,this);">保存</button>
+      <!--<button class="btn btn-primary">清除</button>-->
+      <button ng-click="editImgCancel(this);">取消</button>
+    </div>
+  </div>
+</div>

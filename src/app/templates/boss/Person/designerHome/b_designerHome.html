@@ -1,0 +1,65 @@
+<div class="project_all bProjectManager b_designerHome bossBackground">
+<boss-alert-model ng-show="bossAlert" ng-init="bossAlert = false"></boss-alert-model>
+<boss-add-alert-model ng-show="addDesignerHomeModel" ng-init="addDesignerHomeModel = false"></boss-add-alert-model>
+<header>
+  <div class="clearfix">
+    <div class="leftFloat">
+      <ul>
+        <li> <input placeholder="请输入关键字" type="text" class="form-control keyWords" ng-model="keyWords"></li>
+        <li><button type="button" class="btn btn-default btn-search-color" ng-click="Inquire(this);">搜索</button></li>
+      </ul>
+    </div>
+    <div class="rightFloat">
+      <div>
+        <button type="button" class="btn btn-default btn-search-color" ng-click="addDesignerHome(this);">添加</button>
+      </div>
+    </div>
+  </div>
+</header>
+<section>
+  <div class="managerDiv clearfix">
+    <ul class="row clearfix ulBox">
+      <li class="clearfix active" ng-repeat="data in designerHome">
+        <div class="b_managerLeftBox">
+          <div>
+            <!--<img src="../images/projectList/lalala.jpg"/>-->
+            <img ng-src="{{data.url}}"/>
+            <p ng-bind="data.username"></p>
+          </div>
+        </div>
+        <div class="b_managerRightBox" ng-show="d_homeRightBox" ng-init="d_homeRightBox = true">
+           <span class="delBtn" ng-click="delDesignerHome(this);">
+              <i class="icon ion-ios-close-outline" style="font-size: 3rem;color:#00c2de"></i>
+            </span>
+          <div class="b_managerIdBox">
+            <h4 ng-bind="data.deptName"></h4>
+            <br>
+            <br>
+            <!--<p>电话：<span ng-bind="data.phoneNumber"></span></p>-->
+          </div>
+          <div class="b_managerListBox">
+              <span class="col-md-6" ng-click="b_seeDesignerList(this);">
+                <i class="icon ion-ios-people-outline liIcon"></i><br/>
+                <span>设计师</span>
+              </span>
+            <span class="col-md-6" style="border-left: 1px solid #ccc;" ng-click="d_bossSeeManager(this,$index);">
+                <i class="icon ion-ios-person-outline liIcon"></i><br/>
+                <span>项目经理</span>
+              </span>
+          </div>
+        </div>
+        <div class="b_managerRightBox homeRightBox seeManagerDiv" style="text-align: center;display: none">
+          <i class="icon ion-close-circled" ng-click="d_bossHide(this,$index);"></i>
+          <div>
+            <!--<img ng-src="../images/projectList/addImg.fw.png" style="width: 100px;height:100px;line-height: 100px;border-radius:100px;border:2px solid #00c2de"/><br>-->
+            <img ng-src="{{d_Manager.personalpicture}}" style="width: 100px;height:100px;line-height: 100px;border-radius:100px;border:2px solid #00c2de"/><br>
+            <p ng-bind="d_Manager.nickname"></p>
+            <p>项目经理</p>
+            <p style="color:#00c2de;cursor: pointer" ng-click="addHome(this);">修改</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+</div>

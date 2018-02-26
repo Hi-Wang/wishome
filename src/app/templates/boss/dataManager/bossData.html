@@ -1,0 +1,38 @@
+<div class="dataView">
+  <header class="clearfix">
+    <div class="left">
+      <i class="icon ion-pie-graph"></i><p>数据管理--<span ng-bind="GongYi"></span><span ng-bind="tdName"></span></p>
+    </div>
+    <div class="right">
+      <button ng-click="goBack(this);" ng-show="backBtn" ng-init="backBtn = false">返回</button>
+      <button ng-click="showDataModel(this);">新增</button>
+    </div>
+  </header>
+  <table class="col-md-12">
+    <thead >
+    <tr style="text-align: center">
+      <td ng-bind="tdName" class="col-md-8" style="border-right: 4px solid #fff"></td>
+      <td class="col-md-4">操作</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="data in dataList">
+      <td class="col-md-8" style="position: relative;">
+        <span class="col-md-6" ng-bind="data.name" style="color: #00c2de;"></span>
+        <span ng-show="startEndTime" class="col-md-3" style="text-align: left"> 开始提前期：<span ng-bind="data.st" style="color: #00c2de;"></span>&nbsp;/天</span>
+        <span ng-show="startEndTime" class="col-md-3" style="text-align: left">结束提前期：<span ng-bind="data.end" style="color: #00c2de;"></span>&nbsp;/天</span>
+        <span ng-show="changName" ng-init="changeName = false" style="position: absolute;top:50%;margin-top:-1.1rem;z-index: 1000;margin-left: 1rem">
+          <input placeholder="修改主材名称" ng-value="data.name" class="changeDataName"/>
+          <button ng-click="saveDataName(this,$index);" style="margin-left: 1rem;">保存</button>
+          <button ng-click="cancelDataName(this)">取消</button>
+        </span>
+      </td>
+      <td class="col-md-4" style="text-align: left;padding-left: 40px;">
+        <button ng-click="delData(this,$index);" style="background: #ccc;">删除</button>
+        <button ng-click="changeDataName(this)">修改</button>
+        <button ng-show="data.gongYiEdit" ng-click="goGongYiData(data)">编辑内容</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

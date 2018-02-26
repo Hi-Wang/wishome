@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点评2</title>
+  <link rel="stylesheet" href="dianping.css">
+
+</head>
+<body>
+<div class='score'>
+  <div class='score-expression'> </div>
+  <div class='score-praise'> </div>
+  <div class='score-heart'> </div>
+  <div class='score-star'> </div>
+  <div class='score-medal'> </div>
+  <div class='score-water'> </div>
+  <div class='score-crown'> </div>
+  <div class='score-flower'> </div>
+</div>
+<div class='result'>
+  <button>提交</button>
+  <div class='result-score'></div>
+</div>
+<script src="../点评/jquery-1.8.3.js" type="text/javascript"></script>
+<script type="text/javascript" src="dianping.js"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $('.score').score();
+    $('.result button').on('click',function(){
+      var _form_ = true ,
+        scoreArr = [] ,
+        eachEle = $('.score').children('[class^="score-"]');
+      eachEle.each(function(index, el) {
+        var l = $(el).children().attr('active-level');
+        if(!l) _form_ = false;
+        scoreArr.push(l);
+      });
+
+      if(_form_){
+        var count = scoreArr.reduce(function(p,c){ return p + parseInt(c); },0);
+        $('.result-score').html('综合得分：'+(count/scoreArr.length).toFixed(2));
+      }
+    })
+  });
+</script>
+
+</body>
+</html>

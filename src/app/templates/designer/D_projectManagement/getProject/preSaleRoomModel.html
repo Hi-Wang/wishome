@@ -1,0 +1,85 @@
+<div class="preSaleRoomModel roomEditModel">
+  <div class="backgroundDiv" ng-click="editModel();"></div>
+  <div class="modelTimeOut">
+    <div class="alertBox modal-content">
+      <div class="model_model" id="model_model" style="display: none;background: none;">
+        <div class="model_model" ng-click="hideModel_model();"></div>
+        <div class="model_model_content">
+          <div class="model_model_header" ng-show="model_model_header" ng-init="model_model_header = true">
+            <p>
+              <i class="icon ion-information-circled"></i>
+              <span>提示</span>
+            </p>
+          </div>
+          <div class="model_model_div">
+            <p ng-bind="showDelRoomText"></p>
+            <span style="display: none;">{{size}}</span>
+            <span style="display: none;">{{delRoomNameHide}}</span>
+            <p style="color:#ccc;margin: 0;" ng-bind="showDelRoomSize" ng-show="roomSize" ng-init="roomSize = false">文字</p>
+          </div>
+          <div class="model_model_footer">
+            <button ng-click="hideModel_model();" style="background: #ccc;">取消</button>
+            <button ng-click="delRoomSave(this)">确定</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-header">
+        <p class="alertText" id="successAlertText" style="display: none" ng-bind="modelAlertText">删除成功!</p>
+        <i class="icon ion-information-circled" ng-show="circled" ng-init="circled = true"></i>
+        <span style="font-size: 1.4rem;color:#333;font-weight: 600" >区域编辑</span>
+
+      </div>
+      <div class="modal-body" style="padding:10px 20px 20px 20px;color: #333;">
+        <ul class="col-md-12" ui-sortable="nav" ng-model="region">
+          <li ng-repeat="data in region track by $index">
+            <div class="col-md-10 first">
+              <span class="oldRoomName">{{data.regoinName}}</span>
+              <i class="icon ion-edit showChangeNameIcon" ng-show="changeIcon" ng-init="changeIcon = true" ng-mouseover="changeText = true" ng-mouseleave="changeText = false" ng-click="showChangeInput(this);"></i>
+              <span class="changeTextFirst" ng-show="changeText" ng-init="changeText = false">编辑</span>
+              <span class="changeName" ng-show="changeName" ng-init="changeName = false">
+                <input class="changeRoomInput" placeholder="修改区域名称" ng-value="data.regoinName"/>
+                <span class="changeRoomNameBtn" ng-click="changeRoomNameSave(this,$index);">保存</span>
+                <span class="changeRoomNameBtn" ng-click="hideChangeInput(this);">取消</span>
+              </span>
+            </div>
+            <div class="col-md-1" style="text-align: left;">
+              <i class="icon ion-close" ng-mouseover="delBtn = true" ng-mouseleave="delBtn = false" ng-click="delRoomBtnClick(this);"></i>
+              <span class="changeText" style="min-width: 3.6rem;text-align: center;" ng-show="delBtn" ng-init="delBtn = false">删除</span>
+            </div>
+            <div class="col-md-1" style="text-align: left;cursor: move">
+              <i class="icon ion-arrow-move" style="cursor: move;" ng-mouseover="moveBtn = true" ng-mouseleave="moveBtn = false"></i>
+              <span class="changeText" style="min-width: 3.6rem;left: 0;text-align: center;" ng-show="moveBtn" ng-init="moveBtn = false">移动</span>
+            </div>
+          </li>
+          <li style="margin-top: 1rem;color:#00c2de;border: none;" ng-show="addRoomNameBtn" ng-init="addRoomNameBtn = true">
+            <div class="first">
+              <span class="addBtn" ng-click="showAddNewRoomTr(this);">
+                <i class="icon ion-plus-round"></i>新增区域
+              </span>
+            </div>
+          </li>
+          <li style="margin-top: 1rem;border-bottom: none;" ng-show="addNewRoomTr" ng-init="addNewRoomTr = false">
+            <div class="first">
+              <p>
+                <span style="color:#00c2de;">新增区域：</span>
+                <input placeholder="输入新增区域名称" id="newRoomNameModel" ng-keyup="modelKeyUp($event,this)"/>
+                <span class="changeRoomNameBtn" ng-click="addNewRoomSave(this);">保存</span>
+                <span class="changeRoomNameBtn" ng-click="hideAddRoomNameTr(this);">取消</span>
+                <span style="display: block;color:#F90;margin-top: 1rem;" ng-show="errorEditModel" ng-init="errorEditModel = false">
+                  <i style="color:#F90;font-size: 1.4rem;" class="icon ion-information-circled"></i>
+                  <span ng-bind="errorEditModelText"></span>
+                </span>
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer" ng-show="footer" ng-init="footer = true">
+        <button ng-click="cancelEditModel(this);">关闭</button>
+        <!--<button ng-click="determine(this);">确定</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+

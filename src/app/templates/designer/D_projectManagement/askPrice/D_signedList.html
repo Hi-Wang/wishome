@@ -1,0 +1,98 @@
+<div class="project_all signedList">
+  <div class="content" id="signedListPrint">
+    <header>
+      <div class="clearfix">
+        <div class="leftFloat">
+          <ul>
+            <li>
+              <i class="icon ion-clipboard"></i>
+              <span>项目名称：</span>
+              <span ng-bind="PrjtList.prjtname"></span>
+            </li>
+            <li><button type="button" ng-click="showExcelModel();">导出EXCEL</button></li>
+            <!--<li><button type="button" ng-click="pointer();">打印</button></li>-->
+          </ul>
+        </div>
+        <div class="rightFloat">
+          <div>
+            <button type="button" ng-click="signedListBack();">返回</button>
+          </div>
+        </div>
+      </div>
+      <div class="backgroundStyle">
+        <table class="content_table_style table1">
+          <tr>
+            <td class="col-md-2" style="padding-left: 10px;">项目编码：<span ng-bind="PrjtList.prjtcode">111</span></td>
+            <td class="col-md-2">立项日期：<span ng-bind="PrjtList.prjtdate">111</span></td>
+            <td class="col-md-2">项目类型：<span ng-bind="PrjtList.prjtcate">111</span></td>
+            <td class="col-md-2">户型：<span ng-bind="PrjtList.prjthstp">11</span></td>
+            <td class="col-md-2">状态：<span ng-bind="PrjtList.prjtstate">111</span></td>
+            <td class="col-md-2">产品数量：<span ng-bind="PrjtList.prjtprodqty">111</span></td>
+          </tr>
+          <tr>
+            <td class="col-md-2" style="padding-left: 10px;" ng-init="cloth = true">是否包含面料：<span ng-bind="list.inquiryfabricaccessories"></span></td>
+            <td class="col-md-2" ng-show="cloth">布艺均价：<span ng-bind="list.inquiryaveragecloth"></span></td>
+            <td class="col-md-2" ng-show="cloth">皮均价：<span ng-bind="list.inquiryaverageleather"></span></td>
+            <td class="col-md-2" colspan="3">配件品牌：<span ng-bind="list.inquiryaccessoriesbrand"></span></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 10px;" ng-init="invoice = true">是否需要发票：<span ng-bind="list.inquiryinvoice"></span></td>
+            <!--<td ng-show="invoice" colspan="2">发票抬头：<span ng-bind="list.inquiryother"></span></td>-->
+            <td ng-init="address = true">是否送货安装：<span ng-bind="list.inquirydeliveryinstallation"></span></td>
+            <td colspan="3" ng-show="address">详细地址：<span ng-bind="list.inquirydetailedaddress"></span></td>
+          </tr>
+        </table>
+      </div>
+    </header>
+    <!--<ask-price ng-show="askShow" ng-init="askShow = false"></ask-price>-->
+    <excel-model id="excelModelShow" style="display: none"></excel-model>
+    <big-img id="seeBigImgModel" ng-show="seeBigImgModel" ng-init="seeBigImgModel = false"></big-img>
+    <section>
+      <table class="table table-hover  content_table_style table-bordered">
+        <thead>
+        <tr>
+          <td>区域</td>
+          <td>样式参考</td>
+          <td>产品名称</td>
+          <td>详细信息</td>
+          <td>数量</td>
+          <td>单位</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat=" item in PrjtDetailsList">
+          <td>{{item.regionname}}</td>
+          <td>
+            <a title="查看大图" style="cursor: pointer">
+              <img width="140" height="140" ng-src="{{item.detailsurl}}" ng-click="seeBigImg(item.detailsurl);"/>
+            </a>
+          </td>
+          <td>{{item.detailsname}}</td>
+          <td style="border-left: none;border-right:none;padding:0;">
+            <table class="table table-hover table-bordered tdTable table-responsive">
+              <tr>
+                <td class="col-md-5">产品编码</td>
+                <td class="col-md-7">{{item.detailscode}}</td>
+              </tr>
+              <tr>
+                <td class="col-md-5">规格</td>
+                <td class="col-md-7">{{item.detailsspecifications}}</td>
+              </tr>
+              <tr>
+                <td class="col-md-5">材质</td>
+                <td class="col-md-7">{{item.detailsframematerial + '、' + item.detailsplatematerial}}</td>
+              </tr>
+              <tr>
+                <td class="col-md-5">备注</td>
+                <td class="col-md-7">{{item.detailsmemo}}</td>
+              </tr>
+            </table>
+          </td>
+          <td>{{item.detailsnumber}}</td>
+          <td>件</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>

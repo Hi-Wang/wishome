@@ -1,0 +1,20 @@
+<div>
+  <div class="backgroundDiv" ng-click="cancelAsk();"></div>
+  <div class="modelTimeOut">
+    <div class="alertBox modal-content">
+      <div class="modal-header" style="color:#333;">
+        <i class="icon ion-information-circled" style="font-size: 1.4rem;color:#00c2de;margin-right: 1rem;"></i><p style="display:inline-block;font-size: 1.6rem;font-weight: 600">{{headerTitle}}</p>
+      </div>
+      <div class="modal-body" style="padding:1rem 2rem;color: #333;">
+        <p ng-show="alertTextP" ng-init="alertTextP = true">{{alertText}}</p>
+        <p style="display: none">{{hideName}}</p>
+      </div>
+      <div class="modal-footer" ng-show="footer" ng-init="footer === true">
+        <button class="btn btn-primary" ng-click="goAjax(this);">确定</button>
+        <button class="btn btn-primary" ng-click="cancelAsk();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

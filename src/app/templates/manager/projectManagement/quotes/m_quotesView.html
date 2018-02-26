@@ -1,0 +1,237 @@
+<div class="project_all mQuotesView">
+  <quotes-alert ng-show="M_alertModel" ng-init="M_alertModel = false"></quotes-alert>
+  <big-img id="seeBigImgModel" ng-show="seeBigImgModel" ng-init="seeBigImgModel = false"></big-img>
+  <header ng-click="topShow = false">
+    <div class="clearfix button">
+      <p style="position: absolute;z-index: 20000;text-align: center;display: inline-block;width: 100%;font-weight: 900;font-size: 1.4rem;color:#00c2de;">
+        <span ng-show="successTextShow" ng-init="successTextShow = false" ng-bind="successText"></span>
+      </p>
+      <div class="leftFloat">
+        <i class="icon ion-calculator"></i>
+        <span>报价项目:</span><span ng-bind="prjtList.prjtname"></span>
+        <!--<button type="button" ng-click="m_carryOut(data);">报价完成</button>-->
+      </div>
+      <div class="rightFloat">
+        <div>
+          <button type="button" ng-click="m_upData(data);">更新</button>
+          <button type="button" class="btn btn-primaryCCC" ng-click="m_quotesViewBack();">返回</button>
+        </div>
+      </div>
+    </div>
+    <div class="backgroundStyle">
+      <div class="top">
+        <p>项目基本信息</p>
+      </div>
+      <table class="content_table_style table1">
+        <tr>
+          <td class="col-md-2" style="padding-left: 10px;">项目编码：<span ng-bind="prjtList.prjtcode"></span></td>
+          <td class="col-md-2">立项日期：<span ng-bind="prjtList.prjtdate"></span></td>
+          <td class="col-md-2">项目类型：<span ng-bind="prjtList.prjtcate"></span></td>
+          <td class="col-md-2">户型：<span ng-bind="prjtList.prjthstp"></span></td>
+          <td class="col-md-2">状态：<span ng-bind="prjtList.prjtstate"></span></td>
+          <td class="col-md-2">产品数量：<span ng-bind="prjtList.prjtprodqty"></span></td>
+        </tr>
+        <tr>
+          <td style="padding-left: 10px;" ng-init="cloth = true">是否包含面料：<span ng-bind="InquiryTableList.inquiryfabricaccessories"></span></td>
+          <td ng-show="cloth">布艺均价：<span ng-bind="InquiryTableList.inquiryaveragecloth" ng-model="clothValue" id="cloth"></span></td>
+          <td ng-show="cloth">皮均价：<span ng-bind="InquiryTableList.inquiryaverageleather" ng-model="skinValue"></span></td>
+          <td colspan="3">配件品牌：<span ng-bind="InquiryTableList.inquiryaccessoriesbrand"></span></td>
+        </tr>
+        <tr>
+          <td style="padding-left: 10px;" ng-init="invoice = true">是否需要发票：<span ng-bind="InquiryTableList.inquiryinvoice"></span></td>
+          <td ng-init="address = true">是否送货安装：<span ng-bind="InquiryTableList.inquirydeliveryinstallation"></span></td>
+          <td colspan="3" ng-show="address">详细地址：<span ng-bind="InquiryTableList.inquirydetailedaddress"></span></td>
+          <td style="opacity: 0">
+            <span id="totalproduct1" ng-model="OfferTableList.totalproduct">{{TotalProduct|totalFilter}}</span>
+          </td>
+          <td style="opacity:0;">
+            <span id="total1" ng-model="OfferTableList.total">{{(TotalProduct|totalFilter) + OfferTableList.designcost + OfferTableList.transportationcost + OfferTableList.installationcost + OfferTableList.otherexpenses + OfferTableList.tax}}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </header>
+
+  <!--table start-->
+  <div class="managerTable" ng-click="topShow = false">
+    <div class="top">
+      <p>产品报价信息</p>
+    </div>
+    <table class="table table-hover  content_table_style table-bordered" style="margin-top: 1rem;margin-bottom: 1rem;">
+      <thead>
+      <tr>
+        <td>区域</td>
+        <td>样式参考</td>
+        <td>产品名称</td>
+        <td>详细信息</td>
+        <td>用料详情</td>
+        <td>产品单价</td>
+        <td>数量</td>
+        <td>金额</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="data in PrjtDetailsList">
+        <td class="col-md-1" style="vertical-align: middle">{{data.regionname}}</td>
+        <td class="col-md-2">
+          <a title="查看大图" style="cursor: pointer">
+            <img ng-src="{{data.detailsurl}}" style="width: 140px;height:140px;vertical-align: middle" ng-click="seeBigImg(data.detailsurl);"/>
+          </a>
+        </td>
+        <td class="col-md-1">{{data.detailsname}}</td>
+        <!--详细信息-->
+        <td class="col-md-2 tdBorder">
+          <table class="table table-hover table-bordered table-responsive tdTable">
+            <tr>
+              <td class="col-md-4">产品编码</td>
+              <td class="col-md-8">{{data.detailscode}}</td>
+            </tr>
+            <tr>
+              <td class="col-md-4">规格</td>
+              <td class="col-md-8">{{data.detailsspecifications}}</td>
+            </tr>
+            <tr>
+              <td class="col-md-4">材质</td>
+              <td class="col-md-8">{{data.detailsframematerial + &nbsp; + data.detailsplatematerial}}</td>
+            </tr>
+            <tr>
+              <td class="col-md-4">备注</td>
+              <td class="col-md-8">{{data.detailsmemo}}</td>
+            </tr>
+          </table>
+        </td>
+        <!--用料详情-->
+        <td class="col-md-3 tdBorder">
+          <table class="table table-bordered table-responsive table-hover tdTable">
+            <tr>
+              <td>
+                <table class="table table-bordered table-responsive table-hover tdTable" style="border: none">
+                  <tr ng-repeat="a in data.details">
+                    <td class="col-md-6">
+                      <span class="col-md-5" contenteditable="{{a.editable}}" change-name ng-model="a.name">{{a.name}}</span>
+                      <span class="col-md-5"><input type="number" min="0" ng-model="a.num" style="border:none;max-width: 60px;" onkeyup="if(this.value.length===1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/></span>
+                      <span class="col-md-2" contenteditable="{{a.editable}}" change-name ng-model="a.unit" >{{a.unit}}</span>
+                    </td>
+                    <td class="col-md-6" rowspan="{{a.row}}" ng-show="a.rowShow">
+                      <span ng-show="a.rowSpan1">
+                        <span class="col-md-6" contenteditable="{{a.editable}}" change-name ng-model="a.otherName">{{a.otherName}}</span>
+                        <span class="col-md-6"><input ng-show="a.input" type="number" min="0" ng-model="a.otherNum" style="border:none;max-width: 55px;" onkeyup="if(this.value.length===1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/></span>
+                      </span>
+                      <span ng-show="a.rowSpan2">
+                        <textarea placeholder="其他金额备注" style="width:100%;height: 100%;word-wrap:break-word;resize: none;padding: 10px;border:none" ng-model="a.amountMemo"></textarea>
+                      </span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <!--用料价格-->
+        <td class="col-md-1 tdBorder">
+          <table class="table table-bordered table-responsive table-hover tdTable">
+            <tr>
+              <td ng-model="data.productUnitPrice">{{data|prjtFilter}}</td>
+            </tr>
+          </table>
+        </td>
+        <td class="col-md-1" ng-model="detailsnumber">{{data.detailsnumber}}</td>
+        <td class="col-md-1">&yen;&nbsp;<span ng-model="money">{{data|sumFilter}}</span></td>
+      </tr>
+      </tbody>
+    </table>
+    <!--通用报价信息--结束-->
+  </div>
+  <!--tableList end-->
+  <div class="footer">
+    <div id="more" class="moreStyle" ng-if="topShow" ng-init="topShow = false">
+      <div style="background: #f5f5f5;text-align: center;font-weight: 600;color:#333;font-size: 1.4rem;padding:4px 0;margin-bottom: 10px;">
+        通用报价信息
+      </div>
+      <div>
+        <p class="footerText">涂装类型及品牌</p>
+        <p class="col-md-12 footerRow">
+          <span class="col-md-6 footerTd">
+            <span>涂装类型：</span>
+            <input placeholder="请输入涂装类型名称" ng-model="OfferTableList.coatingtype" ng-focus="myFocus(this);" />
+          </span>
+          <span class="col-md-6 footerTd">
+            <span>涂装品牌：</span>
+            <select id="coatingmaterialbrand" ng-model="coatingname"  ng-options="x.coatingname for x in list">
+              <!--<option ng-repeat="data in list" ng-bind="data.coatingname"></option>-->
+            </select>
+          </span>
+          <span class="col-md-6 footerTd" style="margin-top: 10px;">
+             <span>胶水品牌：</span>
+            <select id="gluebrand" ng-model="GlueBrand" ng-options="x.gluename for x in GlueBrandlist">
+              <!--<option ng-repeat="data in GlueBrandlist" ng-bind="data.gluename"></option>-->
+            </select>
+          </span>
+        </p>
+      </div>
+      <div>
+        <p class="footerText">其他费用</p>
+        <p class="col-md-12 footerRow">
+          <span class="col-md-4 footerTd">
+            <span>设计费用：</span>
+            &yen;&nbsp;<input class="inputBorder" type="number" ng-model="OfferTableList.designcost" min="0" placeholder="0" onkeyup="if(this.value.length===1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/>
+          </span>
+          <span class="col-md-4 footerTd">
+            <span>运输费用：</span>
+            &yen;&nbsp;<input class="inputBorder" type="number" ng-model="OfferTableList.transportationcost" min="0" placeholder="0" onkeyup="if(this.value.length===1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/>
+          </span>
+          <span class="col-md-4 footerTd">
+            <span>安装费用：</span>
+            &yen;&nbsp;<input class="inputBorder" type="number" ng-model="OfferTableList.installationcost" min="0" placeholder="0" onkeyup="if(this.value.length===1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/>
+          </span>
+          <span class="col-md-4 footerTd" style="margin-top: 10px;">
+            <span>其他费用：</span>
+            &yen;&nbsp;<input class="inputBorder" type="number" ng-model="OfferTableList.otherexpenses" min="0" placeholder="0" onkeyup="if(this.value.length===1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/>
+          </span>
+          <span class="col-md-8 footerTd" style="margin-top: 10px;">
+            <span>费用备注：</span>
+            <input class="inputBorder" type="text" ng-model="OfferTableList.otherexpensesname" placeholder="请添加费用备注"/>
+          </span>
+          <span class="col-md-4 footerTd" style="margin-top: 10px;">
+            <span>税金：</span>
+            &yen;&nbsp;<input class="inputBorder" type="number" ng-model="OfferTableList.tax" id="tax" min="0" placeholder="0" onkeyup="if(this.value.length===1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/>
+          </span>
+          <span class="col-md-8 footerTd" style="margin-top: 10px;">
+            <span>税金备注：</span>
+            <input class="inputBorder" type="text" ng-model="OfferTableList.taxName" id="taxName" placeholder="请添加税金备注"/>
+          </span>
+        </p>
+      </div>
+      <div>
+        <p class="footerText">费用总计</p>
+        <p class="col-md-12 footerRow">
+          <span class="col-md-6 footerTd" style="margin-top: 10px;">
+            <span class="col-md-6" style="display: inline-block">产品合计：</span>
+            <span class="col-md-6" style="display: inline-block;margin-left: 10px;" id="totalproduct" ng-model="OfferTableList.totalproduct">{{TotalProduct|totalFilter}}</span>
+          </span>
+          <span class="col-md-6 footerTd" style="margin-top: 10px;">
+            <span class="col-md-6" style="display: inline-block">项目合计：</span>
+            <span class="col-md-6" style="display: inline-block;margin-left: 10px;" id="total" ng-model="OfferTableList.total">{{(TotalProduct|totalFilter) + OfferTableList.designcost + OfferTableList.transportationcost + OfferTableList.installationcost + OfferTableList.otherexpenses + OfferTableList.tax}}</span>
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="clearfix" style="box-shadow: 0 -.2rem 10px rgba(0,0,0,0.2)">
+      <div class="left col-md-10 clearfix" id="Left" ng-click="topShow = !topShow">
+        <div style="display: inline-block;float: left">
+          <i class="icon ion-clipboard"></i>
+          <p><span style="font-size: 1.6rem;">项目总计</span>(含运输、税金等费用):<i class="icon ion-social-yen"></i><span>{{(TotalProduct|totalFilter) + OfferTableList.designcost + OfferTableList.transportationcost + OfferTableList.installationcost + OfferTableList.otherexpenses + OfferTableList.tax}}</span></p>
+        </div>
+        <div style="display: inline-block;float: right;padding-right: 2rem;">
+          <p style="margin-right: 1rem;">费用详情</p><i ng-class="{false:'icon ion-chevron-up',true:'icon ion-chevron-down'}[topShow]" ng-init="topShow = false" style="font-size: 1.4rem;"></i>
+        </div>
+      </div>
+      <div class="right col-md-2" ng-click="m_carryOut(data);">
+        <p>报价完成</p>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+

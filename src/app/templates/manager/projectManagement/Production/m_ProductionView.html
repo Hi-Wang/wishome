@@ -1,0 +1,87 @@
+<div class="project_all mProductionView">
+  <header>
+    <div class="leftFloat">
+      <p>
+        <i class="icon ion-paper-airplane"></i>
+        <span style="margin-right: 1rem">下单项目名称：</span>
+        <span ng-bind="prjtList.prjtname"></span>
+      </p>
+    </div>
+    <div class="rightFloat">
+      <button type="button" ng-click="downProduct(this);">下单</button>
+      <button type="button" ng-click="back();">返回</button>
+    </div>
+  </header>
+  <big-img id="seeBigImgModel" ng-show="seeBigImgModel" ng-init="seeBigImgModel = false"></big-img>
+  <manager-alert ng-show="managerModel" ng-init="managerModel = false"></manager-alert>
+  <section>
+    <table class="table  content_table_style table-bordered">
+      <thead>
+      <!--<tr>-->
+        <!--<td colspan="7">项目清单</td>-->
+      <!--</tr>-->
+      <tr>
+        <!--<td ng-repeat="td in tableTd" ng-bind="td.name"></td>-->
+        <td class="checkBoxInput">
+          <span class="col-md-6 allSelect" style="border-right: 1px solid #ccc;" ng-click="allSelect(this);">
+            <span class="col-md-5 input">
+              <input type="checkbox"/>
+              <i ng-class="{true:'icon ion-android-checkbox-outline-blank',false:'icon ion-android-checkbox-outline'}[allSelected]"></i>
+            </span>
+            <span class="col-md-5">全选</span>
+          </span>
+          <span class="col-md-6 allSelect" ng-click="allNoSelect(this);">
+            <span class="col-md-5 input">
+              <input type="checkbox"/>
+              <i ng-class="{true:'icon ion-android-checkbox-outline-blank',false:'icon ion-android-checkbox-outline'}[allNoSelected]"></i>
+            </span>
+            <span class="col-md-5">反选</span>
+          </span>
+        </td>
+        <td>样式参考</td>
+        <td>详细信息</td>
+        <td>操作</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="data in tableList" ng-class="data.trStyle">
+        <td class="col-md-1 checkBoxInput">
+          <input type="checkbox" ng-disabled="data.listed" ng-model="data.selected" ng-if="select" ng-click="checkedChange(this);">
+          <!--<i ng-class="{icon:true,ion-android-checkbox-outline:true}"></i>-->
+          <i ng-class="{true:'icon ion-android-checkbox-outline-blank',false:'ColorCCC icon ion-android-checkbox-outline'}[data.selectedStyle]"></i>
+        </td>
+        <td class="col-md-2">
+          <a title="查看大图" style="cursor: pointer">
+            <img ng-src="{{data.detailsurl}}" ng-click="seeBigImg(data.detailsurl);"/>
+          </a>
+        </td>
+        <td class="col-md-2" style="border-left: none;border-right:none;padding:0;background: none">
+          <table class="table table-hover table-bordered tdTable table-responsive">
+            <tr ng-class="data.trStyle">
+              <td class="col-md-5">产品名称</td>
+              <td class="col-md-7"><span ng-bind="data.detailsname"></span></td>
+            </tr>
+            <tr ng-class="data.trStyle">
+              <td class="col-md-5">产品编码</td>
+              <td class="col-md-7"><span ng-bind="data.detailscode"></span></td>
+            </tr>
+            <tr ng-class="data.trStyle">
+              <td class="col-md-5">区域</td>
+              <td class="col-md-7"><span ng-bind="data.regionname"></span></td>
+            </tr>
+            <tr ng-class="data.trStyle">
+              <td class="col-md-5">数量</td>
+              <td class="col-md-7"><span ng-bind="data.detailsnumber"></span></td>
+            </tr>
+          </table>
+        </td>
+        <td class="col-md-2" style="display: none" ng-bind="data.consName"></td>
+        <td class="col-md-1">
+          <button type="button"  ng-click="goProductNotices(this);">编辑</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>

@@ -1,0 +1,60 @@
+<div class="boss b_seeManagerProject bProjectManager b_seeDesigner home_designerHome">
+  <header class="clearfix">
+    <div class=" headerLeft">
+      <img ng-src="{{designerHome.personalpicture}}"/>
+    </div>
+    <div class=" headerRight clearfix">
+      <div class="backBtn" >
+        <button class="btn btn-primary" ng-click="back();">返回</button>
+      </div>
+      <div>
+        <table>
+          <tr style="margin-bottom: 10px;">
+            <td colspan="5">
+              <h2 ng-bind="dept.deptName"></h2>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-md-2">
+              账号ID：<span ng-bind="designerHome.username"></span>
+            </td>
+            <td class="col-md-2">
+              联系方式：<span ng-bind="designerHome.phoneNumber"></span>
+            </td>
+            <td class="col-md-2">
+              邮箱：<span ng-bind="designerHome.email"></span>
+            </td>
+          </tr>
+          <tr style="padding-top: 10px;display: inline-block">
+            <td colspan="4">
+              所在地：<span ng-bind="designerHome.address"></span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="managerDiv clearfix">
+      <ul class="row clearfix ulBox">
+        <li class="clearfix active" ng-repeat="data in designerList">
+          <div class="b_managerLeftBox">
+            <div>
+              <img ng-src="{{data.personalpicture}}"/>
+              <p ng-bind="data.nickname"></p>
+            </div>
+          </div>
+          <div class="b_managerRightBox">
+            <div class="b_managerIdBox">
+              <p>ID：<span ng-bind="data.username"></span></p>
+              <p>电话：<span ng-bind="data.phoneNumber"></span></p>
+              <p>姓名：<span ng-bind="data.nickname"></span></p>
+              <p>邮箱：<span ng-bind="data.email"></span></p>
+              <p>地址：<span ng-bind="data.address"></span></p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>

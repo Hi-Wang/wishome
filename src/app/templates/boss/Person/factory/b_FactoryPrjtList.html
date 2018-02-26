@@ -1,0 +1,81 @@
+<div class="boss b_seeManagerProject">
+  <boss-change-manager ng-show="changeManagerModel" ng-init="changeManagerModel = false"></boss-change-manager>
+  <header class="clearfix">
+    <div class=" headerLeft">
+      <!--<img src="../images/projectList/addImg.fw.png"/>-->
+      <img ng-src="{{dataList.personalpicture}}"/>
+    </div>
+    <div class=" headerRight clearfix">
+      <div class="backBtn" >
+        <button class="btn btn-primary" ng-click="back();">返回</button>
+      </div>
+      <div>
+        <table>
+          <tr style="margin-bottom: 10px;">
+            <td colspan="5">
+              <h2 ng-bind="factoryName"></h2>&nbsp;&nbsp;
+              <!--<span style="color: #00c2de;cursor: pointer" ng-click="changeManager(this);">修改</span>-->
+            </td>
+          </tr>
+          <tr>
+            <td class="col-md-2">
+              账号ID：<span ng-bind="dataList.username"></span>
+            </td>
+            <td class="col-md-2">
+              负责人：<span ng-bind="dataList.nickname"></span>
+            </td>
+            <td class="col-md-2">
+              联系方式：<span ng-bind="dataList.phoneNumber"></span>
+            </td>
+            <td class="col-md-2">
+              邮箱：<span ng-bind="dataList.email"></span>
+            </td>
+          </tr>
+          <tr style="padding-top: 10px;display: inline-block">
+            <td colspan="4">
+              所在地：<span ng-bind="dataList.address"></span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div>
+      <table class="table tableNav">
+        <tr nav-change-style>
+          <td class="styleTd" ng-repeat="data in tableNav" ng-bind="data.name" ng-click="getPrjtState(this,$index);"></td>
+        </tr>
+      </table>
+      <table class="table" style="color:#333;text-align: center;">
+        <tr>
+          <td>
+            <table class="table table-condensed table-hover">
+              <tr class="tableListNav">
+                <td>项目编码</td>
+                <td>项目名称</td>
+                <td>项目经理</td>
+                <td>产品数量</td>
+                <td>金额</td>
+                <td>立项日期</td>
+                <td>状态</td>
+              </tr>
+              <tr ng-repeat="data in tdList| pageFilter:pageCount:pageIndex">
+                <td ng-bind="data.prjtcode">1212</td>
+                <td ng-bind="data.prjtname">1212</td>
+                <td ng-bind="data.dept.deptName">1212</td>
+                <td ng-bind="data.prjtprodqty">1212</td>
+                <td ng-bind="data.prjtsum">1212</td>
+                <td ng-bind="data.prjtdate">1212</td>
+                <td ng-bind="data.prjtstate">1212</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+    <!--分页-->
+    <page class="pull-right"></page>
+  </section>
+</div>
