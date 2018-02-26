@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>赫家，定制家具领域的真专家</title>
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <link rel="icon" type="image/png" href="favicon.png">
+	<link rel="stylesheet" type="text/css" href="src/app/library_css/iconfonts/iconfont.css">
+	<link rel="stylesheet" type="text/css" href="src/app/css/loginCSS/login.css">
+</head>
+<style>@-webkit-keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@-moz-keyframes spin{0%{-moz-transform:rotate(0)}100%{-moz-transform:rotate(360deg)}}@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}.spinner{position:fixed;top:0;left:0;width:100%;height:100%;z-index:100003;background: #fff;overflow:hidden}  .spinner div:first-child{display:block;position:relative;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;box-shadow:0 3px 3px 0 rgba(255,56,106,1);transform:translate3d(0,0,0);animation:spin 2s linear infinite}  .spinner div:first-child:after,.spinner div:first-child:before{content:'';position:absolute;border-radius:50%}  .spinner div:first-child:before{top:5px;left:5px;right:5px;bottom:5px;box-shadow:0 3px 3px 0 rgb(255, 228, 32);-webkit-animation:spin 3s linear infinite;animation:spin 3s linear infinite}  .spinner div:first-child:after{top:15px;left:15px;right:15px;bottom:15px;box-shadow:0 3px 3px 0 rgba(61, 175, 255,1);animation:spin 1.5s linear infinite}</style>
+<script>
+
+
+//  function isIE() { //ie?
+//    if (!!window.ActiveXObject || "ActiveXObject" in window){
+//      console.log("是IE");
+//      window.location.href = "https://www.baidu.com/";
+////      window.location.href = "src/app/templates/home.html";
+//      return true;
+//    }else{
+//      console.log("不是IE");
+//      window.location.href = "http://scmc.villion.cn";
+//      return false;
+//    }
+//  }
+//  isIE();
+
+//  (function browserRedirect(){
+//    var sUserAgent = navigator.userAgent.toLowerCase();
+//    var bIsIpad = sUserAgent.match(/ipad/i) == 'ipad';
+//    var bIsIphone = sUserAgent.match(/iphone os/i) == 'iphone os';
+//    var bIsMidp = sUserAgent.match(/midp/i) == 'midp';
+//    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == 'rv:1.2.3.4';
+//    var bIsUc = sUserAgent.match(/ucweb/i) == 'web';
+//    var bIsCE = sUserAgent.match(/windows ce/i) == 'windows ce';
+//    var bIsWM = sUserAgent.match(/windows mobile/i) == 'windows mobile';
+//    var bIsAndroid = sUserAgent.match(/android/i) == 'android';
+//
+//    if(bIsIpad || bIsIphone || bIsMidp || bIsUc7 || bIsUc || bIsCE || bIsWM || bIsAndroid ){
+//      window.location.href = 'villion.cn';
+//    }
+//  })();
+</script>
+<body>
+<div id="nb-global-spinner" class="spinner" style="display: none">
+  <div class="blob blob-0"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+  <div class="blob blob-5"></div>
+</div>
+	<header class="clearfix">
+		<p class="logo">WISHOME<span>+</span></p>
+		<p class="slogan">赫家&bull;定制家具供应链系统</p>
+	</header>
+	<div class="content">
+
+		<div class="cont_left">
+			<h2>定制家具领域的真专家</h2>
+			<ul class="clearfix">
+				<li>经验系统</li>
+				<li>专属顾问</li>
+				<li>全程服务</li>
+			</ul>
+			<p>为10,000设计师提供定制家具完整供应链服务</p>
+		</div>
+		<div class="cont_right">
+			<p class="clearfix nav">
+				<span id="logon_button">登录</span>
+				<span id="login_button">注册</span>
+				<i id="underline_button"></i>
+			</p>
+			<div id="logon_div">
+        <!--二维码盒子-->
+        <div class="code" id="code">
+          <i class="icon ion-close-circled"></i>
+          <div id="login_container" class="codeShow"></div>
+          <!--<button>返回登录</button>-->
+        </div>
+
+				<div class="username clearfix" id="none1">
+					<span><i class="iconfont icon-denglu" id="iconUser"></i></span>
+					<input type="text" name="" placeholder="用户名" id="username" />
+				</div>
+				<div class="password clearfix" id="none2">
+					<div id="passByKey">
+						<span><i class="iconfont icon-mima"></i></span>
+						<input type="password" name="" placeholder="密码" id="password">
+					</div>
+					<div id="passByCode">
+						<input type="text" name="" placeholder="请输入验证码" id="codeByPhone">
+						<input type="button" name="" value="获取验证码" id="getCode" >
+					</div>
+				</div>
+				<div class="password_again clearfix" style="margin-bottom: 80px;">
+					<span><i class="iconfont icon-mima"></i></span>
+					<input type="password" name="" placeholder="请再次输入密码" id="password_again">
+				</div>
+				<p class="anotherChoose clearfix" id="none3">
+					<span id="forget" style="opacity: 0">忘记密码？</span>
+					<span id="logonByPhone"><i class="iconfont icon-shouji"></i>手机号快捷登录</span>
+					<span id="logonByUsername">用户名登录</span>
+				</p>
+				<!--<p class="chooseGroup">-->
+					<!--请选择用户组：-->
+					<!--<select id="role">-->
+					<!--</select>-->
+				<!--</p>-->
+				<input type="button" name="" value="登录" id="logon_click" >
+				<input type="button" name="" value="现在注册" id="login_click">
+				<p class="logon_tencent" id="none4">
+					其他方式登录<br /><br />
+					<a id="qq"><i class="iconfont icon-QQ"></i></a>
+          <a id="weChat"><i class="iconfont icon-weixin"></i></a>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="src/app/library_js/jQuery/jquery-3.2.1.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="src/app/js/login.js"></script>
+  <script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+  <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101416019" data-redirecturi="http://scmc.villion.cn" charset="utf-8"></script>
+
+  <script type="text/javascript">
+    $('#qq').click(function(){
+    	  window.close();
+   	 window.localStorage.setItem("id",null);
+   	 	QC.Login.showPopup({
+           appId:"101416019",
+           redirectURI:"http://scmc.villion.cn"
+        });
+   	})
+  </script>
+
+  <script type="text/javascript">
+     var context = "";
+     this.window.onload=function(){
+      var reg = new RegExp("(^|&)" + "code"+ "=([^&]*)(&|$)", "i");
+   	  var r = window.location.search.substr(1).match(reg); //获取url中"?"符后的字符串并正则匹配
+   	  if (r !== null){
+   	  	context = r[2];
+   	  	reg = null;
+   	  	ajax(context);
+   	  	console.log(context);
+   	  } else if(r = null){}
+   	  };
+     var storage = window.localStorage;
+   	 function ajax(code){
+       $("#nb-global-spinner").css('display','block');
+   	  $.ajax({
+ 	     type: "get",
+ 	     url: "http://scmc.villion.cn:4433/wishome-web/rest/weixinLogin?code="+ code,
+ 	     contentType: "application/json; charset=utf-8",
+ 	     dataType: "json",
+ 	     success: function(data){
+ 	     	if(data.state === 400){
+ 	     		alert("此微信没有绑定用户，请先登录绑定。");
+          $("#nb-global-spinner").css('display','none');
+ 	     	}else if(data.state === 200){
+ 	     	  storage.setItem("loginId",data.user);
+              storage.setItem("role",data.role);
+ 	          window.location.href = "src/app/templates/home.html";
+ 	     	}
+ 	     },
+ 	     error: function () {
+ 	       alert("失败")
+ 	     }
+ 	   })
+   	 }
+
+      var userId = storage.getItem("id");
+      if(userId === 'null'){
+      	 $("#nb-global-spinner").css('display','none');
+      	    QC.Login.getMe(function(openId, accessToken){
+           var openId = openId;
+            $("#nb-global-spinner").css('display','block');
+           	  $.ajax({
+           	  type: "get",
+ 	          url: "http://scmc.villion.cn:4433/wishome-web/rest/QQLogin",
+ 	          contentType: "application/json; charset=utf-8",
+ 	          dataType: "json",
+ 	          data:{"openId":openId},
+ 	          success:function(data){
+ 	          	if(data.state === 400){
+ 	          		alert('此QQ未绑定。');
+ 	          		$("#nb-global-spinner").css('display','none');
+ 	          	}else if(data.state === 200){
+ 	          		storage.setItem("loginId",data.user);
+ 	          		storage.setItem("role",data.role);
+ 	          		window.location.href = "src/app/templates/home.html";
+ 	          	}
+ 	          }
+ 	        });
+         });
+      }
+      if(userId !== 'null'){
+      	 if(QC.Login.check()){//如果已登录
+         QC.Login.getMe(function(openId, accessToken){
+           var openId = openId;
+           console.log(openId);
+            $("#nb-global-spinner").css('display','block');
+           	  $.ajax({
+           	  type: "get",
+ 	          url: "http://scmc.villion.cn:4433/wishome-web/rest/updqqOpenId",
+ 	          contentType: "application/json; charset=utf-8",
+ 	          dataType: "json",
+ 	          data:{"qqOpenId":openId,"userId":userId},
+ 	          success:function(data){
+ 	          	if(data.state === 500){
+ 	          		alert('此QQ已绑定。');
+ 	          		$("#nb-global-spinner").css('display','none');
+ 	          	}else if(data.state === 200){
+ 	          		storage.setItem("loginId",data.user);
+ 	          		storage.setItem("role",data.role);
+ 	          		window.location.href = "src/app/templates/home.html";
+ 	          	}
+ 	          }
+ 	        });
+           console.log( window.localStorage.getItem("id"));
+         });
+       }
+         if(QC.Login.signOut()){
+         alert("注销成功");
+       }
+
+      }
+
+  </script>
+</body>
+</html>
