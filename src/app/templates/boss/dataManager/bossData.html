@@ -19,8 +19,8 @@
     <tr ng-repeat="data in dataList">
       <td class="col-md-8" style="position: relative;">
         <span class="col-md-6" ng-bind="data.name" style="color: #00c2de;"></span>
-        <span ng-show="startEndTime" class="col-md-3" style="text-align: left"> 开始提前期：<span ng-bind="data.st" style="color: #00c2de;"></span>&nbsp;/天</span>
-        <span ng-show="startEndTime" class="col-md-3" style="text-align: left">结束提前期：<span ng-bind="data.end" style="color: #00c2de;"></span>&nbsp;/天</span>
+        <span ng-show="startEndTime" class="col-md-3" style="text-align: left"> 开始提前时间：<span ng-bind="data.st" style="color: #00c2de;"></span>&nbsp;/天</span>
+        <span ng-show="startEndTime" class="col-md-3" style="text-align: left">结束提前时间：<span ng-bind="data.end" style="color: #00c2de;"></span>&nbsp;/天</span>
         <span ng-show="changName" ng-init="changeName = false" style="position: absolute;top:50%;margin-top:-1.1rem;z-index: 1000;margin-left: 1rem">
           <input placeholder="修改主材名称" ng-value="data.name" class="changeDataName"/>
           <button ng-click="saveDataName(this,$index);" style="margin-left: 1rem;">保存</button>

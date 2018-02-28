@@ -54,24 +54,6 @@ myApp.controller('contentCtrl',function($scope,$http,$filter,$state,$rootScope,$
     $scope.searchClick(ajax);
   };
 
-  //弹框消失时
-  // $scope.modelHide = function(){
-  //   $scope.modelError = false;
-  //   $scope.prjtcode = "";
-  //   $scope.prjtmemo = "";
-  //   $scope.t1 = "项目类别";
-  //   $scope.t2 = "户型";
-  //   $scope.t3 = "主材";
-  //   $scope.t4 = "板材";
-  //   $scope.t5 = "五金品牌";
-  //   $("#listnameValue").val();
-  //   $("#listpcgValue option:selected").html();
-  //   $("#prjthstp option:selected").html();
-  //   $("#listpcValue option:selected").html();
-  //   $("#listdValue option:selected").html();
-  //   $("#listbValue option:selected").html();
-  // };
-
   //新建项目弹出model
   $scope.getNewList = function() {
     $scope.t1 = "项目类别";

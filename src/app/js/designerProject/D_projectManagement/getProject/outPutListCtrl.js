@@ -104,7 +104,7 @@ myApp.controller('outPutListCtrl',function($scope,$http,$state,$rootScope,$timeo
     }
   };
 
-  //是否需要发票
+  //是否需要送货
   $scope.addressClick = function(){
     var val = $(".fabric input:radio[name='addressRadios']:checked").val();
     if(val === "需要送货安装"){

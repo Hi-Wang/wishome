@@ -1,7 +1,7 @@
 /**
  * Created by ASUS on 2017/8/18.
  */
-var myApp = angular.module('myApp',['treeApp','oc.lazyLoad','ui.router','ui.bootstrap','ui.sortable','selectAddress','oc.lazyLoad','ngAnimate']);
+var myApp = angular.module('myApp',['treeApp','oc.lazyLoad','ui.router','ui.bootstrap','ui.sortable','selectAddress','oc.lazyLoad','ngAnimate','ngAnimate-animate.css']);
 
 var urlName = "http://scmc.villion.cn:4433/";
 var zheng = "http://scmc.villion.cn:4433/";
@@ -350,10 +350,27 @@ myApp.config(function($ocLazyLoadProvider,$stateProvider,$urlRouterProvider,$con
       // controller:'managerProjectFileCtrl'
     })
     //设计师服务
-    .state('typesetting.designerServices',{
-      url:'/designerservices',
-      templateUrl:'manager/designerServices/designerServices.html'
-      // controller:'designerServicesCtrl'
+    //新增报价项目
+    .state('typesetting.addQuoteItem',{
+      url:'/addquoteitem',
+      templateUrl:'manager/designerServices/addQuoteItem/addQuoteItem.html',
+      controller:'addQuoteItemCtrl',
+      resolve: {
+        loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load(['../js/manager/designerServices/addQuoteItem/addQuoteItemCtrl.js','../js/manager/designerServices/public/projectListViewsCtrl.js','../js/manager/designerServices/public/addNewProjectModel.js'])
+        }]
+      }
+    })
+    //  新增下单项目
+    .state('typesetting.addOrderItem',{
+      url:'/addorderitem',
+      templateUrl:'manager/designerServices/addOrderItem/addOrderItem.html',
+      controller:'addOrderItemCtrl',
+      resolve: {
+        loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load(['../js/manager/designerServices/addOrderItem/addOrderItemCtrl.js','../js/manager/designerServices/public/projectListViewsCtrl.js','../js/manager/designerServices/public/addNewProjectModel.js'])
+        }]
+      }
     })
     //工厂服务
     .state('typesetting.factoryService',{
