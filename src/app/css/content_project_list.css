@@ -1492,15 +1492,14 @@ table{border:none;}
 .addProjectListViews .addProjectList{height:100%;width: 100%; margin:0;padding-top:50px;}
 .addProjectListViews .addProjectList header{ height:50px;margin-top: -40px;padding:0 20px;border-bottom: 1px solid #ddd;}
 /*.addProjectListViews .addProjectList header span{ display: inline-block;padding:10px 30px;color:#fff;background: #00c2de;border-radius:6px;font-size: 1.4rem; box-shadow: 0 1px 4px rgba(6,31,50,.42);cursor: pointer;}*/
-.addProjectListViews .addProjectList section{height:100%;width:100%;background: #fff;position: relative;padding:10px;}
+.addProjectListViews .addProjectList section{height:100%;width:100%;background: #fff;position: relative;padding:10px;overflow-y: auto;overflow-x: hidden;}
 .addProjectListViews .addProjectList section .content{ width: 400px;height:400px;position: relative;top:50%;left: 50%;margin-top: -200px;margin-left: -200px;}
 .addProjectListViews .addProjectList section .content .imgDiv{ width: 300px;height:300px;position: absolute;top:50%;left:50%;margin-left: -150px;margin-top: -150px; }
 .addProjectListViews .addProjectList section .content .imgDiv img{ width: auto;height:auto;max-height: 100%;max-width: 100%;}
 .addProjectListViews .addProjectList section .content .noProjectText { position: absolute;bottom: 10px;text-align: center;width: 100%;color:#7e8e98;font-size: 2rem;font-family: HanHei SC,PingFang SC,Helvetica,Microsoft YaHei,\\9ED1\4F53;font-weight: 600;}
 
  /*有项目时*/
-.addProjectListViews .addProjectList section figure{ padding: 10px;    position: relative;background-color: #fff;border-radius: 4px;margin: 0;}
-.addProjectListViews .addProjectList section figure #projectList{ background: url("../images/projectList/noneProject.png") center center no-repeat;background-size:cover;width: 216px;height: 153px;}
+.addProjectListViews .addProjectList section .projectList{padding: 10px;}
 
 
  /*项目经理新增项目弹框*/
