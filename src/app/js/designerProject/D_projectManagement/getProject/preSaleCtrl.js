@@ -4,8 +4,15 @@
 myApp.controller('preSaleCtrl',function($state,$scope,$stateParams,$http,$timeout,$rootScope,locals){
   var prjtId = locals.get("designerPrjtId");
   var prjthstp = locals.get("designerPrjthstp");
-  $(".UrlA").eq(0).css('background','#00c2de');
-  $(".UrlA").not($(".UrlA").eq(0)).css("background","none");
+  var name = locals.get('designerDownName');
+  if(name === '项目经理新建'){
+    $(".UrlA").eq(5).css('background','#00c2de');
+    $(".UrlA").not($(".UrlA").eq(5)).css("background","none");
+  }else{
+    $(".UrlA").eq(0).css('background','#00c2de');
+    $(".UrlA").not($(".UrlA").eq(0)).css("background","none");
+  }
+
   //tab切换样式
   $scope.tabStyle = function(index){
     $('.roomNameLi').eq(index).css('background','#fff');
@@ -296,6 +303,7 @@ myApp.controller('preSaleCtrl',function($state,$scope,$stateParams,$http,$timeou
   $scope.changeProjectModelShow = function(item){
     $scope.changeProjectModelShow(item);
   };
+
   //  返回上一页
   $scope.returnProjectList = function(){
     var name = locals.get('designerDownName');
@@ -303,6 +311,8 @@ myApp.controller('preSaleCtrl',function($state,$scope,$stateParams,$http,$timeou
       $state.go("typesetting.projectOverView");
     }else if(name === "立项" || name === "输出"){
       $state.go("typesetting.projectList");
+    }else if(name === "项目经理新建"){
+      $state.go('typesetting.addQuoteItem')
     }
   };
 });

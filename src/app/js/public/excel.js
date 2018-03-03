@@ -10,8 +10,6 @@ myApp.directive('excelModel',function(){
         $scope.hide();
       };
       $scope.hide = function(item){
-        console.log(item);
-        // $scope.excelModelShow = false;
         $("#excelModelShow").slideUp();
       };
       $scope.showExcelModel = function(){
@@ -19,7 +17,14 @@ myApp.directive('excelModel',function(){
         $("#excelModelShow").slideDown();
       };
       $scope.getExcel = function(item){
-        var id = item.PrjtList.prjtid;
+        console.log(item);
+        var id;
+        if(item.noList){
+          id = item.projectIndexId;
+        }else{
+          id = item.PrjtList.prjtid;
+        }
+
         $scope.ajaxGetExcel(id);
       };
       $scope.ajaxGetExcel = function(id){

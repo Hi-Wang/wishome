@@ -2,8 +2,15 @@ myApp.controller('signedListCtrl',function($scope,$state,$http,$rootScope,$state
   var id = {
     'prjtid':$stateParams.id
   };
-  $(".UrlA").eq(1).css('background','#00c2de');
-  $(".UrlA").not($(".UrlA").eq(1)).css("background","none");
+  var name = locals.get('designerDownName');
+  if(name === "项目经理新建查看"){
+    $(".UrlA").eq(5).css('background','#00c2de');
+    $(".UrlA").not($(".UrlA").eq(5)).css("background","none");
+  }else{
+    $(".UrlA").eq(1).css('background','#00c2de');
+    $(".UrlA").not($(".UrlA").eq(1)).css("background","none");
+  }
+
   $http({
     url:yang + 'wishome-web/rest/QueryInquiryTable1',
     method:'GET',
@@ -74,6 +81,8 @@ myApp.controller('signedListCtrl',function($scope,$state,$http,$rootScope,$state
       $state.go('typesetting.dAskPrice')
     }else if(name === "总项目"){
       $state.go("typesetting.projectOverView");
+    }else if(name === "项目经理新建查看"){
+      $state.go('typesetting.addQuoteItem')
     }
   }
 });

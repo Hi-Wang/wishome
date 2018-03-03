@@ -7,9 +7,16 @@ myApp.controller('imageViewCtrl',function($scope,$http,$stateParams,$state,$root
   var Prjthstp = locals.get("designerPrjthstp");
   var designerDetailsid = locals.get('designerDetailsid');
   var roomName = locals.get('roomName');
+  var name = locals.get('designerDownName');
+  console.log(name);
+  if(name === "项目经理新建"){
+    $(".UrlA").eq(5).css('background','#00c2de');
+    $(".UrlA").not($(".UrlA").eq(5)).css("background","none");
+  }else{
+    $(".UrlA").eq(0).css('background','#00c2de');
+    $(".UrlA").not($(".UrlA").eq(0)).css("background","none");
+  }
 
-  $(".UrlA").eq(0).css('background','#00c2de');
-  $(".UrlA").not($(".UrlA").eq(0)).css("background","none");
   $scope.select = {
     "t1":"请选择框架材质",
     "t2":"请选择框架颜色",

@@ -357,7 +357,7 @@ myApp.config(function($ocLazyLoadProvider,$stateProvider,$urlRouterProvider,$con
       controller:'addQuoteItemCtrl',
       resolve: {
         loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad){
-          return $ocLazyLoad.load(['../js/manager/designerServices/addQuoteItem/addQuoteItemCtrl.js','../js/manager/designerServices/public/projectListViewsCtrl.js','../js/manager/designerServices/public/addNewProjectModel.js'])
+          return $ocLazyLoad.load(['../js/manager/designerServices/addQuoteItem/addQuoteItemCtrl.js','../js/manager/designerServices/public/projectListViewsCtrl.js','../js/manager/designerServices/public/addNewProjectModel.js','../js/public/excel.js'])
         }]
       }
     })

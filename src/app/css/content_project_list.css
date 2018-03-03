@@ -1499,7 +1499,7 @@ table{border:none;}
 .addProjectListViews .addProjectList section .content .noProjectText { position: absolute;bottom: 10px;text-align: center;width: 100%;color:#7e8e98;font-size: 2rem;font-family: HanHei SC,PingFang SC,Helvetica,Microsoft YaHei,\\9ED1\4F53;font-weight: 600;}
 
  /*有项目时*/
-.addProjectListViews .addProjectList section .projectList{padding: 10px;}
+.addProjectListViews .addProjectList section .projectList{padding: 20px;}
 
 
  /*项目经理新增项目弹框*/
