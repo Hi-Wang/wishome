@@ -9,12 +9,14 @@ myApp.controller('fProjectOverViewCtrl',function($scope,$http,$state,$rootScope,
     {'state':'进度'},
     {'state':'交付'}
   ];
+  $("#nb-global-spinner").css('display','block');
   $scope.QueryFactoryAdministratorsCount = function(item){
     $http({
       url: factoryY + 'wishome-web/rest/QueryFactoryProjectCount',
       method:'GET',
       params:item
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       $scope.prompt = data.newList;
       //温馨提示
       $scope.promptBox = [

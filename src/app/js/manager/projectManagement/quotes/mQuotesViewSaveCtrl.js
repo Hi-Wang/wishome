@@ -4,12 +4,14 @@ myApp.controller('mQuotesViewSaveCtrl',function($scope,$rootScope,$http,$state,$
   };
   $(".UrlA").eq(0).css('background','#00c2de');
   $(".UrlA").not($(".UrlA").eq(0)).css("background","none");
+  $("#nb-global-spinner").css('display','block');
   $scope.QueryOffer = function(item){
     $http({
       url:zheng + 'wishome-web/rest/QueryOffer',
       method:'GET',
       params:item
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       $scope.data = data;
       //黄框数据 InquiryTableList
       $scope.InquiryTableList = data.InquiryTableList[0];

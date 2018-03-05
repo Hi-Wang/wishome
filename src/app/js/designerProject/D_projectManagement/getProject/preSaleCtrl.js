@@ -6,9 +6,11 @@ myApp.controller('preSaleCtrl',function($state,$scope,$stateParams,$http,$timeou
   var prjthstp = locals.get("designerPrjthstp");
   var name = locals.get('designerDownName');
   if(name === '项目经理新建'){
+    $scope.RightBtn = false;
     $(".UrlA").eq(5).css('background','#00c2de');
     $(".UrlA").not($(".UrlA").eq(5)).css("background","none");
   }else{
+    $scope.RightBtn = true;
     $(".UrlA").eq(0).css('background','#00c2de');
     $(".UrlA").not($(".UrlA").eq(0)).css("background","none");
   }
@@ -20,6 +22,7 @@ myApp.controller('preSaleCtrl',function($state,$scope,$stateParams,$http,$timeou
   };
   //拿到房间 getRoomList
 
+  $("#nb-global-spinner").css('display','block');
   $scope.getRoomList = function(){
     var region = {
       "hastCateName": prjthstp,
@@ -31,6 +34,7 @@ myApp.controller('preSaleCtrl',function($state,$scope,$stateParams,$http,$timeou
       method:'POST',
       params: region
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       $('.roomNameLi').eq(0).css('background','#fff');
       $('.roomNameLi').eq(0).siblings().css('background','#D9DEE4');
       $scope.PrjtList = data.PrjtList;
@@ -311,10 +315,59 @@ myApp.controller('preSaleCtrl',function($state,$scope,$stateParams,$http,$timeou
       $state.go("typesetting.projectOverView");
     }else if(name === "立项" || name === "输出"){
       $state.go("typesetting.projectList");
-    }else if(name === "项目经理新建"){
+    }else if(name === "项目经理新建" || name === "项目经理新增产品报价"){
       $state.go('typesetting.addQuoteItem')
     }
   };
+
+
+//  项目经理立即报价
+  $scope.goBaoJia = function(item){
+    if(item.region === null){
+      $scope.alertRoom = true;
+      $scope.error = false;
+      $scope.addRoomInput = false;
+      $scope.alertTextP = true;
+      $scope.alertText = "请先添加区域和产品。";
+      $scope.header = true;
+      $scope.footer = false;
+      $scope.headerText = "提示";
+      $timeout(function(){
+        $scope.alertRoom = false;
+      },1000);
+      return false;
+    }
+    if(item.PrjtList.prjtprodqty === 0){
+      $scope.alertRoom = true;
+      $scope.error = false;
+      $scope.addRoomInput = false;
+      $scope.alertTextP = true;
+      $scope.alertText = "该项目内没有产品，请先添加产品。";
+      $scope.header = true;
+      $scope.headerText = "提示";
+      $scope.footer = false;
+      $timeout(function(){
+        $scope.alertRoom = false;
+      },1000);
+      return false
+    }
+
+    var id = {
+      'prjtid' : item.PrjtList.prjtid
+    };
+    $http({
+      url: designerY + 'wishome-web/rest/updInquiryState',
+      method:'GET',
+      params:id
+    }).success(function(data){
+      if(data.state === 200){
+        locals.set('managerDownName',"项目经理新增产品报价");
+        $state.go('typesetting.mQuotesView' ,{id: id.prjtid})
+      }
+    })
+
+  }
+
 });
 
 myApp.directive('changeProjectModel',function(){

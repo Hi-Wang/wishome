@@ -7,12 +7,14 @@ myApp.controller('scheduleCtrl',function($scope,$rootScope,$state,$http,locals){
   };
   $(".UrlA").eq(3).css('background','#00c2de');
   $(".UrlA").not($(".UrlA").eq(3)).css("background","none");
+  $("#nb-global-spinner").css('display','block');
   $scope.signedCtrl = function(item){
     $http({
       url:designerY + 'wishome-web/rest/QueryDesignerSpeed',
       method:'GET',
       params:item
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       $scope.prompt = data.newList;
       //温馨提示
       $scope.promptBox = [

@@ -5,6 +5,7 @@ myApp.controller('bSeeDesignerCtrl',function($scope,$http,$state,$stateParams){
   var id = {
     'id':$stateParams.id
   };
+  $("#nb-global-spinner").css('display','block');
   //获取设计师之家的设计师们
   $scope.ajaxGetDesignerHome = function(item){
     $http({
@@ -12,6 +13,7 @@ myApp.controller('bSeeDesignerCtrl',function($scope,$http,$state,$stateParams){
       method:'GET',
       params:item
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       for(var i=0;i<data.list.length;i++){
         if(data.list[i].personalpicture === null){
           data.list[i].personalpicture = '../images/projectList/wishome.png'

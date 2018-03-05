@@ -6,6 +6,7 @@ myApp.controller('managerHomeCtrl',function($scope,$http,$state,$rootScope,local
   window.onbeforeunload = function(){
     return false;
   };
+  $("#nb-global-spinner").css('display','block');
   var id = {
     'userId': locals.get('id')
   };
@@ -14,6 +15,7 @@ myApp.controller('managerHomeCtrl',function($scope,$http,$state,$rootScope,local
     method:'GET',
     params:id
   }).success(function(data){
+    $("#nb-global-spinner").css('display','none');
     if(data.user.personalpicture === null ){
       data.user.personalpicture = '../images/projectList/wishome.png'
     }

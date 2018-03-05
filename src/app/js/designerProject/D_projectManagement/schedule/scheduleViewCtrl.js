@@ -7,11 +7,13 @@ myApp.controller('scheduleViewCtrl',function($scope,$rootScope,$http,$state,$sta
   };
   $(".UrlA").eq(3).css('background','#00c2de');
   $(".UrlA").not($(".UrlA").eq(3)).css("background","none");
+  $("#nb-global-spinner").css('display','block');
   $http({
     url:yang + 'wishome-web/rest/queryOrderDetailsPm',
     method:'GET',
     params:id
   }).success(function(data){
+    $("#nb-global-spinner").css('display','none');
     $scope.InquiryTableList = data.it;
     $scope.OfferTableList = data.ot;
     $scope.PrjtDetailsList = data.list;

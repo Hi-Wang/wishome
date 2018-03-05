@@ -7,12 +7,14 @@ myApp.controller('managerScheduleViewCtrl',function($scope,$rootScope,$http,$sta
   };
   $(".UrlA").eq(2).css('background','#00c2de');
   $(".UrlA").not($(".UrlA").eq(2)).css("background","none");
+  $("#nb-global-spinner").css('display','block');
   $scope.queryOrderDetailsPm = function(item){
     $http({
       url: managerZ + 'wishome-web/rest/queryOrderDetailsPm',
       method:'GET',
       params:item
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       if(data.state === 200){
         $scope.state = true
       }else if(data.state === 400){

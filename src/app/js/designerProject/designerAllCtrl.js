@@ -2,7 +2,7 @@
  * Created by ASUS on 2017/10/10.
  */
 myApp.controller('designerAllCtrl',function($scope,$rootScope,$http,$state,locals){
-
+  $("#nb-global-spinner").css('display','block');
   //如果设计师进来
   $scope.QueryDesignerPersonalPage = function(){
     var id = {
@@ -13,6 +13,7 @@ myApp.controller('designerAllCtrl',function($scope,$rootScope,$http,$state,local
       method:'GET',
       params:id
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       if(data.use.personalpicture === null){
         data.use.personalpicture = '../images/projectList/wishome.png'
       }
@@ -35,6 +36,7 @@ myApp.controller('designerAllCtrl',function($scope,$rootScope,$http,$state,local
       method:'GET',
       params:id
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       if(data.user.personalpicture === null){
         data.user.personalpicture = '../images/projectList/wishome.png';
       }

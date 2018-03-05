@@ -10,6 +10,7 @@ myApp.controller('fScheduleViewCtrl',function($scope,$http,$state,$stateParams,$
     {'name':'制作要求'},
     {'name':'操作'}
   ];
+  $("#nb-global-spinner").css('display','block');
   var id = {
     'prjtId':$stateParams.id,
     'deptId': $rootScope.deptId
@@ -20,6 +21,7 @@ myApp.controller('fScheduleViewCtrl',function($scope,$http,$state,$stateParams,$
       method:'POST',
       params: item
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       $scope.prjtName = data.pr;
       if(data.list.length === 0){
         $scope.tdShow = true

@@ -8,6 +8,7 @@ myApp.controller("projectOverViewCtrl",function($scope,$http,$rootScope,$state,l
   };
   $(".UrlA").eq(2).css('background','none');
   $(".UrlA").not($(".UrlA").eq(2)).css("background","none");
+  $("#nb-global-spinner").css('display','block');
   $scope.select = [
     {'state':'立项'},
     {'state':'询价'},
@@ -22,6 +23,7 @@ myApp.controller("projectOverViewCtrl",function($scope,$http,$rootScope,$state,l
       method:'GET',
       params:userId
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       $scope.prompt = data.list;
       //温馨提示
       $scope.promptBox = [

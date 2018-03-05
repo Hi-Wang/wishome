@@ -1,5 +1,5 @@
 myApp.controller('historicalProjectCtrl',function($scope,$http,$rootScope,$state,locals){
-
+  $("#nb-global-spinner").css('display','block');
   var userid = {
     'userId': locals.get('id')
   };
@@ -9,7 +9,7 @@ myApp.controller('historicalProjectCtrl',function($scope,$http,$rootScope,$state
       method:'GET',
       params:item
     }).success(function(data){
-      console.log(data);
+      $("#nb-global-spinner").css('display','none');
       $scope.prompt = data.newList;
       $scope.promptBox = [
         {'name':"项目总数:", 'num' : $scope.prompt.list1 + ' 个，'},

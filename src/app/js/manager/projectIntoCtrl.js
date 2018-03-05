@@ -7,12 +7,14 @@
     var user = {
       'userId': locals.get('id')
     };
+    $("#nb-global-spinner").css('display','block');
     $scope.seeAllProject = function(item){
       $http({
         url: managerY +'wishome-web/rest/queryManagerProject',
         method:'POST',
         params:item
       }).success(function(data){
+        $("#nb-global-spinner").css('display','none');
         $scope.prompt = data.newList;
         //温馨提示
         $scope.promptBox = [

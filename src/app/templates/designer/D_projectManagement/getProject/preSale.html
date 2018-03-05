@@ -107,8 +107,11 @@
           <span>项目详情</span><i ng-class="{false:'icon ion-chevron-up',true:'icon ion-chevron-down'}[footerShow]" ng-init="footerShow = false"></i>
         </div>
       </div>
-      <div class="col-md-2 right" ng-click="goOutPutList(this);">
+      <div class="col-md-2 right" ng-click="goOutPutList(this);" ng-show="RightBtn">
         <p>立即询价</p>
+      </div>
+      <div class="col-md-2 right" ng-show="!RightBtn" ng-click="goBaoJia(this);">
+        <p>立即报价</p>
       </div>
     </div>
   </footer>

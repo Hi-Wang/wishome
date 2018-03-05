@@ -3,11 +3,13 @@
  */
 myApp.controller('bProjectManagerCtrl',function($state,$scope,$rootScope,$http){
   //查看所有项目经理
+  $("#nb-global-spinner").css('display','block');
   $scope.queryAllPM = function(){
     $http({
       url: boss +'wishome-web/rest/queryAllPM',
       method:'GET'
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       var len = data.pm.length;
       for(var i=0;i<len;i++){
         if(data.pm[i].personalpicture === null || data.pm[i].personalpicture === ''){

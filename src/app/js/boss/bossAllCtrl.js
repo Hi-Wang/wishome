@@ -5,12 +5,14 @@ myApp.controller('bossAllCtrl',function($scope,$http,$state,locals){
   var id = {
     'userId': locals.get("id")
   };
+  $("#nb-global-spinner").css('display','block');
   $scope.QueryAdminPersonalPage = function(item){
     $http({
       url:bossY + 'wishome-web/rest/QueryAdminPersonalPage',
       method:'GET',
       params:item
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       if(data.user.personalpicture === null || '' || undefined ){
         data.user.personalpicture = '../images/projectList/wishome.png'
       }

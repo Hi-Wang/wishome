@@ -9,7 +9,7 @@ myApp.controller('bFactoryPrjtListCtrl',function($scope,$http,$state,$stateParam
   var id = {
     'deptId':$stateParams.id
   };
-
+  $("#nb-global-spinner").css('display','block');
   //获取工厂的信息
   $scope.ajaxGetFactory = function(item){
     $http({
@@ -17,6 +17,7 @@ myApp.controller('bFactoryPrjtListCtrl',function($scope,$http,$state,$stateParam
       method:'GET',
       params:item
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       if(data.user.personalpicture === null){
         data.user.personalpicture = '../images/projectList/wishome.png'
       }

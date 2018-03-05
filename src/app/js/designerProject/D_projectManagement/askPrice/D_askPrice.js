@@ -7,12 +7,14 @@ myApp.controller('askPriceCtrl',function($scope,$state,$http,$rootScope,locals){
   };
   $(".UrlA").eq(1).css('background','#00c2de');
   $(".UrlA").not($(".UrlA").eq(1)).css("background","none");
+  $("#nb-global-spinner").css('display','block');
   $scope.askProjectCtrl = function(item){
     $http({
       url:designerY + 'wishome-web/rest/QueryInquiryTableState',
       method:'GET',
       params:item
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       $scope.prompt = data.newList;
       //温馨提示
       $scope.promptBox = [

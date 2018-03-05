@@ -3,6 +3,7 @@
  */
 myApp.controller('bDesignerHomeCtrl',function($scope,$http,$state,$stateParams){
 //  查看所有设计师之家
+  $("#nb-global-spinner").css('display','block');
   $scope.queryAllDesignHome = function(){
     $http({
       url:boss +'wishome-web/rest/queryAllDesignHome',
@@ -14,6 +15,7 @@ myApp.controller('bDesignerHomeCtrl',function($scope,$http,$state,$stateParams){
           data.dh[i].url = '../images/projectList/wishome.png'
         }
       }
+      $("#nb-global-spinner").css('display','none');
       $scope.designerHome = data.dh;
     });
   };

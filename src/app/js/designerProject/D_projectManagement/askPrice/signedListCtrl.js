@@ -3,6 +3,7 @@ myApp.controller('signedListCtrl',function($scope,$state,$http,$rootScope,$state
     'prjtid':$stateParams.id
   };
   var name = locals.get('designerDownName');
+  $("#nb-global-spinner").css('display','block');
   if(name === "项目经理新建查看"){
     $(".UrlA").eq(5).css('background','#00c2de');
     $(".UrlA").not($(".UrlA").eq(5)).css("background","none");
@@ -16,6 +17,7 @@ myApp.controller('signedListCtrl',function($scope,$state,$http,$rootScope,$state
     method:'GET',
     params:id
   }).success(function(data){
+    $("#nb-global-spinner").css('display','none');
     $scope.PrjtDetailsList = data.PrjtDetailsList;
     $scope.PrjtList = data.PrjtList[0];
     $scope.list = data.list[0];

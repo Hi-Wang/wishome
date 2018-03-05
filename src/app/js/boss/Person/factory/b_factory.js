@@ -3,11 +3,13 @@
  */
 myApp.controller('bFactoryCtrl',function($scope,$http,$state){
   //查看所有的工厂
+  $("#nb-global-spinner").css('display','block');
   $scope.queryFactory = function(){
     $http({
       url:yang +'wishome-web/rest/queryFactory',
       method:'GET'
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       var len = data.gc.length;
       for(var i=0;i<len;i++){
         if(data.gc[i].url === null || data.gc[i].url === ''){

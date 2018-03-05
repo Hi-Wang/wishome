@@ -8,7 +8,7 @@ myApp.controller('imageViewCtrl',function($scope,$http,$stateParams,$state,$root
   var designerDetailsid = locals.get('designerDetailsid');
   var roomName = locals.get('roomName');
   var name = locals.get('designerDownName');
-  console.log(name);
+  $("#nb-global-spinner").css('display','block');
   if(name === "项目经理新建"){
     $(".UrlA").eq(5).css('background','#00c2de');
     $(".UrlA").not($(".UrlA").eq(5)).css("background","none");
@@ -37,6 +37,7 @@ myApp.controller('imageViewCtrl',function($scope,$http,$stateParams,$state,$root
       method:'POST',
       params:item
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       $scope.PrjtList = data.PrjtList;
       $scope.regoinName = data.list;
       var len = data.list2.length;

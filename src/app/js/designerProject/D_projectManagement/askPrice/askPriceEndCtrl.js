@@ -4,11 +4,13 @@ myApp.controller('askPriceEndCtrl',function($scope,$state,$http,$rootScope,$stat
   };
   $(".UrlA").eq(1).css('background','#00c2de');
   $(".UrlA").not($(".UrlA").eq(1)).css("background","none");
+  $("#nb-global-spinner").css('display','block');
   $http({
     url:yang + 'wishome-web/rest/QuerySigCount',
     method:'GET',
     params:id
   }).success(function(data){
+    $("#nb-global-spinner").css('display','none');
     $scope.InquiryTableList = data.InquiryTableList[0];
     $scope.OfferTableList = data.OfferTableList[0];
     $scope.PrjtDetailsList = data.PrjtDetailsList;

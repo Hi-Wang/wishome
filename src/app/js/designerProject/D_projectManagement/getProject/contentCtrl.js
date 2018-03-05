@@ -9,6 +9,7 @@ myApp.controller('contentCtrl',function($scope,$http,$filter,$state,$rootScope,$
   };
   $(".UrlA").eq(0).css('background','#00c2de');
   $(".UrlA").not($(".UrlA").eq(0)).css("background","none");
+  $("#nb-global-spinner").css('display','block');
   //拉取立项列表
   $scope.addList = function(item){
     $http({
@@ -16,6 +17,7 @@ myApp.controller('contentCtrl',function($scope,$http,$filter,$state,$rootScope,$
       method:'GET',
       params:item
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
         $scope.prompt = data.newList;
         $scope.tdList = data.list;
         $scope.pm = data.pm;

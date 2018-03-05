@@ -5,6 +5,7 @@ myApp.controller('fNoticesViewCtrl',function($scope,$state,$http,$stateParams,$t
   var item = {
     'detailsId': $stateParams.id
   };
+  $("#nb-global-spinner").css('display','block');
   $scope.toOrderFactory = function(item){
     $http({
       url: factoryZ +'wishome-web/rest/toOrderFactory',
@@ -12,6 +13,7 @@ myApp.controller('fNoticesViewCtrl',function($scope,$state,$http,$stateParams,$t
       dataType : 'json',
       params: item
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       $scope.it = data.it;
       $scope.node = data.node;
       $scope.ot = data.ot;

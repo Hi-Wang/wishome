@@ -5,12 +5,14 @@ myApp.controller('fDeliverViewCtrl',function($scope,$http,$state,$rootScope){
   var user = {
     'deptId':$rootScope.deptId
   };
+  $("#nb-global-spinner").css('display','block');
 $scope.queryDeliverPrjt = function(item){
   $http({
     url: factoryY +'wishome-web/rest/queryDeliverPrjt',
     method:'GET',
     params:item
   }).success(function(data){
+    $("#nb-global-spinner").css('display','none');
     $scope.tdList = data.list;
     $scope.prompt = data.newList;
     //温馨提示

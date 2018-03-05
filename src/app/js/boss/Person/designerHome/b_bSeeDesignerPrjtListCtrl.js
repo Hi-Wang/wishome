@@ -11,12 +11,14 @@ myApp.controller('bSeeDesignerPrjtListCtrl',function($scope,$state,$http,$stateP
     {'name':'交付项目'}
   ];
   var id = [];
+  $("#nb-global-spinner").css('display','block');
   id.UserId = $stateParams.id;
   $http({
     url:yang +'wishome-web/rest/QueryDesigner',
     method:'GET',
     params:id
   }).success(function(data){
+    $("#nb-global-spinner").css('display','none');
     $scope.dataList = data.list[0];
     $scope.deptId = data.deptId;
     $scope.tdList = data.prjtlist;

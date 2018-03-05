@@ -12,6 +12,7 @@ myApp.controller('bSeeManagerProjectCtrl',function($scope,$state,$http,$statePar
   var userId = {
     'UserId':user
   };
+  $("#nb-global-spinner").css('display','block');
   //拉取 bseemanagerproject.html 的信息
   $scope.QueryBossSearchBox = function(){
     $http({
@@ -19,6 +20,7 @@ myApp.controller('bSeeManagerProjectCtrl',function($scope,$state,$http,$statePar
       method:'GET',
       params:userId
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       if(data.list[0].personalpicture === null){
         data.list[0].personalpicture = '../images/projectList/wishome.png'
       }

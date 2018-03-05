@@ -2,7 +2,7 @@
  * Created by ASUS on 2017/10/17.
  */
 myApp.controller('factoryAllCtrl',function($scope,$http,$state,locals){
-
+  $("#nb-global-spinner").css('display','block');
   var id = {
     'userId':locals.get('id')
   };
@@ -12,6 +12,7 @@ myApp.controller('factoryAllCtrl',function($scope,$http,$state,locals){
       method:'GET',
       params:item
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       if(data.user.personalpicture === null || '' || undefined ){
         data.user.personalpicture = '../images/projectList/wishome.png'
       }

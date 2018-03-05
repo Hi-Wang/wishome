@@ -1,8 +1,15 @@
 myApp.controller('mQuotesView',function($scope,$http,$stateParams,$state,treeS,$rootScope,$timeout,locals){
   $scope.gluebrand = "强选择品牌";
   $scope.coatingmaterialbrand = "强选择品牌";
-  $(".UrlA").eq(0).css('background','#00c2de');
-  $(".UrlA").not($(".UrlA").eq(0)).css("background","none");
+  var name = locals.get('managerDownName');
+  if(name === "项目经理直接报价" || name === "项目经理新增产品报价"){
+    $(".UrlA").eq(0).css('background','#00c2de');
+    $(".UrlA").not($(".UrlA").eq(0)).css("background","none");
+  }else{
+    $(".UrlA").eq(5).css('background','#00c2de');
+    $(".UrlA").not($(".UrlA").eq(5)).css("background","none");
+  }
+
   var prjtid = $stateParams.id;
   var data = {
     'prjtid':prjtid
@@ -190,6 +197,10 @@ myApp.controller('mQuotesView',function($scope,$http,$stateParams,$state,treeS,$
       return false
     }else if(name === "报价"){
       $state.go("typesetting.managerQuotes")
+    }else if(name === "项目经理直接报价"){
+      $state.go("typesetting.addQuoteItem")
+    }else if(name === "项目经理新增产品报价"){
+      $state.go('typesetting.preSale')
     }
   };
   // $scope.data = $scope.PrjtDetailsList;

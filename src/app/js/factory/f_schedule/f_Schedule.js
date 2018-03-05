@@ -8,13 +8,14 @@ myApp.controller('fScheduleCtrl',function($scope,$http,$state,$rootScope){
   var deptId = {
     'deptId': $rootScope.deptId
   };
-
+  $("#nb-global-spinner").css('display','block');
   $scope.queryAllProgressPrjt = function(item){
     $http({
       url: factoryZ +'wishome-web/rest/queryAllProgressPrjt',
       method:'POST',
       params: item
     }).success(function(data){
+      $("#nb-global-spinner").css('display','none');
       $scope.tdList = data.list;
       $scope.prompt = data.newList;
       //温馨提示

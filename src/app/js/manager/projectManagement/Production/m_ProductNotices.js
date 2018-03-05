@@ -4,6 +4,7 @@
 myApp.controller('mProductNoticesCtrl',function($scope,$http,$state,$stateParams,$timeout){
   $(".UrlA").eq(1).css('background','#00c2de');
   $(".UrlA").not($(".UrlA").eq(1)).css("background","none");
+  $("#nb-global-spinner").css('display','block');
   var time = new Date();
   var Y = time.getFullYear();
   var M = time.getMonth() + 1;
@@ -43,6 +44,7 @@ myApp.controller('mProductNoticesCtrl',function($scope,$http,$state,$stateParams
     method:'GET',
     params:id
   }).success(function(data){
+    $("#nb-global-spinner").css('display','none');
     $scope.prd = data.prd;
     $scope.pr = data.pr;
     $scope.ot = data.ot;
