@@ -251,7 +251,7 @@ figure.effect-terry img {
 .backgrund2{ background:#3FB8AF}
 .backgrund3{ background:#09BB07}
 figure.effect-terry h4 {text-align:left;font-size: 1.8rem;font-weight: 500; position: absolute;z-index:100;top:-14%;left:4px;color:#333;display: block;width:100%; -webkit-transition: all 0.5s;transition: all 0.5s;-webkit-transform: translate3d(50px,30%,0);transform: translate3d(50px,30%,0);}
-figure.effect-terry .h4Span {display:inline-block;font-size: 1.2rem; position: absolute;top:58%;left:22%;z-index:100;padding:2px 8px;border-radius:6px;color:#fff;-webkit-transition: all 0.5s;transition: all 0.5s;}
+figure.effect-terry .h4Span {display:inline-block;font-size: 1.2rem; position: absolute;top:58%;left:54px;z-index:100;padding:2px 8px;border-radius:6px;color:#fff;-webkit-transition: all 0.5s;transition: all 0.5s;}
 figure.effect-terry .nameSpan{color:#333; font-size: 1.2rem ;position: absolute;left:80px;top:0; -webkit-transition: all 0.5s;transition: all 0.5s;-webkit-transform: translate3d(0,1000%,0);transform: translate3d(0,1000%,0);}
 figure.effect-terry .timeSpan{color:#3c3c3c; font-size: 1.2rem ;position: absolute;left:80px;top:0; -webkit-transition: all 0.8s;transition: all 0.8s;-webkit-transform: translate3d(0,1000%,0);transform: translate3d(0,1000%,0);}
 @media screen and (max-width: 920px) {
