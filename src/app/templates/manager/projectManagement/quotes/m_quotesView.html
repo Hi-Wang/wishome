@@ -112,12 +112,12 @@
                       <span class="col-md-5"><input type="number" min="0" ng-model="a.num" style="border:none;max-width: 60px;" onkeyup="if(this.value.length===1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/></span>
                       <span class="col-md-2" contenteditable="{{a.editable}}" change-name ng-model="a.unit" >{{a.unit}}</span>
                     </td>
-                    <td class="col-md-6" rowspan="{{a.row}}" ng-show="a.rowShow">
+                    <td class="col-md-6" ng-show="a.rowShow">
                       <span ng-show="a.rowSpan1">
                         <span class="col-md-6" contenteditable="{{a.editable}}" change-name ng-model="a.otherName">{{a.otherName}}</span>
                         <span class="col-md-6"><input ng-show="a.input" type="number" min="0" ng-model="a.otherNum" style="border:none;max-width: 55px;" onkeyup="if(this.value.length===1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/></span>
                       </span>
-                      <span ng-show="a.rowSpan2">
+                      <span rowspan="{{a.row}}" ng-show="a.rowSpan2">
                         <textarea placeholder="其他金额备注" style="width:100%;height: 100%;word-wrap:break-word;resize: none;padding: 10px;border:none" ng-model="a.amountMemo"></textarea>
                       </span>
                     </td>

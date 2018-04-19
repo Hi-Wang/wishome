@@ -184,6 +184,8 @@ myApp.controller('outPutListCtrl',function($scope,$http,$state,$rootScope,$timeo
       "inquiryinvoice": $scope.invoice,  // 0 1
       "inquiryother": invoiceName
     };
+    console.log(askData);
+    // return false
     $http({
       url: zheng + 'wishome-web/rest/QueryInquiryTable',
       method:'GET',

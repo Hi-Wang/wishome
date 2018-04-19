@@ -7,16 +7,22 @@ myApp.controller("designHomeBossCtrl",function($scope,$rootScope,$http,$state,lo
     method:'GET',
     params:id
   }).success(function(data){
+    console.log(data);
     if(data.user.personalpicture === null){
       data.user.personalpicture = '../images/projectList/wishome.png'
-    }
-    if(data.use.personalpicture === null){
-      data.use.personalpicture = '../images/projectList/wishome.png'
     }
     $scope.designerHome = data.deptName;
     $scope.queryDesignerHouse = data.queryDesignerHouse;
     $scope.manager = data.use;
     $scope.designer = data.user;
+    if(data.use === null){
+      $scope.manager = [];
+      $scope.manager.personalpicture = '../images/projectList/wishome.png'
+    }else{
+      if(data.use.personalpicture === null){
+        data.use.personalpicture = '../images/projectList/wishome.png'
+      }
+    }
   });
 
   //查看设计师之家

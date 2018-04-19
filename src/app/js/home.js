@@ -1,7 +1,7 @@
 /**
  * Created by ASUS on 2017/8/18.
  */
-var myApp = angular.module('myApp',['treeApp','oc.lazyLoad','ui.router','ui.bootstrap','ui.sortable','selectAddress','oc.lazyLoad','ngAnimate','ngAnimate-animate.css']);
+var myApp = angular.module('myApp',['treeApp','oc.lazyLoad','ui.router','ui.bootstrap','ui.sortable','selectAddress','oc.lazyLoad','ngAnimate','ngAnimate-animate.css','exceptionOverwrite']);
 
 var urlName = "http://scmc.villion.cn:4433/";
 var zheng = "http://scmc.villion.cn:4433/";
@@ -1140,3 +1140,12 @@ myApp.factory('locals',function($window){
 // myApp.factory('instance', function(){
 //   return true;
 // });
+// 在exceptionHandler中调用fundebug.notifyError
+angular.module('exceptionOverwrite', [])
+  .factory('$exceptionHandler', function(){
+    return function(exception, cause)
+    {
+      fundebug.notifyError(exception);
+    };
+  });
+

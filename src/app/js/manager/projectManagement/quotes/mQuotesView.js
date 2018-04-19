@@ -2,10 +2,10 @@ myApp.controller('mQuotesView',function($scope,$http,$stateParams,$state,treeS,$
   $scope.gluebrand = "强选择品牌";
   $scope.coatingmaterialbrand = "强选择品牌";
   var name = locals.get('managerDownName');
-  if(name === "项目经理直接报价" || name === "项目经理新增产品报价"){
+  if(name === "报价"){
     $(".UrlA").eq(0).css('background','#00c2de');
     $(".UrlA").not($(".UrlA").eq(0)).css("background","none");
-  }else{
+  }else if(name === "项目经理直接报价" || name === "项目经理新增产品报价"){
     $(".UrlA").eq(5).css('background','#00c2de');
     $(".UrlA").not($(".UrlA").eq(5)).css("background","none");
   }
@@ -20,6 +20,7 @@ myApp.controller('mQuotesView',function($scope,$http,$stateParams,$state,treeS,$
       method:'GET',
       params:item
     }).success(function(data){
+      console.log(data);
       if(data.offerTable.coatingmaterialbrand === null){
         $scope.coatingname = data.list[0]
       }else{

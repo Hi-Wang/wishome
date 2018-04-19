@@ -7,7 +7,7 @@ myApp.service('treeS',function(){
   var enhanceItem = function(n,u){
     n.details = [{name:'皮艺饰面',unit:'(尺)',num:n.leatherFinish,cost:u.inquiryaverageleather,editable:false,readonly:true,otherName:'其他金额',otherNum:n.otherAmount,input:true,row:0,rowShow:true,rowSpan1:true,rowSpan2:false},
       {name:'布艺饰面',unit:'(米)',num:n.fabricFinish,cost:u.inquiryaveragecloth,editable:false,readonly:true,input:false,row:2,rowShow:true,rowSpan1:false,rowSpan2:true,otherNum:0,amountMemo:n.amountMemo},
-      {name:'框架金额',num:n.frameAmount,cost:1,editable:false,readonly:false,input:false,row:0,rowShow:false,otherNum:n.otherAmount}];
+      {name:'框架金额',num:n.frameAmount,cost:1,editable:false,readonly:false,input:false,row:0,rowShow:false,otherNum:0}];
   };
 });
 

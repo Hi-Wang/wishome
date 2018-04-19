@@ -14,6 +14,7 @@ myApp.controller('managerQuotesCtrl',function($scope,$http,$state,$rootScope,loc
       method:'POST',
       params:item
     }).success(function(data){
+      console.log(data);
       var len = data.pm.length;
       $scope.prompt = data.newList;
       //温馨提示

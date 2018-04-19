@@ -13,12 +13,17 @@ myApp.controller('designerAllCtrl',function($scope,$rootScope,$http,$state,local
       method:'GET',
       params:id
     }).success(function(data){
+      console.log(data);
+      // return false
       $("#nb-global-spinner").css('display','none');
       if(data.use.personalpicture === null){
         data.use.personalpicture = '../images/projectList/wishome.png'
       }
       if(data.queryDesignerHouse.personalpicture === null){
         data.queryDesignerHouse.personalpicture = '../images/projectList/wishome.png'
+      }
+      if(data.user.personalpicture === null){
+        data.user.personalpicture = '../images/projectList/wishome.png'
       }
       $scope.designerHome = data.deptName;
       $scope.queryDesignerHouse = data.queryDesignerHouse;
